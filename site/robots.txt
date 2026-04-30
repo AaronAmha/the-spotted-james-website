@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI crawlers explicitly allowed for GEO/AEO indexing
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://thespottedjames.com/sitemap.xml
