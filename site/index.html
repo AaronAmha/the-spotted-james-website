@@ -496,13 +496,58 @@ a { color: inherit; text-decoration: none; }
 .hero__flourish--2 { bottom: 8%; left: 4%; }
 
 @media (max-width: 980px) {
-  .hero { grid-template-columns: 1fr; padding: 110px 24px 60px; text-align: center; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 50px; text-align: center; }
   .hero__content { order: 2; }
-  .hero__logo { order: 1; margin-bottom: 24px; }
-  .hero__logo img { max-width: 320px; }
+  .hero__logo { order: 1; margin-bottom: 20px; }
+  .hero__logo img { max-width: 260px; max-height: 220px; object-fit: contain; }
   .hero__buttons, .hero__meta { justify-content: center; }
-  .hero__sub { margin-left: auto; margin-right: auto; }
+  .hero__sub { margin-left: auto; margin-right: auto; font-size: 18px; }
   .hero__flourish { display: none; }
+  .hero__eyebrow { font-size: 22px; }
+  .hero__title { margin: 10px 0 20px; }
+  .hero__meta { margin-bottom: 24px; gap: 16px; }
+}
+
+/* Phone-specific refinements */
+@media (max-width: 480px) {
+  .hero { padding: 90px 18px 40px; min-height: auto; }
+  .hero__logo { margin-bottom: 16px; }
+  .hero__logo img {
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 24px rgba(255,43,79,0.4), 0 0 60px rgba(255,43,79,0.15);
+  }
+  .hero__eyebrow { font-size: 19px; }
+  .hero__title { font-size: clamp(36px, 12vw, 54px); margin: 8px 0 16px; }
+  .hero__title .line2 { font-size: 0.5em; margin-top: 8px; }
+  .hero__sub { font-size: 16px; margin-bottom: 24px; }
+  .hero__meta { font-size: 11px; gap: 12px; margin-bottom: 20px; }
+  .hero__buttons { gap: 10px; }
+  .btn { padding: 14px 24px; font-size: 12px; }
+
+  .nav { padding: 12px 16px; }
+  .nav__brand { font-size: 15px; }
+  .nav__cta { padding: 8px 16px; font-size: 10px; }
+
+  .marquee__track { font-size: 16px; gap: 36px; }
+  .marquee__track span::after { margin-left: 36px; }
+
+  .section__title { font-size: clamp(28px, 8vw, 48px); }
+  .section__lead { font-size: 16px; }
+
+  .audience__num { font-size: 56px; }
+  .audience__card { padding: 40px 24px; }
+
+  .cta { padding: 80px 18px; }
+  .cta__title { font-size: clamp(36px, 12vw, 72px); }
+  .cta__sub { font-size: 26px; }
+
+  footer { padding: 40px 18px 30px; }
+  .footer__top { grid-template-columns: 1fr; gap: 24px; }
+  .footer__brand { font-size: 20px; }
 }
 
 /* ============ MARQUEE ============ */
