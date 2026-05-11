@@ -3,21 +3,65 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact — The Spotted James</title>
-<meta name="description" content="Get in touch. We'd love to hear from you. (303) 555-JAMES, info@thespottedjames.com." />
+
+<title>Contact The Spotted James | Boulder Bar — Call, Email, DM</title>
+<meta name="description" content="Get in touch with The Spotted James in Boulder. Call (303) 555-JAMES, email info@thespottedjames.com, or DM @thespottedjames on Instagram. For private events, wedding parties, and game-day group bookings." />
+<meta name="keywords" content="contact Boulder bar, The Spotted James phone, Boulder bar email, book a Boulder bar, hotel concierge Boulder bar" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/contact.html" />
+
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact The Spotted James — Boulder" />
+<meta property="og:description" content="Call, email, or DM. We're easy to reach." />
+<meta property="og:url" content="https://thespottedjames.com/contact.html" />
+<meta property="og:image" content="https://thespottedjames.com/assets/horse-logo.jpg" />
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- JSON-LD: ContactPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "mainEntity": {
+    "@type": "BarOrPub",
+    "name": "The Spotted James",
+    "@id": "https://thespottedjames.com/#bar",
+    "telephone": "+1-303-555-5263",
+    "email": "info@thespottedjames.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1911 11th St, Suite 100",
+      "addressLocality": "Boulder",
+      "addressRegion": "CO",
+      "postalCode": "80302",
+      "addressCountry": "US"
+    },
+    "contactPoint": [
+      { "@type": "ContactPoint", "contactType": "reservations", "telephone": "+1-303-555-5263", "areaServed": "US", "availableLanguage": "en" },
+      { "@type": "ContactPoint", "contactType": "private events", "email": "info@thespottedjames.com" }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
 <header class="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+  <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" />
   </a>
-  <nav>
+  <nav aria-label="primary">
     <ul class="nav__menu">
       <li><a href="index.html">Events</a></li>
       <li><a href="drinks.html">Drinks</a></li>
@@ -33,7 +77,7 @@
   <section>
     <h1 class="page__title">CONTACT</h1>
     <p class="page__subtitle">Get In Touch.</p>
-    <p class="page__lead">We'd love to hear from you.</p>
+    <p class="page__lead">Booking a wedding party, planning a Buffs game weekend, or just have a question?<br/>We're easy to reach.</p>
 
     <div class="contact-rows">
       <a class="contact-row" href="tel:+13035552637">
@@ -70,7 +114,7 @@
         <div>
           <div class="contact-row__label">Hours</div>
           <div class="contact-row__value">Open at 6PM</div>
-          <div class="contact-row__sub">7 Days a Week</div>
+          <div class="contact-row__sub">7 Days a Week · Until 2am</div>
         </div>
       </div>
     </div>
@@ -102,7 +146,7 @@
       <div class="form-grid">
         <div class="field field--full"><label>Name</label><input type="text" required name="name" /></div>
         <div class="field field--full"><label>Email</label><input type="email" required name="email" /></div>
-        <div class="field field--full"><label>Message</label><textarea name="message" style="min-height:150px;"></textarea></div>
+        <div class="field field--full"><label>Message</label><textarea name="message" placeholder="Visiting Boulder? Planning a wedding weekend? Tell us what you need." style="min-height:150px;"></textarea></div>
         <div class="field field--full">
           <button class="btn btn--block" type="submit">Send Message</button>
         </div>

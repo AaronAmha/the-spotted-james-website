@@ -3,21 +3,66 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Get Directions — The Spotted James</title>
-<meta name="description" content="The Spotted James — 1911 11th St, Suite 100, Boulder, CO 80302. Open at 6pm." />
+
+<title>Directions to The Spotted James | 1911 11th St, Boulder — Near CU &amp; Pearl Street</title>
+<meta name="description" content="Find The Spotted James in downtown Boulder, CO. 1911 11th St, Suite 100. Two blocks off the Pearl Street Mall, three blocks from CU Boulder campus, walking distance from St. Julien Hotel and Hotel Boulderado. Open daily at 6pm." />
+<meta name="keywords" content="Boulder bar directions, 1911 11th St Boulder, bars near Pearl Street, bars near CU Boulder, bars near St Julien Hotel, bars near Hotel Boulderado, walking distance bar Boulder, Boulder downtown bar location" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/directions.html" />
+
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Directions to The Spotted James — Boulder, CO" />
+<meta property="og:description" content="1911 11th St, Suite 100, Boulder, CO 80302. Two blocks off Pearl, three from CU." />
+<meta property="og:url" content="https://thespottedjames.com/directions.html" />
+<meta property="og:image" content="https://thespottedjames.com/assets/horse-logo.jpg" />
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- JSON-LD: Place + LocalBusiness directions -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "The Spotted James",
+  "@id": "https://thespottedjames.com/#bar",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1911 11th St, Suite 100",
+    "addressLocality": "Boulder",
+    "addressRegion": "CO",
+    "postalCode": "80302",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 40.0167, "longitude": -105.2786 },
+  "hasMap": "https://maps.google.com/?q=1911+11th+St+Boulder+CO",
+  "nearby": [
+    "Pearl Street Mall, Boulder, CO",
+    "University of Colorado Boulder",
+    "St. Julien Hotel & Spa, Boulder",
+    "Hotel Boulderado, Boulder",
+    "Boulder Dushanbe Teahouse",
+    "Folsom Field, Boulder"
+  ]
+}
+</script>
 </head>
 <body>
 
 <header class="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+  <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" />
   </a>
-  <nav>
+  <nav aria-label="primary">
     <ul class="nav__menu">
       <li><a href="index.html">Events</a></li>
       <li><a href="drinks.html">Drinks</a></li>
@@ -43,6 +88,14 @@
       <a class="btn btn--block" href="https://maps.google.com/?q=1911+11th+St+Boulder+CO" target="_blank" rel="noopener">Get Directions</a>
       <a class="btn btn--block" href="tel:+13035552637">Call / Text<br/>(303) 555-JAMES</a>
     </div>
+
+    <ul style="list-style:none; display:grid; gap:8px; font-family:var(--sans); font-size:13px; color:var(--smoke); margin: 8px 0 18px; line-height:1.6;">
+      <li>◆ <strong style="color:var(--bone);">2 blocks</strong> from the Pearl Street Mall</li>
+      <li>◆ <strong style="color:var(--bone);">3 blocks</strong> from the CU Boulder campus gates</li>
+      <li>◆ <strong style="color:var(--bone);">5–10 min walk</strong> from St. Julien Hotel &amp; Spa and Hotel Boulderado</li>
+      <li>◆ <strong style="color:var(--bone);">15 min walk</strong> from Folsom Field after Buffs games</li>
+      <li>◆ <strong style="color:var(--bone);">21+</strong> · ID required at the door</li>
+    </ul>
 
     <div class="signage-tile">
       <div class="signage-tile__sign">
@@ -82,6 +135,9 @@
           <path d="M 0 200 L 400 200" />
           <path d="M 200 0 L 200 400" />
         </g>
+        <text x="14" y="195" fill="rgba(236,239,247,0.5)" font-family="Bebas Neue" font-size="11" letter-spacing="2">PEARL ST</text>
+        <text x="206" y="18" fill="rgba(236,239,247,0.5)" font-family="Bebas Neue" font-size="11" letter-spacing="2">11TH ST</text>
+        <text x="280" y="370" fill="rgba(236,239,247,0.4)" font-family="Bebas Neue" font-size="10" letter-spacing="2">→ CU CAMPUS</text>
         <circle cx="200" cy="200" r="55" fill="url(#g)" />
         <polygon points="200,170 188,200 200,194 212,200" fill="#2EA8FF" stroke="#2EA8FF" stroke-width="2" style="filter: drop-shadow(0 0 6px #2EA8FF);"/>
         <circle cx="200" cy="200" r="3" fill="#0E1220" />

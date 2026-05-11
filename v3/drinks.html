@@ -3,21 +3,68 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Drinks — The Spotted James</title>
-<meta name="description" content="Good drinks. No shortcuts. From classics done right to crowd favorites at The Spotted James." />
+
+<title>Drinks &amp; Happy Hour | The Spotted James — Boulder Cocktail Bar</title>
+<meta name="description" content="Signature cocktails, beer, wine and non-alcoholic options at The Spotted James — Boulder's late-night neon bar. Happy Hour Mon–Fri 6–8pm with $5 wells, $6 select beer, $7 wine. Two blocks off Pearl Street." />
+<meta name="keywords" content="Boulder cocktails, Boulder happy hour, downtown Boulder bar, Boulder Mule, Boulder Old Fashioned, Pearl Street happy hour, Boulder craft cocktails, where to drink in Boulder, CU Boulder bar drinks" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/drinks.html" />
+
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Drinks &amp; Happy Hour at The Spotted James" />
+<meta property="og:description" content="Signature cocktails and Happy Hour Mon–Fri 6–8pm in downtown Boulder, two blocks off Pearl Street." />
+<meta property="og:url" content="https://thespottedjames.com/drinks.html" />
+<meta property="og:image" content="https://thespottedjames.com/assets/horse-logo.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- JSON-LD: Menu -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "The Spotted James — Drink Menu",
+  "inLanguage": "en-US",
+  "provider": { "@type": "BarOrPub", "name": "The Spotted James", "@id": "https://thespottedjames.com/#bar" },
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Signature Cocktails",
+      "hasMenuItem": [
+        { "@type": "MenuItem", "name": "Spotted Mule", "description": "Tito's Handmade Vodka, Lime, Ginger Beer", "offers": { "@type": "Offer", "price": "12", "priceCurrency": "USD" } },
+        { "@type": "MenuItem", "name": "James Old Fashioned", "description": "Bulleit Bourbon, Demerara, Bitters", "offers": { "@type": "Offer", "price": "13", "priceCurrency": "USD" } },
+        { "@type": "MenuItem", "name": "Blue Horse", "description": "Tequila, Blue Curaçao, Lime, Agave", "offers": { "@type": "Offer", "price": "12", "priceCurrency": "USD" } },
+        { "@type": "MenuItem", "name": "Boulder Sunset", "description": "Rum, Pineapple, Cranberry, Lime", "offers": { "@type": "Offer", "price": "12", "priceCurrency": "USD" } },
+        { "@type": "MenuItem", "name": "Midnight Sour", "description": "Whiskey, Lemon, Simple, Red Wine Float", "offers": { "@type": "Offer", "price": "13", "priceCurrency": "USD" } }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Happy Hour — Mon to Fri 6–8pm",
+      "description": "$5 Wells · $6 Select Beer · $7 Wine"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header class="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+  <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" />
   </a>
-  <nav>
+  <nav aria-label="primary">
     <ul class="nav__menu">
       <li><a href="index.html">Events</a></li>
       <li><a href="drinks.html" class="active">Drinks</a></li>
@@ -33,7 +80,7 @@
   <section>
     <h1 class="page__title">DRINKS</h1>
     <p class="page__subtitle">Good Drinks.<br/>No Shortcuts.</p>
-    <p class="page__lead">From classics done right<br/>to crowd favorites, we keep<br/>your glass full and the<br/>night going.</p>
+    <p class="page__lead">Classics done right and a few Boulder originals.<br/>Cocktails for the wedding party, beer for the<br/>game-day crowd, and a Happy Hour for everyone in between.</p>
   </section>
 
   <aside>
@@ -42,7 +89,7 @@
 </main>
 
 <section style="max-width:1280px; margin: 0 auto; padding: 0 50px 60px;">
-  <div class="drink-tabs">
+  <div class="drink-tabs" role="tablist">
     <button class="active" data-cat="cocktails">Cocktails</button>
     <button data-cat="shots">Shots</button>
     <button data-cat="beer">Beer</button>
@@ -102,15 +149,15 @@
       </div>
       <div class="drink-cat" id="beer" style="display:none;">
         <div class="drink-list-title">BEER</div>
-        <p style="font-family:var(--sans); font-size:13px; color:var(--smoke); padding: 18px 0;">Ask the bartender — rotating draft and bottle list available at the bar.</p>
+        <p style="font-family:var(--sans); font-size:13px; color:var(--smoke); padding: 18px 0;">Rotating Colorado drafts and bottles — Avery, Upslope, Left Hand and more. Ask the bartender.</p>
       </div>
       <div class="drink-cat" id="wine" style="display:none;">
         <div class="drink-list-title">WINE</div>
-        <p style="font-family:var(--sans); font-size:13px; color:var(--smoke); padding: 18px 0;">Ask the bartender — by the glass and bottle.</p>
+        <p style="font-family:var(--sans); font-size:13px; color:var(--smoke); padding: 18px 0;">By the glass and bottle — house red, house white, prosecco, and a small reserve list for wedding parties.</p>
       </div>
       <div class="drink-cat" id="non" style="display:none;">
         <div class="drink-list-title">NON-ALCOHOLIC</div>
-        <p style="font-family:var(--sans); font-size:13px; color:var(--smoke); padding: 18px 0;">Ask the bartender — mocktails, NA beer, and soft drinks available.</p>
+        <p style="font-family:var(--sans); font-size:13px; color:var(--smoke); padding: 18px 0;">Mocktails, Athletic Brewing NA beer, sparkling waters, and sodas — designated drivers drink free soda + lime.</p>
       </div>
     </div>
 
