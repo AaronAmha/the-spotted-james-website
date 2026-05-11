@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gallery — The Spotted James | Boulder Bar Photos</title>
-<meta name="description" content="The Spotted James in photos — DJ nights, the dance floor, friends, regulars. Tag @thespottedjames to get featured." />
+<title>Gallery — The Spotted James</title>
+<meta name="description" content="The night, captured. Tag @thespottedjames to get featured." />
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,10 @@
 <header class="nav">
   <a href="index.html" class="nav__brand">
     <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
-    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+    <span class="nav__brand-text">
+      <span class="nav__brand-the">The</span>
+      <span class="nav__brand-name">Spotted James</span>
+    </span>
   </a>
   <nav>
     <ul class="nav__menu">
@@ -30,11 +33,11 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="page page--single">
+<main class="page">
   <section>
     <h1 class="page__title">GALLERY</h1>
     <p class="page__subtitle">The Night, Captured.</p>
-    <p class="page__lead" style="margin-bottom: 22px;">Tag @thespottedjames to get featured.</p>
+    <p class="page__lead">Tag @thespottedjames to get<br/>featured.</p>
 
     <div class="gallery-filters">
       <button class="gallery-filter active" data-filter="all">All</button>
@@ -43,23 +46,24 @@
       <button class="gallery-filter" data-filter="friends">Friends</button>
       <button class="gallery-filter" data-filter="djs">DJ's</button>
     </div>
-
-    <div class="gallery-grid">
-      <div class="gallery-tile" data-cat="spotted"><div class="gallery-tile__inner">spotted</div></div>
-      <div class="gallery-tile" data-cat="nights"><div class="gallery-tile__inner">nights</div></div>
-      <div class="gallery-tile" data-cat="friends"><div class="gallery-tile__inner">friends</div></div>
-      <div class="gallery-tile" data-cat="djs"><div class="gallery-tile__inner">djs</div></div>
-      <div class="gallery-tile" data-cat="nights"><div class="gallery-tile__inner">nights</div></div>
-      <div class="gallery-tile" data-cat="spotted"><div class="gallery-tile__inner">spotted</div></div>
-      <div class="gallery-tile" data-cat="friends"><div class="gallery-tile__inner">friends</div></div>
-      <div class="gallery-tile" data-cat="djs"><div class="gallery-tile__inner">djs</div></div>
-      <div class="gallery-tile" data-cat="nights"><div class="gallery-tile__inner">nights</div></div>
-    </div>
-
-    <div style="text-align:center;">
-      <button class="btn btn--ghost" id="loadMore">Load More</button>
-    </div>
   </section>
+
+  <aside>
+    <div class="gallery-grid">
+      <div class="gallery-tile gtile-1" data-cat="spotted"></div>
+      <div class="gallery-tile gtile-2" data-cat="nights"></div>
+      <div class="gallery-tile gtile-3" data-cat="friends"></div>
+      <div class="gallery-tile gtile-4" data-cat="djs"></div>
+      <div class="gallery-tile gtile-5" data-cat="nights"></div>
+      <div class="gallery-tile gtile-6" data-cat="spotted"></div>
+      <div class="gallery-tile gtile-7" data-cat="friends"></div>
+      <div class="gallery-tile gtile-8" data-cat="djs"></div>
+      <div class="gallery-tile gtile-9" data-cat="nights"></div>
+    </div>
+    <div class="gallery-load">
+      <button class="btn" id="loadMore">Load More</button>
+    </div>
+  </aside>
 </main>
 
 <script>

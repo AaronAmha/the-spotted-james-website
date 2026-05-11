@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Private Parties — The Spotted James | Boulder Event Booking</title>
-<meta name="description" content="Book birthdays, formals, group outings and VIP areas at The Spotted James. Custom packages for CU Boulder Greek life, club teams, and visitors." />
+<title>Private Parties — The Spotted James</title>
+<meta name="description" content="Your night. Your way. Birthdays, group outings, VIP areas, and custom packages at The Spotted James." />
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,10 @@
 <header class="nav">
   <a href="index.html" class="nav__brand">
     <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
-    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+    <span class="nav__brand-text">
+      <span class="nav__brand-the">The</span>
+      <span class="nav__brand-name">Spotted James</span>
+    </span>
   </a>
   <nav>
     <ul class="nav__menu">
@@ -34,19 +37,34 @@
   <section>
     <h1 class="page__title">PRIVATE<br/>PARTIES</h1>
     <p class="page__subtitle">Your Night. Your Way.</p>
-    <p class="page__lead">Birthdays, groups, or just an excuse to go out — this is where it gets good.</p>
+    <p class="page__lead">Birthdays, groups, or just an excuse<br/>to go out — this is where it gets good.</p>
 
     <div class="party-grid">
-      <div class="party-tile"><span class="party-tile__icon">★</span><div class="party-tile__label">Birthdays</div></div>
-      <div class="party-tile"><span class="party-tile__icon">◆</span><div class="party-tile__label">Group Outings</div></div>
-      <div class="party-tile"><span class="party-tile__icon">▲</span><div class="party-tile__label">VIP Areas</div></div>
-      <div class="party-tile"><span class="party-tile__icon">●</span><div class="party-tile__label">Custom Packages</div></div>
+      <div class="party-tile">
+        <span class="party-tile__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13 8 L19 9 L14.5 13 L16 20 L12 16.5 L8 20 L9.5 13 L5 9 L11 8 Z" /></svg>
+        </span>
+        <div class="party-tile__label">Birthdays</div>
+      </div>
+      <div class="party-tile">
+        <span class="party-tile__icon">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3" /><circle cx="16" cy="11" r="2.5" /><path d="M3 20 Q3 15 9 15 Q15 15 15 20" /><path d="M14 20 Q14 16.5 18 16.5 Q22 16.5 22 20" /></svg>
+        </span>
+        <div class="party-tile__label">Group Outings</div>
+      </div>
+      <div class="party-tile">
+        <span class="party-tile__icon">
+          <svg viewBox="0 0 24 24"><path d="M5 5 L19 5 L12 14 Z" /><path d="M12 14 L12 20" /><path d="M9 20 L15 20" /></svg>
+        </span>
+        <div class="party-tile__label">VIP Areas</div>
+      </div>
+      <div class="party-tile">
+        <span class="party-tile__icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" /><path d="M12 8 L12 5 Q12 3 10 3 Q8 3 8 5 Q8 7 10 8" /><path d="M12 8 L12 5 Q12 3 14 3 Q16 3 16 5 Q16 7 14 8" /></svg>
+        </span>
+        <div class="party-tile__label">Custom Packages</div>
+      </div>
     </div>
-
-    <p style="font-family:var(--serif); font-style:italic; color:var(--smoke); font-size:14px;">
-      We host fraternity &amp; sorority formals, club team parties, birthday takeovers, and industry nights.
-      Tell us what you're after and we'll build it.
-    </p>
   </section>
 
   <aside>
@@ -55,12 +73,12 @@
       <div class="form-card__sub">Tell us the details and we'll take care of the rest.</div>
 
       <div class="form-grid">
-        <div class="field field--full"><label>Full Name *</label><input type="text" required name="name" /></div>
+        <div class="field"><label>Full Name *</label><input type="text" required name="name" /></div>
         <div class="field"><label>Email *</label><input type="email" required name="email" /></div>
         <div class="field"><label>Phone Number *</label><input type="tel" required name="phone" /></div>
         <div class="field"><label>Date Requested *</label><input type="date" required name="date" /></div>
         <div class="field"><label>Headcount *</label><input type="number" min="1" required name="headcount" /></div>
-        <div class="field field--full">
+        <div class="field">
           <label>Occasion *</label>
           <select required name="occasion">
             <option value="">Select…</option>
@@ -74,7 +92,7 @@
           </select>
         </div>
         <div class="field field--full"><label>Description / Special Requests</label><textarea name="notes"></textarea></div>
-        <div class="field"><label>Budget Per Person (Approx.)</label><input type="text" name="budget" placeholder="$25 / $50 / $100+" /></div>
+        <div class="field"><label>Budget Per Person (Approx.)</label><input type="text" name="budget" /></div>
         <div class="field">
           <label>How Did You Hear About Us? *</label>
           <select required name="source">
@@ -91,7 +109,7 @@
           <label for="agree">I agree to the Privacy Policy and Terms &amp; Conditions.</label>
         </div>
         <div class="field field--full">
-          <button class="btn btn--solid btn--block" type="submit">Submit Request</button>
+          <button class="btn btn--block" type="submit">Submit Request</button>
         </div>
       </div>
     </form>
