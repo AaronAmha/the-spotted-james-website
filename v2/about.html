@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — The Spotted James | A Boulder Bar With Good Taste</title>
+<meta name="description" content="The Spotted James is more than a bar — it's a vibe. Good music, strong drinks, and the kind of crowd that makes every night better than the last." />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+  </a>
+  <nav>
+    <ul class="nav__menu">
+      <li><a href="index.html">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main class="page">
+  <section>
+    <h1 class="page__title">ABOUT</h1>
+    <p class="page__subtitle" style="font-family:var(--display); font-size:30px; letter-spacing:0.06em; color:var(--bone); text-shadow:none; margin-top:14px; line-height:1.2;">
+      A BAR<br/>
+      WITH GOOD TASTE.<br/>
+      A PLACE<br/>
+      WORTH BEING SEEN.
+    </p>
+
+    <p class="about-text" style="margin-top:26px;">
+      The Spotted James is more than a bar — it's a vibe. Good music, strong drinks, and the kind of crowd that makes every night better than the last.
+    </p>
+    <p class="about-text">
+      We built this place for people who want to go out, have a good time, and make memories that last.
+    </p>
+
+    <div class="about-tagline">
+      GOOD PEOPLE.<br/>
+      GOOD MUSIC.<br/>
+      <span>GOOD TIMES.</span>
+    </div>
+
+    <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="index.html" class="btn">See This Week</a>
+      <a href="contact.html" class="btn btn--ghost">Get In Touch</a>
+    </div>
+  </section>
+
+  <aside style="position:relative; min-height: 540px;">
+    <div style="position:relative; height:100%; min-height:540px; border:1px solid var(--line); background:linear-gradient(180deg,#1a0820 0%,#0a0e18 60%,#000 100%); display:grid; place-items:center; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 35%, rgba(46,168,255,0.18), transparent 60%);"></div>
+      <svg viewBox="0 0 240 280" style="width: 70%; max-width: 320px; filter: drop-shadow(0 0 12px var(--neon)) drop-shadow(0 0 30px rgba(46,168,255,0.55));">
+        <path d="M 60 30 Q 50 110 70 180 Q 90 220 120 220 Q 150 220 170 180 Q 190 110 180 30"
+              stroke="var(--neon)" stroke-width="6" fill="none" stroke-linecap="round" />
+        <ellipse cx="120" cy="105" rx="55" ry="48" stroke="var(--neon)" stroke-width="3" fill="none" opacity="0.75"/>
+        <path d="M 100 85 Q 120 65 140 85 Q 145 105 120 130 Q 95 105 100 85 Z" fill="rgba(46,168,255,0.18)" />
+        <text x="120" y="115" text-anchor="middle" font-family="Caveat" font-size="32" fill="var(--neon)" style="text-shadow:0 0 8px var(--neon);">Spotted</text>
+        <text x="120" y="148" text-anchor="middle" font-family="Caveat" font-size="28" fill="var(--neon-soft)">James</text>
+      </svg>
+      <div style="position:absolute; bottom:0; left:0; right:0; height:140px; background:linear-gradient(180deg, transparent, rgba(255,59,90,0.1) 50%, rgba(255,59,90,0.18));"></div>
+    </div>
+  </aside>
+</main>
+</body>
+</html>

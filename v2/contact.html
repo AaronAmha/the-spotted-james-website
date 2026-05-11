@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — The Spotted James | Get In Touch</title>
+<meta name="description" content="Call, email, DM, or stop by. The Spotted James — 1911 11th St, Boulder. Open at 6pm, 7 days a week." />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+  </a>
+  <nav>
+    <ul class="nav__menu">
+      <li><a href="index.html">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main class="page">
+  <section>
+    <h1 class="page__title">CONTACT</h1>
+    <p class="page__subtitle">Get In Touch.</p>
+    <p class="page__lead" style="margin-bottom: 26px;">We'd love to hear from you.</p>
+
+    <div class="contact-rows">
+      <a class="contact-row" href="tel:+13035550199">
+        <div class="contact-row__icon">☏</div>
+        <div>
+          <div class="contact-row__label">Call / Text</div>
+          <div class="contact-row__value">(303) 555-JAMES</div>
+        </div>
+      </a>
+      <a class="contact-row" href="mailto:info@thespottedjames.com">
+        <div class="contact-row__icon">✉</div>
+        <div>
+          <div class="contact-row__label">Email</div>
+          <div class="contact-row__value">info@thespottedjames.com</div>
+        </div>
+      </a>
+      <a class="contact-row" href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener">
+        <div class="contact-row__icon">◉</div>
+        <div>
+          <div class="contact-row__label">Instagram</div>
+          <div class="contact-row__value">@thespottedjames</div>
+        </div>
+      </a>
+      <div class="contact-row">
+        <div class="contact-row__icon">◷</div>
+        <div>
+          <div class="contact-row__label">Hours</div>
+          <div class="contact-row__value">Open at 6PM · 7 Days a Week</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="follow-strip">
+      <div class="follow-strip__txt">FOLLOW US FOR UPDATES, EVENTS,<br/>AND A CHANCE TO GET SPOTTED.</div>
+      <div class="follow-strip__icons">
+        <a href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.facebook.com/thespottedjames" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://www.tiktok.com/@thespottedjames" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+      </div>
+    </div>
+  </section>
+
+  <aside>
+    <form class="form-card" action="confirmation.html" method="get" novalidate>
+      <div class="form-card__title">SEND US A MESSAGE</div>
+      <div class="form-card__sub" style="margin-bottom:18px;">&nbsp;</div>
+      <div class="form-grid">
+        <div class="field field--full"><label>Name</label><input type="text" required name="name" /></div>
+        <div class="field field--full"><label>Email</label><input type="email" required name="email" /></div>
+        <div class="field field--full"><label>Message</label><textarea name="message" style="min-height:160px;"></textarea></div>
+        <div class="field field--full">
+          <button class="btn btn--solid btn--block" type="submit">Send Message</button>
+        </div>
+      </div>
+    </form>
+  </aside>
+</main>
+</body>
+</html>

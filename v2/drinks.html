@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Drinks — The Spotted James | Cocktails, Beer & Specials</title>
+<meta name="description" content="Signature cocktails, beer, wine, shots & non-alcoholic options at The Spotted James in Boulder. Plus Happy Hour deals Mon–Fri 6–8pm." />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+  </a>
+  <nav>
+    <ul class="nav__menu">
+      <li><a href="index.html">Events</a></li>
+      <li><a href="drinks.html" class="active">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main class="page">
+  <section>
+    <h1 class="page__title">DRINKS</h1>
+    <p class="page__subtitle">Good Drinks. No Shortcuts.</p>
+    <p class="page__lead">From classics done right to crowd favorites, we keep your glass full and the night going.</p>
+  </section>
+
+  <section>
+    <div class="drink-tabs">
+      <button class="active" data-cat="cocktails">Cocktails</button>
+      <button data-cat="shots">Shots</button>
+      <button data-cat="beer">Beer</button>
+      <button data-cat="wine">Wine</button>
+      <button data-cat="non">Non-Alcoholic</button>
+    </div>
+
+    <div class="drink-cat" id="cocktails">
+      <div class="drink-list-title">SIGNATURE COCKTAILS</div>
+
+      <div class="drink-row">
+        <div>
+          <div class="drink-row__name">SPOTTED MULE</div>
+          <div class="drink-row__desc">Tito's Handmade Vodka, Lime, Ginger Beer</div>
+        </div>
+        <div class="drink-row__price">$12</div>
+      </div>
+
+      <div class="drink-row">
+        <div>
+          <div class="drink-row__name">JAMES OLD FASHIONED</div>
+          <div class="drink-row__desc">Bulleit Bourbon, Demerara, Bitters</div>
+        </div>
+        <div class="drink-row__price">$13</div>
+      </div>
+
+      <div class="drink-row">
+        <div>
+          <div class="drink-row__name">BLUE HORSE</div>
+          <div class="drink-row__desc">Tequila, Blue Curaçao, Lime, Agave</div>
+        </div>
+        <div class="drink-row__price">$12</div>
+      </div>
+
+      <div class="drink-row">
+        <div>
+          <div class="drink-row__name">BOULDER SUNSET</div>
+          <div class="drink-row__desc">Rum, Pineapple, Cranberry, Lime</div>
+        </div>
+        <div class="drink-row__price">$12</div>
+      </div>
+
+      <div class="drink-row">
+        <div>
+          <div class="drink-row__name">MIDNIGHT SOUR</div>
+          <div class="drink-row__desc">Whiskey, Lemon, Simple, Red Wine Float</div>
+        </div>
+        <div class="drink-row__price">$13</div>
+      </div>
+
+      <div class="happy-hour">
+        <div class="happy-hour__title">HAPPY HOUR</div>
+        <div class="happy-hour__when">MON — FRI · 6PM — 8PM</div>
+        <div class="happy-hour__deals">$5 WELLS · $6 SELECT BEER · $7 WINE</div>
+      </div>
+    </div>
+
+    <div class="drink-cat" id="shots" style="display:none;">
+      <div class="drink-list-title">SHOTS</div>
+      <div class="drink-row"><div><div class="drink-row__name">HOUSE TEQUILA</div><div class="drink-row__desc">Reposado · Half off all night Tuesdays</div></div><div class="drink-row__price">$6</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">FIREBALL</div><div class="drink-row__desc">The classic</div></div><div class="drink-row__price">$5</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">JAMESON</div><div class="drink-row__desc">Irish whiskey, neat or chilled</div></div><div class="drink-row__price">$7</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">CHARTREUSE</div><div class="drink-row__desc">Green or yellow, ask the bartender</div></div><div class="drink-row__price">$10</div></div>
+    </div>
+
+    <div class="drink-cat" id="beer" style="display:none;">
+      <div class="drink-list-title">BEER</div>
+      <div class="drink-row"><div><div class="drink-row__name">COORS BANQUET</div><div class="drink-row__desc">Brewed in Golden, CO</div></div><div class="drink-row__price">$5</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">AVERY IPA</div><div class="drink-row__desc">Local Boulder brewery</div></div><div class="drink-row__price">$7</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">MODELO ESPECIAL</div><div class="drink-row__desc">12oz bottle</div></div><div class="drink-row__price">$6</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">UPSLOPE LAGER</div><div class="drink-row__desc">Cans, brewed in Boulder</div></div><div class="drink-row__price">$6</div></div>
+    </div>
+
+    <div class="drink-cat" id="wine" style="display:none;">
+      <div class="drink-list-title">WINE</div>
+      <div class="drink-row"><div><div class="drink-row__name">HOUSE RED</div><div class="drink-row__desc">Cabernet blend, glass</div></div><div class="drink-row__price">$8</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">HOUSE WHITE</div><div class="drink-row__desc">Sauvignon Blanc, glass</div></div><div class="drink-row__price">$8</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">PROSECCO</div><div class="drink-row__desc">Glass</div></div><div class="drink-row__price">$10</div></div>
+    </div>
+
+    <div class="drink-cat" id="non" style="display:none;">
+      <div class="drink-list-title">NON-ALCOHOLIC</div>
+      <div class="drink-row"><div><div class="drink-row__name">ATHLETIC GOLDEN</div><div class="drink-row__desc">Non-alcoholic IPA</div></div><div class="drink-row__price">$5</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">SODA + LIME</div><div class="drink-row__desc">Always free</div></div><div class="drink-row__price">$0</div></div>
+      <div class="drink-row"><div><div class="drink-row__name">VIRGIN MULE</div><div class="drink-row__desc">Ginger beer, lime, soda</div></div><div class="drink-row__price">$5</div></div>
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="parties.html" class="btn btn--ghost">View Full Drink Menu</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  document.querySelectorAll('.drink-tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.drink-tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.drink-cat').forEach(c => c.style.display = 'none');
+      document.getElementById(btn.dataset.cat).style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>

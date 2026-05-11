@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery — The Spotted James | Boulder Bar Photos</title>
+<meta name="description" content="The Spotted James in photos — DJ nights, the dance floor, friends, regulars. Tag @thespottedjames to get featured." />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+  </a>
+  <nav>
+    <ul class="nav__menu">
+      <li><a href="index.html">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main class="page page--single">
+  <section>
+    <h1 class="page__title">GALLERY</h1>
+    <p class="page__subtitle">The Night, Captured.</p>
+    <p class="page__lead" style="margin-bottom: 22px;">Tag @thespottedjames to get featured.</p>
+
+    <div class="gallery-filters">
+      <button class="gallery-filter active" data-filter="all">All</button>
+      <button class="gallery-filter" data-filter="spotted">Spotted</button>
+      <button class="gallery-filter" data-filter="nights">Nights</button>
+      <button class="gallery-filter" data-filter="friends">Friends</button>
+      <button class="gallery-filter" data-filter="djs">DJ's</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-tile" data-cat="spotted"><div class="gallery-tile__inner">spotted</div></div>
+      <div class="gallery-tile" data-cat="nights"><div class="gallery-tile__inner">nights</div></div>
+      <div class="gallery-tile" data-cat="friends"><div class="gallery-tile__inner">friends</div></div>
+      <div class="gallery-tile" data-cat="djs"><div class="gallery-tile__inner">djs</div></div>
+      <div class="gallery-tile" data-cat="nights"><div class="gallery-tile__inner">nights</div></div>
+      <div class="gallery-tile" data-cat="spotted"><div class="gallery-tile__inner">spotted</div></div>
+      <div class="gallery-tile" data-cat="friends"><div class="gallery-tile__inner">friends</div></div>
+      <div class="gallery-tile" data-cat="djs"><div class="gallery-tile__inner">djs</div></div>
+      <div class="gallery-tile" data-cat="nights"><div class="gallery-tile__inner">nights</div></div>
+    </div>
+
+    <div style="text-align:center;">
+      <button class="btn btn--ghost" id="loadMore">Load More</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  document.querySelectorAll('.gallery-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.gallery-tile').forEach(t => {
+        t.style.display = (f === 'all' || t.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

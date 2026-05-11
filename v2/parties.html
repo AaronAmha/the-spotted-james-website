@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Private Parties — The Spotted James | Boulder Event Booking</title>
+<meta name="description" content="Book birthdays, formals, group outings and VIP areas at The Spotted James. Custom packages for CU Boulder Greek life, club teams, and visitors." />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+  </a>
+  <nav>
+    <ul class="nav__menu">
+      <li><a href="index.html">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html" class="active">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main class="page">
+  <section>
+    <h1 class="page__title">PRIVATE<br/>PARTIES</h1>
+    <p class="page__subtitle">Your Night. Your Way.</p>
+    <p class="page__lead">Birthdays, groups, or just an excuse to go out — this is where it gets good.</p>
+
+    <div class="party-grid">
+      <div class="party-tile"><span class="party-tile__icon">★</span><div class="party-tile__label">Birthdays</div></div>
+      <div class="party-tile"><span class="party-tile__icon">◆</span><div class="party-tile__label">Group Outings</div></div>
+      <div class="party-tile"><span class="party-tile__icon">▲</span><div class="party-tile__label">VIP Areas</div></div>
+      <div class="party-tile"><span class="party-tile__icon">●</span><div class="party-tile__label">Custom Packages</div></div>
+    </div>
+
+    <p style="font-family:var(--serif); font-style:italic; color:var(--smoke); font-size:14px;">
+      We host fraternity &amp; sorority formals, club team parties, birthday takeovers, and industry nights.
+      Tell us what you're after and we'll build it.
+    </p>
+  </section>
+
+  <aside>
+    <form class="form-card" action="confirmation.html" method="get" novalidate>
+      <div class="form-card__title">BOOK YOUR NIGHT</div>
+      <div class="form-card__sub">Tell us the details and we'll take care of the rest.</div>
+
+      <div class="form-grid">
+        <div class="field field--full"><label>Full Name *</label><input type="text" required name="name" /></div>
+        <div class="field"><label>Email *</label><input type="email" required name="email" /></div>
+        <div class="field"><label>Phone Number *</label><input type="tel" required name="phone" /></div>
+        <div class="field"><label>Date Requested *</label><input type="date" required name="date" /></div>
+        <div class="field"><label>Headcount *</label><input type="number" min="1" required name="headcount" /></div>
+        <div class="field field--full">
+          <label>Occasion *</label>
+          <select required name="occasion">
+            <option value="">Select…</option>
+            <option>Birthday</option>
+            <option>Greek Formal</option>
+            <option>Club Team / Org</option>
+            <option>Industry Night</option>
+            <option>Bachelor / Bachelorette</option>
+            <option>Just Going Out</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field field--full"><label>Description / Special Requests</label><textarea name="notes"></textarea></div>
+        <div class="field"><label>Budget Per Person (Approx.)</label><input type="text" name="budget" placeholder="$25 / $50 / $100+" /></div>
+        <div class="field">
+          <label>How Did You Hear About Us? *</label>
+          <select required name="source">
+            <option value="">Select…</option>
+            <option>Instagram</option>
+            <option>Friend</option>
+            <option>Walked By</option>
+            <option>Google</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field field--checkbox field--full">
+          <input type="checkbox" id="agree" required />
+          <label for="agree">I agree to the Privacy Policy and Terms &amp; Conditions.</label>
+        </div>
+        <div class="field field--full">
+          <button class="btn btn--solid btn--block" type="submit">Submit Request</button>
+        </div>
+      </div>
+    </form>
+  </aside>
+</main>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events — The Spotted James | Boulder Bar Calendar</title>
+<meta name="description" content="See what's happening this week at The Spotted James — Boulder's neon pool bar with live DJs, Musical Bingo, Tequila Tuesdays and more." />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <span><span class="nav__brand-the">THE</span><span class="nav__brand-name">Spotted James</span></span>
+  </a>
+  <nav>
+    <ul class="nav__menu">
+      <li><a href="index.html" class="active">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main class="page">
+  <section>
+    <h1 class="page__title">EVENTS</h1>
+    <p class="page__subtitle">Good Nights. Every Night.</p>
+    <p class="page__lead" style="margin-bottom: 22px;">Check out what's happening at James this week.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="active" data-tab="this-week">This Week</button>
+      <button data-tab="coming-soon">Coming Soon</button>
+    </div>
+
+    <div class="event-list" id="this-week">
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Tuesday</div>
+          <div class="event-card__title">TEQUILA TUESDAY</div>
+          <div class="event-card__time">6PM — CLOSE · Half Off Tequila</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#2a0814,#0a0e18);"></div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Wednesday</div>
+          <div class="event-card__title">MUSICAL BINGO</div>
+          <div class="event-card__time">6PM — CLOSE · Hosted Live, Free To Play</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#1a0830,#0a0e18);"></div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Thursday</div>
+          <div class="event-card__title">COLLEGE NIGHT — DJ SET</div>
+          <div class="event-card__time">9PM — CLOSE · Open Decks, Student Pricing</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#0a1a30,#0a0e18);"></div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Friday</div>
+          <div class="event-card__title">DJ SET — HIGH ENERGY</div>
+          <div class="event-card__time">9PM — CLOSE · Resident &amp; Guest Selectors</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#0a1840,#0a0e18);"></div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Saturday</div>
+          <div class="event-card__title">SPOTTED SATURDAYS <span style="color:var(--neon);font-size:18px;letter-spacing:0;">★★</span></div>
+          <div class="event-card__time">9PM — CLOSE</div>
+          <div class="event-card__note">If you're spotted, you unlock specials.</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#2a0820,#0a0e18);"></div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Sunday</div>
+          <div class="event-card__title">U-CALL-IT SUNDAY</div>
+          <div class="event-card__time">6PM — 2AM · $3 Select Pours · Industry Welcome</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#1a3018,#0a0e18);"></div>
+      </article>
+    </div>
+
+    <div class="event-list" id="coming-soon" style="display:none;">
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Monday</div>
+          <div class="event-card__title">OPEN POOL &amp; BAR</div>
+          <div class="event-card__time">6PM — 2AM · Deals &amp; Events Coming Soon</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#0a1830,#0a0e18);"></div>
+      </article>
+      <article class="event-card">
+        <div class="event-card__body">
+          <div class="event-card__day">Coming Soon</div>
+          <div class="event-card__title">SPECIAL HEADLINERS</div>
+          <div class="event-card__time">Follow @thespottedjames for announcements</div>
+        </div>
+        <div class="event-card__photo" style="background:linear-gradient(135deg,#1a0830,#0a0e18);"></div>
+      </article>
+    </div>
+
+    <div class="bottle-strip">
+      <div class="bottle-strip__txt">
+        BOTTLE SERVICE &amp; VIP AREAS AVAILABLE
+        <span class="bottle-strip__sub">Reserve your table and skip the wait.</span>
+      </div>
+      <a href="parties.html" class="btn btn--small">Book Your Night</a>
+    </div>
+  </section>
+
+  <aside style="position:relative; min-height: 480px;">
+    <div style="position:relative; height:100%; min-height:480px; border:1px solid var(--line); background:linear-gradient(180deg, #1a0828 0%, #0a0e18 100%); display:grid; place-items:center; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 40%, rgba(46,168,255,0.18), transparent 60%);"></div>
+      <svg viewBox="0 0 200 220" style="width: 70%; max-width: 280px; filter: drop-shadow(0 0 12px var(--neon)) drop-shadow(0 0 28px rgba(46,168,255,0.55));">
+        <path d="M 50 30 Q 40 100 60 160 Q 80 200 100 200 Q 120 200 140 160 Q 160 100 150 30"
+              stroke="var(--neon)" stroke-width="6" fill="none" stroke-linecap="round" />
+        <path d="M 60 35 Q 53 95 70 150" stroke="var(--neon)" stroke-width="2" fill="none" opacity="0.5" />
+        <polygon points="100,80 108,100 130,100 112,113 119,135 100,122 81,135 88,113 70,100 92,100" fill="var(--neon)" />
+      </svg>
+    </div>
+  </aside>
+</main>
+
+<script>
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.event-list').forEach(l => l.style.display = 'none');
+      document.getElementById(btn.dataset.tab).style.display = 'flex';
+    });
+  });
+</script>
+</body>
+</html>
