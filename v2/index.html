@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Events — The Spotted James</title>
-<meta name="description" content="Good nights. Every night. Check out what's happening at The Spotted James this week." />
+<title>Home — The Spotted James | A Bar With Good Taste. A Place Worth Being Seen.</title>
+<meta name="description" content="Good music. A full bar. Nights that don't end when they should. The Spotted James — Boulder's late-night neon bar." />
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,96 +14,163 @@
 <body>
 
 <header class="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+  <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" />
   </a>
-  <nav>
+  <nav aria-label="primary">
     <ul class="nav__menu">
-      <li><a href="index.html" class="active">Events</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="events.html">Events</a></li>
       <li><a href="drinks.html">Drinks</a></li>
       <li><a href="parties.html">Private Parties</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="page">
-  <section>
-    <h1 class="page__title">EVENTS</h1>
-    <p class="page__subtitle">Good Nights. Every Night.</p>
-    <p class="page__lead">Check out what's happening<br/>at James this week.</p>
+<main class="home-wrap">
 
-    <div class="tabs" role="tablist">
-      <button class="active" data-tab="this-week">This Week</button>
-      <button data-tab="coming-soon">Coming Soon</button>
-    </div>
-
-    <div class="event-list" id="this-week">
-      <article class="event-card">
-        <div class="event-card__body">
-          <div class="event-card__day">Thursday</div>
-          <div class="event-card__title">THROWBACK<br/>+ HIP HOP</div>
-          <div class="event-card__time">9PM — CLOSE</div>
-        </div>
-        <div class="event-card__photo" style="background:radial-gradient(ellipse at 40% 50%, rgba(120,40,80,0.5), transparent 50%), radial-gradient(ellipse at 70% 30%, rgba(255,80,40,0.3), transparent 45%), linear-gradient(180deg, #1a0e1e, #050208);"></div>
-      </article>
-
-      <article class="event-card">
-        <div class="event-card__body">
-          <div class="event-card__day">Friday</div>
-          <div class="event-card__title">DJ SET<br/>HIGH ENERGY</div>
-          <div class="event-card__time">9PM — CLOSE</div>
-        </div>
-        <div class="event-card__photo" style="background:radial-gradient(ellipse at 30% 40%, rgba(80,40,180,0.5), transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(46,168,255,0.3), transparent 45%), linear-gradient(180deg, #08101e, #000);"></div>
-      </article>
-
-      <article class="event-card">
-        <div class="event-card__body">
-          <div class="event-card__day">Saturday</div>
-          <div class="event-card__title">SPOTTED SATURDAYS <span style="color:var(--neon); letter-spacing:0; font-size:18px;">★★</span></div>
-          <div class="event-card__time">9PM — CLOSE</div>
-          <div class="event-card__note">If you're spotted, you unlock specials.</div>
-        </div>
-        <div class="event-card__photo" style="background:radial-gradient(ellipse at 50% 50%, rgba(255,40,80,0.5), transparent 55%), radial-gradient(ellipse at 30% 30%, rgba(180,40,80,0.3), transparent 50%), linear-gradient(180deg, #15050e, #000);"></div>
-      </article>
-    </div>
-
-    <div class="event-list" id="coming-soon" style="display:none;">
-      <article class="event-card">
-        <div class="event-card__body">
-          <div class="event-card__day">Coming Soon</div>
-          <div class="event-card__title">SPECIAL HEADLINERS</div>
-          <div class="event-card__time">Follow @thespottedjames for announcements</div>
-        </div>
-        <div class="event-card__photo" style="background:radial-gradient(ellipse at 50% 40%, rgba(80,160,255,0.3), transparent 50%), linear-gradient(180deg, #08101e, #000);"></div>
-      </article>
-    </div>
-
-    <div class="bottle-strip">
-      <div class="bottle-strip__txt">
-        BOTTLE SERVICE &amp; VIP AREAS AVAILABLE
-        <span class="bottle-strip__sub">Reserve your table and skip the wait.</span>
+  <!-- ====== HERO BAND ====== -->
+  <section class="home-hero">
+    <div class="home-hero__text">
+      <h1 class="home-hero__headline">A BAR WITH<br/><strong>GOOD TASTE.</strong><br/>A PLACE WORTH<br/><strong>BEING SEEN.</strong></h1>
+      <p class="home-hero__sub">Good music. A full bar.<br/>Nights that don't end when they should.</p>
+      <div class="home-hero__buttons">
+        <a href="events.html" class="btn">Get Spotted Tonight</a>
+        <a href="events.html" class="btn btn--ghost">See What's Happening</a>
       </div>
-      <a href="parties.html" class="btn">Book Your Night</a>
+    </div>
+
+    <div class="home-hero__photo">
+      <!-- crowd silhouette overlay -->
+      <svg class="scene-silhouette" viewBox="0 0 400 280" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sgrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+            <stop offset="70%" stop-color="rgba(0,0,0,0.5)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,0.85)"/>
+          </linearGradient>
+        </defs>
+        <!-- silhouette heads/shoulders at bottom -->
+        <path d="M 0 280 L 0 220
+                 C 10 210, 18 200, 28 200 C 38 200, 46 210, 46 220
+                 C 50 215, 56 200, 66 195 C 78 190, 88 200, 90 220
+                 C 96 218, 102 205, 116 200 C 130 198, 138 212, 140 222
+                 C 148 218, 156 205, 170 205 C 184 205, 192 218, 192 228
+                 C 200 222, 210 208, 224 208 C 238 210, 244 222, 246 232
+                 C 254 224, 268 215, 280 218 C 292 222, 298 232, 298 240
+                 C 308 232, 322 225, 336 230 C 346 235, 350 244, 350 250
+                 C 360 242, 374 240, 384 246 C 392 250, 396 258, 396 264
+                 L 400 280 Z" fill="url(#sgrad)" />
+      </svg>
+    </div>
+
+    <div class="home-hero__horseshoe-col">
+      <svg viewBox="0 0 60 80" aria-hidden="true">
+        <path d="M 14 8 Q 11 35 18 55 Q 22 68 30 68 Q 38 68 42 55 Q 49 35 46 8" stroke="var(--neon)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <polygon points="30,28 32,34 38,34 33,38 35,44 30,41 25,44 27,38 22,34 28,34" fill="var(--neon)"/>
+      </svg>
     </div>
   </section>
 
-  <aside>
-    <div class="hero-img hero-img--crowd"></div>
-  </aside>
+  <!-- ====== SPOTTED BAND ====== -->
+  <section class="home-spotted">
+    <div class="home-spotted__intro">
+      <div class="home-spotted__eyebrow">— you've been —</div>
+      <div class="home-spotted__title">SPOTTED</div>
+      <p class="home-spotted__copy">Don't just go out. Show up.</p>
+      <a href="gallery.html" class="btn btn--ghost" style="max-width: 160px;">View Gallery</a>
+    </div>
+
+    <div class="home-spotted__collage">
+      <div class="scene-group"><svg class="scene-silhouette" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="rgba(0,0,0,0.55)"><ellipse cx="80" cy="110" rx="38" ry="42"/><rect x="50" y="140" width="60" height="80"/><ellipse cx="170" cy="105" rx="40" ry="44"/><rect x="135" y="138" width="70" height="80"/><ellipse cx="270" cy="108" rx="40" ry="44"/><rect x="240" y="140" width="62" height="80"/><ellipse cx="350" cy="112" rx="38" ry="42"/><rect x="320" y="142" width="60" height="80"/></g></svg></div>
+      <div class="scene-dance"><svg class="scene-silhouette" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="rgba(0,0,0,0.55)"><ellipse cx="100" cy="80" rx="32" ry="36"/><rect x="74" y="108" width="52" height="92"/></g></svg></div>
+      <div class="scene-crowd"><svg class="scene-silhouette" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="rgba(0,0,0,0.55)"><ellipse cx="100" cy="90" rx="36" ry="40"/><rect x="68" y="120" width="64" height="80"/></g></svg></div>
+      <div class="scene-dance"><svg class="scene-silhouette" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="rgba(0,0,0,0.55)"><ellipse cx="90" cy="100" rx="34" ry="38"/><rect x="62" y="130" width="56" height="70"/><ellipse cx="180" cy="105" rx="34" ry="38"/><rect x="152" y="135" width="56" height="70"/><ellipse cx="280" cy="100" rx="34" ry="38"/><rect x="252" y="130" width="56" height="70"/><ellipse cx="360" cy="105" rx="32" ry="36"/><rect x="334" y="135" width="52" height="70"/></g></svg></div>
+    </div>
+
+    <div class="home-spotted__feature">
+      <div class="home-spotted__feature-label">★ Spotted Of The Week</div>
+      <div class="home-spotted__feature-photo scene-spotted">
+        <svg class="scene-silhouette" viewBox="0 0 200 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="rgba(0,0,0,0.55)"><ellipse cx="100" cy="95" rx="38" ry="42"/><rect x="68" y="125" width="64" height="115"/></g></svg>
+      </div>
+      <p class="home-spotted__feature-cap">Tag @thespottedjames<br/>to get featured + unlock perks.</p>
+    </div>
+  </section>
+
+  <!-- ====== TONIGHT BAND ====== -->
+  <section class="home-tonight">
+    <div class="home-tonight__intro">
+      <div class="home-tonight__label">— tonight at —</div>
+      <div class="home-tonight__name">JAMES</div>
+      <a href="events.html" class="btn btn--ghost" style="max-width: 180px;">View Full Lineup</a>
+    </div>
+
+    <article class="home-tonight__card">
+      <div class="home-tonight__card-day">Thursday</div>
+      <div class="home-tonight__card-title">THROWBACK<br/>+ HIP HOP</div>
+      <div class="home-tonight__card-time">9PM — CLOSE</div>
+    </article>
+
+    <article class="home-tonight__card">
+      <div class="home-tonight__card-day">Friday</div>
+      <div class="home-tonight__card-title">DJ SET<br/>HIGH ENERGY</div>
+      <div class="home-tonight__card-time">9PM — CLOSE</div>
+    </article>
+
+    <article class="home-tonight__card">
+      <div class="home-tonight__card-day">Saturday</div>
+      <div class="home-tonight__card-title">SPOTTED<br/>SATURDAYS <span style="color:var(--neon);font-size:18px;">★★</span></div>
+      <div class="home-tonight__card-time">9PM — CLOSE</div>
+    </article>
+  </section>
+
+  <!-- ====== FEATURES STRIP ====== -->
+  <section class="home-features">
+    <div class="home-feature">
+      <div class="home-feature__icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 17 L9 5 L20 3 L20 15" />
+          <circle cx="6.5" cy="17" r="2.5" />
+          <circle cx="17.5" cy="15" r="2.5" />
+        </svg>
+      </div>
+      <div>
+        <div class="home-feature__title">Music That Hits</div>
+        <div class="home-feature__copy">DJs and playlists that actually keep the night going.</div>
+      </div>
+    </div>
+
+    <div class="home-feature">
+      <div class="home-feature__icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 4 L18 4 L15 12 L15 19 L18 20 L18 21 L6 21 L6 20 L9 19 L9 12 Z" />
+        </svg>
+      </div>
+      <div>
+        <div class="home-feature__title">A Full Bar, Done Right</div>
+        <div class="home-feature__copy">Classics, crowd favorites, and no waiting forever for one.</div>
+      </div>
+    </div>
+
+    <div class="home-feature">
+      <div class="home-feature__icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M 7 4 Q 4 12 7 18 Q 9 21 12 21 Q 15 21 17 18 Q 20 12 17 4" />
+          <polygon points="12,9 13.5,12.5 17,12.5 14.2,14.7 15.2,18 12,16 8.8,18 9.8,14.7 7,12.5 10.5,12.5" />
+        </svg>
+      </div>
+      <div>
+        <div class="home-feature__title">The Right Crowd</div>
+        <div class="home-feature__copy">The kind of people you want to be around.</div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<script>
-  document.querySelectorAll('.tabs button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.event-list').forEach(l => l.style.display = 'none');
-      document.getElementById(btn.dataset.tab).style.display = 'flex';
-    });
-  });
-</script>
 </body>
 </html>
