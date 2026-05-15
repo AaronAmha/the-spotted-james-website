@@ -250,29 +250,10 @@ button { font-family: inherit; cursor: pointer; }
     linear-gradient(180deg, rgba(40,20,30,0.8), rgba(0,0,0,0.95));
 }
 .hero-img--cocktail {
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(255,80,40,0.35), transparent 45%),
-    radial-gradient(ellipse at 50% 70%, rgba(60,30,80,0.4), transparent 60%),
-    #0a0612;
-  display: grid;
-  place-items: center;
-}
-.hero-img--cocktail::after {
-  content: '';
-  width: 60%;
-  aspect-ratio: 1/1.4;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(255,100,80,0.7), rgba(180,40,30,0.5) 40%, transparent 65%),
-    linear-gradient(180deg, rgba(255,120,100,0.3), transparent);
-  border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
-  filter: blur(8px);
+  background: url('assets/photos/bartender.jpg') center / cover no-repeat, #0a0612;
 }
 .hero-img--crowd {
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(120,60,80,0.4), transparent 50%),
-    radial-gradient(ellipse at 70% 60%, rgba(80,40,100,0.4), transparent 50%),
-    radial-gradient(ellipse at 50% 30%, rgba(255,160,100,0.3), transparent 40%),
-    linear-gradient(180deg, #1a0e1e, #050208);
+  background: url('assets/photos/hero-crowd.jpg') center / cover no-repeat, #050208;
 }
 .hero-img--bar {
   background:
@@ -724,30 +705,22 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.45;
 }
 
-/* About hero image: dark bar interior with the horseshoe-style logo overlay */
+/* About hero image: real photo of the bar */
 .about-hero {
   position: relative;
   width: 100%;
   aspect-ratio: 4/5;
-  background: linear-gradient(180deg, #050a18 0%, #0a0e1e 50%, #15050a 100%);
+  background: url('assets/photos/bar-back.jpg') center / cover no-repeat, #050a18;
   overflow: hidden;
 }
 .about-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 60%, rgba(255,40,80,0.35), transparent 50%),
-    radial-gradient(ellipse at 30% 30%, rgba(80,40,180,0.2), transparent 55%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 100%);
 }
 .about-hero__horseshoe {
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  max-width: 320px;
-  filter: drop-shadow(0 0 8px var(--neon)) drop-shadow(0 0 24px rgba(46,168,255,0.6));
+  display: none; /* hide overlay; photo already has the brand sign */
 }
 
 /* ============ CONTACT ============ */
@@ -894,43 +867,13 @@ button { font-family: inherit; cursor: pointer; }
 
 .signage-tile {
   margin-top: 16px;
-  height: 200px;
-  background: linear-gradient(180deg, #2a0a0a 0%, #1a0e0e 50%, #050204 100%);
+  height: 220px;
+  background: url('assets/photos/storefront.jpg') center / cover no-repeat, #050204;
   border: 1px solid var(--line-soft);
-  display: grid;
-  place-items: center;
   position: relative;
   overflow: hidden;
 }
-.signage-tile::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(255,40,80,0.4), transparent 50%),
-    radial-gradient(ellipse at 50% 70%, rgba(46,168,255,0.3), transparent 55%);
-}
-.signage-tile__sign {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 0 20px;
-}
-.signage-tile__sign .red {
-  font-family: var(--display);
-  font-size: 38px;
-  letter-spacing: 0.04em;
-  color: #FF3B6E;
-  text-shadow: 0 0 6px #FF3B6E, 0 0 18px rgba(255,59,110,0.7), 0 0 32px rgba(255,59,110,0.4);
-}
-.signage-tile__sign .blue {
-  font-family: var(--display);
-  font-size: 38px;
-  letter-spacing: 0.04em;
-  color: var(--neon);
-  text-shadow: 0 0 6px var(--neon), 0 0 18px rgba(46,168,255,0.7), 0 0 32px rgba(46,168,255,0.4);
-}
+.signage-tile__sign { display: none; /* photo already shows the real signage */ }
 
 /* ============ HOME PAGE ============ */
 .home-wrap { max-width: 1280px; margin: 0 auto; padding: 22px 40px 50px; }
@@ -985,36 +928,15 @@ button { font-family: inherit; cursor: pointer; }
 
 .home-hero__photo {
   position: relative;
-  background: linear-gradient(180deg, #1a0820 0%, #0a0e1e 50%, #050208 100%);
+  background: url('assets/photos/hero-crowd.jpg') center / cover no-repeat, #050208;
   overflow: hidden;
 }
-.home-hero__photo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 40% 30% at 30% 40%, rgba(255,140,80,0.4), transparent 70%),
-    radial-gradient(ellipse 30% 25% at 65% 35%, rgba(255,100,140,0.35), transparent 70%),
-    radial-gradient(ellipse 25% 20% at 50% 60%, rgba(180,80,200,0.35), transparent 70%),
-    radial-gradient(circle at 20% 80%, rgba(80,40,120,0.3), transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(46,168,255,0.15), transparent 50%);
-}
 .home-hero__photo::after {
-  /* bokeh / light dots */
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 18% 25%, rgba(255,200,160,0.5) 0, transparent 4px),
-    radial-gradient(circle at 32% 22%, rgba(255,180,120,0.4) 0, transparent 5px),
-    radial-gradient(circle at 47% 28%, rgba(255,160,200,0.4) 0, transparent 4px),
-    radial-gradient(circle at 62% 24%, rgba(255,220,160,0.4) 0, transparent 5px),
-    radial-gradient(circle at 78% 30%, rgba(255,180,200,0.4) 0, transparent 4px),
-    radial-gradient(circle at 25% 55%, rgba(120,80,160,0.3) 0, transparent 6px),
-    radial-gradient(circle at 55% 50%, rgba(180,100,140,0.4) 0, transparent 5px),
-    radial-gradient(circle at 75% 60%, rgba(80,120,200,0.3) 0, transparent 6px),
-    radial-gradient(circle at 40% 70%, rgba(255,160,120,0.3) 0, transparent 5px),
-    radial-gradient(circle at 88% 80%, rgba(120,60,180,0.3) 0, transparent 7px);
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
 }
 
 .home-hero__horseshoe-col {
@@ -1343,6 +1265,22 @@ button { font-family: inherit; cursor: pointer; }
   height: 100%;
   pointer-events: none;
   z-index: 1;
+}
+
+/* Real photo tiles */
+.photo-tile {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.photo-tile::after {
+  /* subtle dark gradient to keep photos cohesive with the dark theme */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 100%);
+  pointer-events: none;
 }
 
 /* ============ CONFIRMATION ============ */
