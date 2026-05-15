@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Private Parties — The Spotted James</title>
+<meta name="description" content="Bachelorettes, weddings, formals, game-day takeovers, birthdays. VIP areas and bottle service in downtown Boulder." />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/v4/parties.html" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+      <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="" width="22" height="22" /></picture>
+      <span class="nav__brand-name">Spotted&nbsp;James</span>
+    </a>
+    <nav aria-label="primary">
+      <ul class="nav__menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="drinks.html">Drinks</a></li>
+        <li><a href="parties.html" class="active">Private Parties</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="directions.html" class="nav__cta">Find Us&nbsp;&rsaquo;</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section">
+    <div class="section__inner">
+      <p class="eyebrow eyebrow--accent">Private Parties</p>
+      <h1 class="headline headline--xxl">Your night.<br/>Your way.</h1>
+      <p class="lede lede--wide lede--muted">Bachelorettes, wedding parties, formals, Buffs game-day groups, birthdays. Bringing a crowd to Boulder? We'll build the night around it.</p>
+
+      <div class="grid-4">
+        <div class="tile">
+          <div class="tile__icon"><svg viewBox="0 0 24 24"><path d="M12 2 L13 8 L19 9 L14.5 13 L16 20 L12 16.5 L8 20 L9.5 13 L5 9 L11 8 Z"/></svg></div>
+          <h3 class="tile__title">Birthdays</h3>
+          <p class="tile__sub">Tables, bottle service, custom playlist.</p>
+        </div>
+        <div class="tile">
+          <div class="tile__icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="11" r="2.5"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6"/><path d="M14 20c0-3 2-4.5 4-4.5s4 1.5 4 4.5"/></svg></div>
+          <h3 class="tile__title">Group Outings</h3>
+          <p class="tile__sub">Greek formals, club teams, work crews.</p>
+        </div>
+        <div class="tile">
+          <div class="tile__icon"><svg viewBox="0 0 24 24"><path d="M5 5 L19 5 L12 14 Z"/><path d="M12 14 L12 20"/><path d="M9 20 L15 20"/></svg></div>
+          <h3 class="tile__title">VIP Areas</h3>
+          <p class="tile__sub">Reserved sections with bottle service.</p>
+        </div>
+        <div class="tile">
+          <div class="tile__icon"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11"/><path d="M12 8 L12 5 Q12 3 10 3 Q8 3 8 5 Q8 7 10 8"/><path d="M12 8 L12 5 Q12 3 14 3 Q16 3 16 5 Q16 7 14 8"/></svg></div>
+          <h3 class="tile__title">Custom Packages</h3>
+          <p class="tile__sub">Tell us what you need. We'll quote it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--elev">
+    <div class="section__inner">
+      <h2 class="headline headline--lg">Book your night.</h2>
+      <p class="lede lede--muted">Tell us the details and we'll take care of the rest.</p>
+
+      <form class="form" action="confirmation.html" method="get" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="p-name">Full name</label><input id="p-name" type="text" required name="name" autocomplete="name" /></div>
+          <div class="field"><label for="p-email">Email</label><input id="p-email" type="email" required name="email" autocomplete="email" /></div>
+          <div class="field"><label for="p-phone">Phone number</label><input id="p-phone" type="tel" required name="phone" autocomplete="tel" /></div>
+          <div class="field"><label for="p-date">Date requested</label><input id="p-date" type="date" required name="date" /></div>
+          <div class="field"><label for="p-headcount">Headcount</label><input id="p-headcount" type="number" min="1" required name="headcount" /></div>
+          <div class="field">
+            <label for="p-occasion">Occasion</label>
+            <select id="p-occasion" required name="occasion">
+              <option value="">Select…</option>
+              <option>Bachelorette / Bachelor</option>
+              <option>Wedding party</option>
+              <option>Birthday</option>
+              <option>Greek formal</option>
+              <option>Buffs game day</option>
+              <option>Corporate / team</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field field--full"><label for="p-notes">Description / special requests</label><textarea id="p-notes" name="notes" placeholder="In town for a wedding? Visiting CU? Let us know."></textarea></div>
+          <div class="field"><label for="p-budget">Budget per person (approx.)</label><input id="p-budget" type="text" name="budget" /></div>
+          <div class="field">
+            <label for="p-source">How did you hear about us?</label>
+            <select id="p-source" required name="source">
+              <option value="">Select…</option>
+              <option>Instagram</option>
+              <option>Google search</option>
+              <option>Friend / local recommendation</option>
+              <option>Hotel concierge</option>
+              <option>Walked by</option>
+              <option>Wedding venue / planner</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field field--checkbox field--full">
+            <input type="checkbox" id="p-agree" required />
+            <label for="p-agree">I agree to the Privacy Policy and Terms &amp; Conditions.</label>
+          </div>
+        </div>
+        <div class="button-row">
+          <button class="btn" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__row">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="drinks.html">Drinks</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year">2026</span> The Spotted James · 1911 11th St, Boulder, CO 80302</p>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

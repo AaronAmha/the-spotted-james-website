@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — The Spotted James</title>
+<meta name="description" content="Call (303) 555-JAMES, email info@thespottedjames.com, or DM @thespottedjames. Open daily at 6pm." />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/v4/contact.html" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+      <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="" width="22" height="22" /></picture>
+      <span class="nav__brand-name">Spotted&nbsp;James</span>
+    </a>
+    <nav aria-label="primary">
+      <ul class="nav__menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="drinks.html">Drinks</a></li>
+        <li><a href="parties.html">Private Parties</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="directions.html" class="nav__cta">Find Us&nbsp;&rsaquo;</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section">
+    <div class="section__inner">
+      <p class="eyebrow eyebrow--accent">Contact</p>
+      <h1 class="headline headline--xxl">Get in touch.</h1>
+      <p class="lede lede--wide lede--muted">We'd love to hear from you.</p>
+
+      <div class="list">
+        <a class="list-row" href="tel:+13035552637">
+          <div class="list-row__icon"><svg viewBox="0 0 24 24"><path d="M5 4 L9 4 L11 9 L8.5 11 Q10.5 14.5 13 16.5 L15 14 L20 16 L20 20 Q20 20 17 20 Q11 20 6 14.5 Q4 11 4 7 Q4 4 5 4 Z"/></svg></div>
+          <div>
+            <div class="list-row__label">Call / Text</div>
+            <div class="list-row__value">(303) 555-JAMES</div>
+          </div>
+        </a>
+        <a class="list-row" href="mailto:info@thespottedjames.com">
+          <div class="list-row__icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13"/><path d="M3 7 L12 14 L21 7"/></svg></div>
+          <div>
+            <div class="list-row__label">Email</div>
+            <div class="list-row__value">info@thespottedjames.com</div>
+          </div>
+        </a>
+        <a class="list-row" href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener">
+          <div class="list-row__icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></div>
+          <div>
+            <div class="list-row__label">Instagram</div>
+            <div class="list-row__value">@thespottedjames</div>
+          </div>
+        </a>
+        <div class="list-row">
+          <div class="list-row__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7 L12 12 L15.5 14"/></svg></div>
+          <div>
+            <div class="list-row__label">Hours</div>
+            <div class="list-row__value">Open daily at 6PM, until 2AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--elev">
+    <div class="section__inner">
+      <h2 class="headline headline--lg">Send a message.</h2>
+      <p class="lede lede--muted">Visiting Boulder? Planning a wedding weekend? Tell us what you need.</p>
+
+      <form class="form" action="confirmation.html" method="get" novalidate>
+        <div class="form-grid">
+          <div class="field field--full"><label for="c-name">Name</label><input id="c-name" type="text" required name="name" autocomplete="name" /></div>
+          <div class="field field--full"><label for="c-email">Email</label><input id="c-email" type="email" required name="email" autocomplete="email" /></div>
+          <div class="field field--full"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required></textarea></div>
+        </div>
+        <div class="button-row">
+          <button class="btn" type="submit">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__row">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="drinks.html">Drinks</a>
+      <a href="parties.html">Private Parties</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+    <p>© <span id="year">2026</span> The Spotted James · 1911 11th St, Boulder, CO 80302</p>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

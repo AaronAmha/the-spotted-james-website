@@ -138,6 +138,29 @@ h1 {
 .choice--v3::before { background: radial-gradient(circle at 100% 0%, rgba(232,184,92,0.18), transparent 60%); }
 .choice--v3 .choice__cta { color: var(--gold); text-shadow: 0 0 6px rgba(232,184,92,0.5); }
 
+.choice--v4 {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+}
+.choice--v4:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 32px rgba(255, 255, 255, 0.06);
+}
+.choice--v4::before { background: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.06), transparent 60%); }
+.choice--v4 .choice__title {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.choice--v4 .choice__cta {
+  color: #2997ff;
+  text-shadow: none;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.014em;
+  text-transform: none;
+}
+
 .choice__num {
   font-family: var(--display);
   font-size: 11px;
@@ -208,7 +231,7 @@ h1 {
   <img src="v1/assets/horse-logo.jpg" alt="The Spotted James" class="logo" />
   <p class="eyebrow">— pick your version —</p>
   <h1>THE SPOTTED JAMES</h1>
-  <p class="sub">Three design directions for the same Boulder bar. Tap one to explore.</p>
+  <p class="sub">Four design directions for the same Boulder bar. Tap one to explore.</p>
 
   <div class="choices">
     <a class="choice choice--v1" href="v1/index.html">
@@ -230,6 +253,13 @@ h1 {
       <div class="choice__title">SEO &amp; Tourism</div>
       <div class="choice__sub">V2 layout layered with full SEO, GEO meta, and JSON-LD. Copy tuned for CU students, wedding guests, Buffs fans, and visitors.</div>
       <span class="choice__cta">Open V3</span>
+    </a>
+
+    <a class="choice choice--v4" href="v4/index.html">
+      <div class="choice__num">— Design 04 —</div>
+      <div class="choice__title">Apple-Inspired</div>
+      <div class="choice__sub">Restrained. System font, generous whitespace, full-bleed photography. The version Apple would ship.</div>
+      <span class="choice__cta">Open V4 →</span>
     </a>
   </div>
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery — The Spotted James</title>
+<meta name="description" content="The night, captured. DJ sets, dance floor, wedding parties, CU students. Tag @thespottedjames to get featured." />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/v4/gallery.html" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+      <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="" width="22" height="22" /></picture>
+      <span class="nav__brand-name">Spotted&nbsp;James</span>
+    </a>
+    <nav aria-label="primary">
+      <ul class="nav__menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="drinks.html">Drinks</a></li>
+        <li><a href="parties.html">Private Parties</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="directions.html" class="nav__cta">Find Us&nbsp;&rsaquo;</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section section--wide">
+    <div class="section__inner">
+      <p class="eyebrow eyebrow--accent">Gallery</p>
+      <h1 class="headline headline--xxl">The night,<br/>captured.</h1>
+      <p class="lede lede--wide lede--muted">Tag @thespottedjames to get featured.</p>
+
+      <div class="gallery-filters" role="tablist">
+        <button class="gallery-filter active" aria-pressed="true" data-filter="all">All</button>
+        <button class="gallery-filter" aria-pressed="false" data-filter="spotted">Spotted</button>
+        <button class="gallery-filter" aria-pressed="false" data-filter="nights">Nights</button>
+        <button class="gallery-filter" aria-pressed="false" data-filter="friends">Friends</button>
+        <button class="gallery-filter" aria-pressed="false" data-filter="djs">DJs</button>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-tile" data-cat="spotted"><picture><source srcset="assets/photos/wall-sign.webp" type="image/webp" /><img src="assets/photos/wall-sign.jpg" alt="The 'You've been spotted' neon sign" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="nights"><picture><source srcset="assets/photos/hero-crowd.webp" type="image/webp" /><img src="assets/photos/hero-crowd.jpg" alt="Crowd at the bar with the horseshoe + star neon" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="friends"><picture><source srcset="assets/photos/cheers.webp" type="image/webp" /><img src="assets/photos/cheers.jpg" alt="Friends raising a toast under bistro lights" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="djs"><picture><source srcset="assets/photos/dj.webp" type="image/webp" /><img src="assets/photos/dj.jpg" alt="DJ at the decks during a set" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="nights"><picture><source srcset="assets/photos/dance-floor.webp" type="image/webp" /><img src="assets/photos/dance-floor.jpg" alt="Packed dance floor under red light" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="spotted"><picture><source srcset="assets/photos/women-sparkler.webp" type="image/webp" /><img src="assets/photos/women-sparkler.jpg" alt="A group of friends with a sparkler" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="friends"><picture><source srcset="assets/photos/bar-back.webp" type="image/webp" /><img src="assets/photos/bar-back.jpg" alt="The Spotted James bar back with neon and lit bottles" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="djs"><picture><source srcset="assets/photos/storefront.webp" type="image/webp" /><img src="assets/photos/storefront.jpg" alt="The Spotted James storefront at night with the neon sign" loading="lazy" width="511" height="341" /></picture></figure>
+        <figure class="gallery-tile" data-cat="nights"><picture><source srcset="assets/photos/bartender.webp" type="image/webp" /><img src="assets/photos/bartender.jpg" alt="Bartender pouring a red cocktail" loading="lazy" width="511" height="341" /></picture></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__row">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="drinks.html">Drinks</a>
+      <a href="parties.html">Private Parties</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year">2026</span> The Spotted James · 1911 11th St, Boulder, CO 80302</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.gallery-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gallery-filter').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.gallery-tile').forEach(t => {
+        t.style.display = (f === 'all' || t.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

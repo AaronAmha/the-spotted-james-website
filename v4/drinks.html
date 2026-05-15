@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Drinks — The Spotted James</title>
+<meta name="description" content="Signature cocktails, beer, wine and non-alcoholic options. Happy hour Mon–Fri 6–8pm." />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/v4/drinks.html" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+      <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="" width="22" height="22" /></picture>
+      <span class="nav__brand-name">Spotted&nbsp;James</span>
+    </a>
+    <nav aria-label="primary">
+      <ul class="nav__menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="drinks.html" class="active">Drinks</a></li>
+        <li><a href="parties.html">Private Parties</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="directions.html" class="nav__cta">Find Us&nbsp;&rsaquo;</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="min-height: 70vh;">
+    <div class="hero__media">
+      <picture><source srcset="assets/photos/bartender.webp" type="image/webp" /><img src="assets/photos/bartender.jpg" alt="Bartender pouring a red cocktail" width="1600" height="900" fetchpriority="high" /></picture>
+    </div>
+    <div class="hero__content">
+      <p class="eyebrow eyebrow--accent">Drinks</p>
+      <h1 class="headline headline--xxl">Good drinks.<br/>No shortcuts.</h1>
+      <p class="lede lede--wide">Classics done right and a few Boulder originals.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="tabs" role="tablist" style="display: inline-flex;">
+        <button class="active" role="tab" aria-selected="true" data-cat="cocktails">Cocktails</button>
+        <button role="tab" aria-selected="false" data-cat="shots">Shots</button>
+        <button role="tab" aria-selected="false" data-cat="beer">Beer</button>
+        <button role="tab" aria-selected="false" data-cat="wine">Wine</button>
+        <button role="tab" aria-selected="false" data-cat="non">Non-Alcoholic</button>
+      </div>
+
+      <div class="drink-cat" id="cocktails">
+        <div class="spec-list">
+          <div class="spec-list__title">Signature Cocktails</div>
+          <div class="spec-row">
+            <div>
+              <div class="spec-row__name">Spotted Mule</div>
+              <div class="spec-row__desc">Tito's Vodka, Lime, Ginger Beer</div>
+            </div>
+            <div class="spec-row__price">$12</div>
+          </div>
+          <div class="spec-row">
+            <div>
+              <div class="spec-row__name">James Old Fashioned</div>
+              <div class="spec-row__desc">Bulleit Bourbon, Demerara, Bitters</div>
+            </div>
+            <div class="spec-row__price">$13</div>
+          </div>
+          <div class="spec-row">
+            <div>
+              <div class="spec-row__name">Blue Horse</div>
+              <div class="spec-row__desc">Tequila, Blue Curaçao, Lime, Agave</div>
+            </div>
+            <div class="spec-row__price">$12</div>
+          </div>
+          <div class="spec-row">
+            <div>
+              <div class="spec-row__name">Boulder Sunset</div>
+              <div class="spec-row__desc">Rum, Pineapple, Cranberry, Lime</div>
+            </div>
+            <div class="spec-row__price">$12</div>
+          </div>
+          <div class="spec-row">
+            <div>
+              <div class="spec-row__name">Midnight Sour</div>
+              <div class="spec-row__desc">Whiskey, Lemon, Simple, Red Wine Float</div>
+            </div>
+            <div class="spec-row__price">$13</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-cat" id="shots" style="display:none;">
+        <div class="spec-list">
+          <div class="spec-list__title">Shots</div>
+          <p style="color: var(--text-muted); padding: 22px 0;">Ask the bartender — full shot list available at the bar.</p>
+        </div>
+      </div>
+      <div class="drink-cat" id="beer" style="display:none;">
+        <div class="spec-list">
+          <div class="spec-list__title">Beer</div>
+          <p style="color: var(--text-muted); padding: 22px 0;">Rotating Colorado drafts and bottles — Avery, Upslope, Left Hand and more.</p>
+        </div>
+      </div>
+      <div class="drink-cat" id="wine" style="display:none;">
+        <div class="spec-list">
+          <div class="spec-list__title">Wine</div>
+          <p style="color: var(--text-muted); padding: 22px 0;">By the glass and bottle — house red, house white, prosecco, and a small reserve list.</p>
+        </div>
+      </div>
+      <div class="drink-cat" id="non" style="display:none;">
+        <div class="spec-list">
+          <div class="spec-list__title">Non-Alcoholic</div>
+          <p style="color: var(--text-muted); padding: 22px 0;">Mocktails, Athletic Brewing NA beer, sparkling waters, and sodas.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout__title">Happy Hour</div>
+        <div class="callout__when">Monday — Friday · 6PM — 8PM</div>
+        <div class="callout__deals">
+          <span>$5 wells</span>
+          <span>$6 select beer</span>
+          <span>$7 wine</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__row">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="parties.html">Private Parties</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year">2026</span> The Spotted James · 1911 11th St, Boulder, CO 80302</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelectorAll('.drink-cat').forEach(c => c.style.display = 'none');
+      document.getElementById(btn.dataset.cat).style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
