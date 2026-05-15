@@ -882,7 +882,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ---- Hero band ---- */
 .home-hero {
   display: grid;
-  grid-template-columns: 0.85fr 1.5fr 100px;
+  grid-template-columns: 0.85fr 1.7fr;
   gap: 0;
   align-items: stretch;
   border: 1px solid var(--line-soft);
@@ -892,7 +892,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 880px) {
   .home-hero { grid-template-columns: 1fr; min-height: auto; }
-  .home-hero__horseshoe-col { display: none; }
 }
 
 .home-hero__text {
