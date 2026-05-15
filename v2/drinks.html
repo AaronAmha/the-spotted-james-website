@@ -3,8 +3,38 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Drinks — The Spotted James</title>
-<meta name="description" content="Good drinks. No shortcuts. From classics done right to crowd favorites at The Spotted James." />
+
+<title>Drinks &amp; Happy Hour | The Spotted James — Boulder Cocktails</title>
+<meta name="description" content="Signature cocktails — Spotted Mule, James Old Fashioned, Blue Horse, Boulder Sunset, Midnight Sour. Happy Hour Mon-Fri 6-8pm." />
+<meta name="keywords" content="Boulder cocktails, Boulder happy hour, downtown Boulder bar, Pearl Street happy hour" />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/drinks.html" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Drinks & Happy Hour at The Spotted James" />
+<meta property="og:description" content="Signature cocktails and Happy Hour Mon–Fri 6–8pm in downtown Boulder." />
+<meta property="og:url" content="https://thespottedjames.com/drinks.html" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Drinks & Happy Hour at The Spotted James" />
+<meta name="twitter:description" content="Signature cocktails and Happy Hour Mon–Fri 6–8pm in downtown Boulder." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Menu","name":"The Spotted James — Drink Menu","provider":{"@type":"BarOrPub","name":"The Spotted James","@id":"https://thespottedjames.com/#bar"},"hasMenuSection":[{"@type":"MenuSection","name":"Signature Cocktails","hasMenuItem":[{"@type":"MenuItem","name":"Spotted Mule","description":"Tito's Vodka, Lime, Ginger Beer","offers":{"@type":"Offer","price":"12","priceCurrency":"USD"}},{"@type":"MenuItem","name":"James Old Fashioned","description":"Bulleit Bourbon, Demerara, Bitters","offers":{"@type":"Offer","price":"13","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Blue Horse","description":"Tequila, Blue Curaçao, Lime, Agave","offers":{"@type":"Offer","price":"12","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Boulder Sunset","description":"Rum, Pineapple, Cranberry, Lime","offers":{"@type":"Offer","price":"12","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Midnight Sour","description":"Whiskey, Lemon, Simple, Red Wine Float","offers":{"@type":"Offer","price":"13","priceCurrency":"USD"}}]}]}
+</script>
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,10 +42,11 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="nav">
   <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
     <span class="nav__brand-text">
       <span class="nav__brand-the">THE</span>
       <span class="nav__brand-name">Spotted James</span>
@@ -35,7 +66,7 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="page">
+<main id="main" class="page">
   <section>
     <h1 class="page__title">DRINKS</h1>
     <p class="page__subtitle">Good Drinks.<br/>No Shortcuts.</p>
@@ -43,17 +74,17 @@
   </section>
 
   <aside>
-    <div class="hero-img hero-img--cocktail"></div>
+    <figure class="hero-img hero-img--cocktail"><picture><source srcset="assets/photos/bartender.webp" type="image/webp" /><img src="assets/photos/bartender.jpg" alt="Bartender pouring a red cocktail" loading="eager" decoding="async" width="511" height="341" /></picture></figure>
   </aside>
 </main>
 
 <section style="max-width:1280px; margin: 0 auto; padding: 0 50px 60px;">
   <div class="drink-tabs">
-    <button class="active" data-cat="cocktails">Cocktails</button>
-    <button data-cat="shots">Shots</button>
-    <button data-cat="beer">Beer</button>
-    <button data-cat="wine">Wine</button>
-    <button data-cat="non">Non-Alcoholic</button>
+    <button class="active" role="tab" aria-selected="true" data-cat="cocktails">Cocktails</button>
+    <button role="tab" aria-selected="false" data-cat="shots">Shots</button>
+    <button role="tab" aria-selected="false" data-cat="beer">Beer</button>
+    <button role="tab" aria-selected="false" data-cat="wine">Wine</button>
+    <button role="tab" aria-selected="false" data-cat="non">Non-Alcoholic</button>
   </div>
 
   <div class="drinks-layout">
@@ -141,8 +172,12 @@
 <script>
   document.querySelectorAll('.drink-tabs button').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.drink-tabs button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.drink-tabs button').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       document.querySelectorAll('.drink-cat').forEach(c => c.style.display = 'none');
       document.getElementById(btn.dataset.cat).style.display = 'block';
     });

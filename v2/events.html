@@ -3,8 +3,34 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Events — The Spotted James</title>
-<meta name="description" content="Good nights. Every night. Check out what's happening at The Spotted James this week." />
+
+<title>Events This Week | The Spotted James — Boulder Bar Calendar</title>
+<meta name="description" content="See what's on tonight at The Spotted James in Boulder. Throwback Thursdays, DJ Set Fridays, Spotted Saturdays. Live DJs at 9pm." />
+<meta name="keywords" content="Boulder bar tonight, Boulder events this week, CU Boulder events, Pearl Street nightlife" />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/events.html" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Events This Week at The Spotted James" />
+<meta property="og:description" content="Throwback + Hip Hop Thursdays. Live DJ Fridays. Spotted Saturdays." />
+<meta property="og:url" content="https://thespottedjames.com/events.html" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Events This Week at The Spotted James" />
+<meta name="twitter:description" content="Throwback + Hip Hop Thursdays. Live DJ Fridays. Spotted Saturdays." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,10 +38,11 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="nav">
   <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
     <span class="nav__brand-text">
       <span class="nav__brand-the">THE</span>
       <span class="nav__brand-name">Spotted James</span>
@@ -35,15 +62,15 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="page">
+<main id="main" class="page">
   <section>
     <h1 class="page__title">EVENTS</h1>
     <p class="page__subtitle">Good Nights. Every Night.</p>
     <p class="page__lead">Check out what's happening<br/>at James this week.</p>
 
     <div class="tabs" role="tablist">
-      <button class="active" data-tab="this-week">This Week</button>
-      <button data-tab="coming-soon">Coming Soon</button>
+      <button class="active" role="tab" aria-selected="true" data-tab="this-week">This Week</button>
+      <button role="tab" aria-selected="false" data-tab="coming-soon">Coming Soon</button>
     </div>
 
     <div class="event-list" id="this-week">
@@ -53,7 +80,7 @@
           <div class="event-card__title">THROWBACK<br/>+ HIP HOP</div>
           <div class="event-card__time">9PM — CLOSE</div>
         </div>
-        <div class="event-card__photo" style="background:url('assets/photos/dance-floor.jpg') center/cover no-repeat;"></div>
+        <div class="event-card__photo"><picture><source srcset="assets/photos/dance-floor.webp" type="image/webp" /><img src="assets/photos/dance-floor.jpg" alt="Packed dance floor under red light" loading="lazy" decoding="async" width="200" height="100" /></picture></div>
       </article>
 
       <article class="event-card">
@@ -62,7 +89,7 @@
           <div class="event-card__title">DJ SET<br/>HIGH ENERGY</div>
           <div class="event-card__time">9PM — CLOSE</div>
         </div>
-        <div class="event-card__photo" style="background:url('assets/photos/dj.jpg') center/cover no-repeat;"></div>
+        <div class="event-card__photo"><picture><source srcset="assets/photos/dj.webp" type="image/webp" /><img src="assets/photos/dj.jpg" alt="DJ at the decks during a set" loading="lazy" decoding="async" width="200" height="100" /></picture></div>
       </article>
 
       <article class="event-card">
@@ -72,7 +99,7 @@
           <div class="event-card__time">9PM — CLOSE</div>
           <div class="event-card__note">If you're spotted, you unlock specials.</div>
         </div>
-        <div class="event-card__photo" style="background:url('assets/photos/women-sparkler.jpg') center/cover no-repeat;"></div>
+        <div class="event-card__photo"><picture><source srcset="assets/photos/women-sparkler.webp" type="image/webp" /><img src="assets/photos/women-sparkler.jpg" alt="A group of friends with a sparkler" loading="lazy" decoding="async" width="200" height="100" /></picture></div>
       </article>
     </div>
 
@@ -83,7 +110,7 @@
           <div class="event-card__title">SPECIAL HEADLINERS</div>
           <div class="event-card__time">Follow @thespottedjames for announcements</div>
         </div>
-        <div class="event-card__photo" style="background:url('assets/photos/wall-sign.jpg') center/cover no-repeat;"></div>
+        <div class="event-card__photo"><picture><source srcset="assets/photos/wall-sign.webp" type="image/webp" /><img src="assets/photos/wall-sign.jpg" alt="The &quot;You&apos;ve been spotted&quot; neon sign" loading="lazy" decoding="async" width="200" height="100" /></picture></div>
       </article>
     </div>
 
@@ -97,15 +124,19 @@
   </section>
 
   <aside>
-    <div class="hero-img hero-img--crowd"></div>
+    <figure class="hero-img hero-img--crowd"><picture><source srcset="assets/photos/hero-crowd.webp" type="image/webp" /><img src="assets/photos/hero-crowd.jpg" alt="Crowd at The Spotted James under the horseshoe + star neon" loading="lazy" decoding="async" width="511" height="341" /></picture></figure>
   </aside>
 </main>
 
 <script>
   document.querySelectorAll('.tabs button').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tabs button').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       document.querySelectorAll('.event-list').forEach(l => l.style.display = 'none');
       document.getElementById(btn.dataset.tab).style.display = 'flex';
     });

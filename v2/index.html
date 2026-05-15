@@ -3,8 +3,38 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home — The Spotted James | A Bar With Good Taste. A Place Worth Being Seen.</title>
-<meta name="description" content="Good music. A full bar. Nights that don't end when they should. The Spotted James — Boulder's late-night neon bar." />
+
+<title>The Spotted James | A Boulder Bar With Good Taste — Live DJs, Pool, Dance Floor</title>
+<meta name="description" content="The Spotted James — Boulder's late-night neon bar at 1911 11th St. Live DJs, dance floor, pool, signature cocktails. Two blocks off Pearl Street, walking distance from CU Boulder and downtown hotels." />
+<meta name="keywords" content="Boulder bar, Boulder nightlife, CU Boulder bar, Pearl Street bars, Boulder dance club, Boulder cocktails, downtown Boulder bar, late night Boulder, Boulder DJ, Spotted James" />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Spotted James — Boulder's Late-Night Neon Bar" />
+<meta property="og:description" content="Live DJs, dance floor, pool. Two blocks off Pearl Street, walking distance from CU." />
+<meta property="og:url" content="https://thespottedjames.com/" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Spotted James — Boulder's Late-Night Neon Bar" />
+<meta name="twitter:description" content="Live DJs, dance floor, pool. Two blocks off Pearl Street, walking distance from CU." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","@id":"https://thespottedjames.com/#bar","name":"The Spotted James","alternateName":["Spotted James Boulder"],"description":"Late-night neon bar in downtown Boulder featuring pool tables, a dance floor, weekly DJs, and signature cocktails. Walking distance from CU Boulder, Pearl Street Mall, and downtown hotels.","image":"https://thespottedjames.com/assets/photos/hero-crowd.jpg","logo":"https://thespottedjames.com/assets/horse-logo.jpg","url":"https://thespottedjames.com","telephone":"+1-303-555-5263","priceRange":"$$","servesCuisine":["American","Bar Food","Cocktails"],"address":{"@type":"PostalAddress","streetAddress":"1911 11th St, Suite 100","addressLocality":"Boulder","addressRegion":"CO","postalCode":"80302","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":40.0167,"longitude":-105.2786},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"18:00","closes":"02:00"}],"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Pool Tables","value":true},{"@type":"LocationFeatureSpecification","name":"Dance Floor","value":true},{"@type":"LocationFeatureSpecification","name":"Live DJs","value":true},{"@type":"LocationFeatureSpecification","name":"VIP / Bottle Service","value":true},{"@type":"LocationFeatureSpecification","name":"Private Events","value":true},{"@type":"LocationFeatureSpecification","name":"Wheelchair Accessible","value":true}],"publicAccess":true,"smokingAllowed":false,"sameAs":["https://www.instagram.com/thespottedjames","https://www.facebook.com/thespottedjames","https://www.tiktok.com/@thespottedjames"]}
+</script>
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,10 +42,11 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="nav">
   <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" />
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" width="72" height="72" decoding="async" /></picture>
     <span class="nav__brand-text">
       <span class="nav__brand-the">THE</span>
       <span class="nav__brand-name">Spotted James</span>
@@ -35,7 +66,7 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="home-wrap">
+<main id="main" class="home-wrap">
 
   <!-- ====== HERO BAND ====== -->
   <section class="home-hero">
@@ -53,7 +84,12 @@
       </div>
     </div>
 
-    <div class="home-hero__photo" aria-label="Crowd at The Spotted James"></div>
+    <figure class="home-hero__photo">
+      <picture>
+        <source srcset="assets/photos/hero-crowd.webp" type="image/webp" />
+        <img src="assets/photos/hero-crowd.jpg" alt="Crowd at The Spotted James under the horseshoe + star neon" width="511" height="341" fetchpriority="high" decoding="async" />
+      </picture>
+    </figure>
   </section>
 
   <!-- ====== SPOTTED BAND ====== -->
@@ -66,15 +102,25 @@
     </div>
 
     <div class="home-spotted__collage">
-      <div class="photo-tile" style="background-image:url('assets/photos/women-sparkler.jpg');" aria-label="Group of friends with sparkler"></div>
-      <div class="photo-tile" style="background-image:url('assets/photos/dj.jpg');" aria-label="DJ at the decks"></div>
-      <div class="photo-tile" style="background-image:url('assets/photos/cheers.jpg');" aria-label="Cheers — clinking glasses"></div>
-      <div class="photo-tile" style="background-image:url('assets/photos/dance-floor.jpg');" aria-label="Dance floor crowd"></div>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/women-sparkler.webp" type="image/webp" /><img src="assets/photos/women-sparkler.jpg" alt="A group of friends with a sparkler" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/dj.webp" type="image/webp" /><img src="assets/photos/dj.jpg" alt="DJ at the decks during a set" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/cheers.webp" type="image/webp" /><img src="assets/photos/cheers.jpg" alt="Friends clinking glasses overhead" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/dance-floor.webp" type="image/webp" /><img src="assets/photos/dance-floor.jpg" alt="Packed dance floor under red light" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
     </div>
 
     <div class="home-spotted__feature">
       <div class="home-spotted__feature-label">★ Spotted Of The Week</div>
-      <div class="home-spotted__feature-photo photo-tile" style="background-image:url('assets/photos/wall-sign.jpg');" aria-label="You've been spotted neon sign"></div>
+      <figure class="home-spotted__feature-photo photo-tile">
+        <picture><source srcset="assets/photos/wall-sign.webp" type="image/webp" /><img src="assets/photos/wall-sign.jpg" alt="The 'You've been spotted' neon sign on the wall" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
       <p class="home-spotted__feature-cap">Tag @thespottedjames<br/>to get featured + unlock perks.</p>
     </div>
   </section>

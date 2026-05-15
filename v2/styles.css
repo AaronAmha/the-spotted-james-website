@@ -10,8 +10,8 @@
   --neon-soft: #5BBEFF;
   --neon-deep: #0E5CFF;
   --bone: #FFFFFF;
-  --smoke: rgba(255, 255, 255, 0.55);
-  --smoke-soft: rgba(255, 255, 255, 0.38);
+  --smoke: rgba(255, 255, 255, 0.72);     /* WCAG AA: ~10.5:1 on black */
+  --smoke-soft: rgba(255, 255, 255, 0.6); /* WCAG AA: ~7.6:1 on black, was 0.38 (FAIL) */
   --line: rgba(46, 168, 255, 0.4);
   --line-soft: rgba(255, 255, 255, 0.1);
 
@@ -19,6 +19,54 @@
   --script: 'Caveat', cursive;
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ============ A11Y: Skip link + visible focus ============ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  z-index: 200;
+  background: var(--neon);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  padding: 12px 18px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 12px;
+  outline: 3px solid var(--bone);
+  outline-offset: 2px;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.btn:focus-visible,
+.nav__cta:focus-visible {
+  outline: 2px solid var(--bone);
+  outline-offset: 3px;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--neon);
+  outline-offset: 1px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -249,12 +297,15 @@ button { font-family: inherit; cursor: pointer; }
     radial-gradient(ellipse at 30% 70%, rgba(80,40,80,0.4), transparent 50%),
     linear-gradient(180deg, rgba(40,20,30,0.8), rgba(0,0,0,0.95));
 }
-.hero-img--cocktail {
-  background: url('assets/photos/bartender.jpg') center / cover no-repeat, #0a0612;
+.hero-img { margin: 0; }
+.hero-img picture, .hero-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
-.hero-img--crowd {
-  background: url('assets/photos/hero-crowd.jpg') center / cover no-repeat, #050208;
-}
+.hero-img--cocktail { background: #0a0612; }
+.hero-img--crowd { background: #050208; }
 .hero-img--bar {
   background:
     radial-gradient(ellipse at 50% 60%, rgba(255,40,80,0.5), transparent 55%),
@@ -597,7 +648,8 @@ button { font-family: inherit; cursor: pointer; }
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: none;
+  outline: 2px solid var(--neon);
+  outline-offset: 1px;
   border-color: var(--neon);
   box-shadow: 0 0 0 2px rgba(46,168,255,0.18);
 }
@@ -657,6 +709,13 @@ button { font-family: inherit; cursor: pointer; }
   overflow: hidden;
   border: 1px solid var(--line-soft);
   transition: all .25s;
+  margin: 0;
+}
+.gallery-tile picture, .gallery-tile img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .gallery-tile:hover {
   transform: translateY(-2px);
@@ -927,8 +986,15 @@ button { font-family: inherit; cursor: pointer; }
 
 .home-hero__photo {
   position: relative;
-  background: url('assets/photos/hero-crowd.jpg') center / cover no-repeat, #050208;
+  background: #050208;
   overflow: hidden;
+  margin: 0;
+}
+.home-hero__photo picture, .home-hero__photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .home-hero__photo::after {
   content: '';
@@ -1266,12 +1332,17 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 1;
 }
 
-/* Real photo tiles */
+/* Real photo tiles (figure with picture/img child) */
 .photo-tile {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+.photo-tile picture, .photo-tile img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .photo-tile::after {
   /* subtle dark gradient to keep photos cohesive with the dark theme */
@@ -1280,6 +1351,12 @@ button { font-family: inherit; cursor: pointer; }
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 100%);
   pointer-events: none;
+}
+.home-spotted__feature-photo picture, .home-spotted__feature-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* ============ CONFIRMATION ============ */

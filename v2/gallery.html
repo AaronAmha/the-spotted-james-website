@@ -3,8 +3,34 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gallery — The Spotted James</title>
-<meta name="description" content="The night, captured. Tag @thespottedjames to get featured." />
+
+<title>Photos &amp; Gallery | The Spotted James — Boulder Bar Nights</title>
+<meta name="description" content="See The Spotted James in photos — DJ sets, dance floor, wedding parties, CU students. Tag @thespottedjames to get featured." />
+<meta name="keywords" content="Boulder bar photos, Boulder nightlife photos" />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/gallery.html" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Spotted James — Photo Gallery" />
+<meta property="og:description" content="The night, captured. Tag @thespottedjames to get featured." />
+<meta property="og:url" content="https://thespottedjames.com/gallery.html" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Spotted James — Photo Gallery" />
+<meta name="twitter:description" content="The night, captured. Tag @thespottedjames to get featured." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,10 +38,11 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="nav">
   <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
     <span class="nav__brand-text">
       <span class="nav__brand-the">THE</span>
       <span class="nav__brand-name">Spotted James</span>
@@ -35,32 +62,50 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="page">
+<main id="main" class="page">
   <section>
     <h1 class="page__title">GALLERY</h1>
     <p class="page__subtitle">The Night, Captured.</p>
     <p class="page__lead">Tag @thespottedjames to get<br/>featured.</p>
 
     <div class="gallery-filters">
-      <button class="gallery-filter active" data-filter="all">All</button>
-      <button class="gallery-filter" data-filter="spotted">Spotted</button>
-      <button class="gallery-filter" data-filter="nights">Nights</button>
-      <button class="gallery-filter" data-filter="friends">Friends</button>
-      <button class="gallery-filter" data-filter="djs">DJ's</button>
+      <button class="gallery-filter active" aria-pressed="true" data-filter="all">All</button>
+      <button class="gallery-filter" aria-pressed="false" data-filter="spotted">Spotted</button>
+      <button class="gallery-filter" aria-pressed="false" data-filter="nights">Nights</button>
+      <button class="gallery-filter" aria-pressed="false" data-filter="friends">Friends</button>
+      <button class="gallery-filter" aria-pressed="false" data-filter="djs">DJ's</button>
     </div>
   </section>
 
   <aside>
     <div class="gallery-grid">
-      <div class="gallery-tile" data-cat="spotted" style="background:url('assets/photos/wall-sign.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="nights" style="background:url('assets/photos/hero-crowd.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="friends" style="background:url('assets/photos/cheers.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="djs" style="background:url('assets/photos/dj.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="nights" style="background:url('assets/photos/dance-floor.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="spotted" style="background:url('assets/photos/women-sparkler.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="friends" style="background:url('assets/photos/bar-back.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="djs" style="background:url('assets/photos/storefront.jpg') center/cover no-repeat;"></div>
-      <div class="gallery-tile" data-cat="nights" style="background:url('assets/photos/bartender.jpg') center/cover no-repeat;"></div>
+      <figure class="gallery-tile" data-cat="spotted">
+        <picture><source srcset="assets/photos/wall-sign.webp" type="image/webp" /><img src="assets/photos/wall-sign.jpg" alt="The 'You've been spotted' neon sign on the wall" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="nights">
+        <picture><source srcset="assets/photos/hero-crowd.webp" type="image/webp" /><img src="assets/photos/hero-crowd.jpg" alt="Crowd at the bar with the horseshoe + star neon" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="friends">
+        <picture><source srcset="assets/photos/cheers.webp" type="image/webp" /><img src="assets/photos/cheers.jpg" alt="Friends raising a toast under bistro lights" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="djs">
+        <picture><source srcset="assets/photos/dj.webp" type="image/webp" /><img src="assets/photos/dj.jpg" alt="DJ at the decks during a set" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="nights">
+        <picture><source srcset="assets/photos/dance-floor.webp" type="image/webp" /><img src="assets/photos/dance-floor.jpg" alt="Packed dance floor under red light" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="spotted">
+        <picture><source srcset="assets/photos/women-sparkler.webp" type="image/webp" /><img src="assets/photos/women-sparkler.jpg" alt="A group of friends with a sparkler" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="friends">
+        <picture><source srcset="assets/photos/bar-back.webp" type="image/webp" /><img src="assets/photos/bar-back.jpg" alt="The Spotted James bar back with neon and lit bottles" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="djs">
+        <picture><source srcset="assets/photos/storefront.webp" type="image/webp" /><img src="assets/photos/storefront.jpg" alt="The Spotted James storefront at night with the neon sign" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="gallery-tile" data-cat="nights">
+        <picture><source srcset="assets/photos/bartender.webp" type="image/webp" /><img src="assets/photos/bartender.jpg" alt="Bartender pouring a red cocktail" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
     </div>
     <div class="gallery-load">
       <button class="btn" id="loadMore">Load More</button>
@@ -71,8 +116,12 @@
 <script>
   document.querySelectorAll('.gallery-filter').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.gallery-filter').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       const f = btn.dataset.filter;
       document.querySelectorAll('.gallery-tile').forEach(t => {
         t.style.display = (f === 'all' || t.dataset.cat === f) ? '' : 'none';

@@ -3,8 +3,38 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact — The Spotted James</title>
-<meta name="description" content="Get in touch. We'd love to hear from you. (303) 555-JAMES, info@thespottedjames.com." />
+
+<title>Contact The Spotted James | Boulder Bar — Call, Email, DM</title>
+<meta name="description" content="Call (303) 555-JAMES, email info@thespottedjames.com, or DM @thespottedjames. Open daily at 6pm in downtown Boulder." />
+<meta name="keywords" content="contact Boulder bar, The Spotted James phone" />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/contact.html" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact The Spotted James" />
+<meta property="og:description" content="Call, email, or DM. We're easy to reach." />
+<meta property="og:url" content="https://thespottedjames.com/contact.html" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contact The Spotted James" />
+<meta name="twitter:description" content="Call, email, or DM. We're easy to reach." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ContactPage","mainEntity":{"@type":"BarOrPub","@id":"https://thespottedjames.com/#bar","name":"The Spotted James","telephone":"+1-303-555-5263","email":"info@thespottedjames.com","address":{"@type":"PostalAddress","streetAddress":"1911 11th St, Suite 100","addressLocality":"Boulder","addressRegion":"CO","postalCode":"80302","addressCountry":"US"}}}
+</script>
+
 <link rel="icon" type="image/jpeg" href="assets/horse-logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,10 +42,11 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="nav">
   <a href="index.html" class="nav__brand">
-    <img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" />
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
     <span class="nav__brand-text">
       <span class="nav__brand-the">THE</span>
       <span class="nav__brand-name">Spotted James</span>
@@ -35,7 +66,7 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main class="page">
+<main id="main" class="page">
   <section>
     <h1 class="page__title">CONTACT</h1>
     <p class="page__subtitle">Get In Touch.</p>
@@ -106,9 +137,9 @@
       <div class="form-card__title">SEND US A MESSAGE</div>
       <div class="form-card__sub">&nbsp;</div>
       <div class="form-grid">
-        <div class="field field--full"><label>Name</label><input type="text" required name="name" /></div>
-        <div class="field field--full"><label>Email</label><input type="email" required name="email" /></div>
-        <div class="field field--full"><label>Message</label><textarea name="message" style="min-height:150px;"></textarea></div>
+        <div class="field field--full"><label>Name</label><input type="text" required name="name" autocomplete="name" /></div>
+        <div class="field field--full"><label>Email</label><input type="email" required name="email" autocomplete="email" /></div>
+        <div class="field field--full"><label>Message</label><textarea name="message" autocomplete="off" style="min-height:150px;"></textarea></div>
         <div class="field field--full">
           <button class="btn btn--block" type="submit">Send Message</button>
         </div>
