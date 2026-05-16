@@ -1367,3 +1367,15 @@ body::before {
   max-width: 28ch;
   letter-spacing: -0.011em;
 }
+
+.follow-strip__horseshoe img,
+.about-hero__horseshoe img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 8px var(--neon)) drop-shadow(0 0 18px rgba(46,168,255,0.5));
+}
+
+.confirmation picture { display: inline-block; margin: 0 auto 16px; }
+.confirmation picture img { width: 100%; height: auto; max-width: 230px; }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 108" role="img" aria-label="Spotted James horseshoe + star mark">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer horseshoe arc (U-shape opening upward) -->
+    <path d="M 20 14
+             C 16 36, 14 60, 26 84
+             C 34 100, 50 102, 50 102
+             C 50 102, 66 100, 74 84
+             C 86 60, 84 36, 80 14"/>
+    <!-- Inner horseshoe arc -->
+    <path d="M 32 18
+             C 28 38, 28 58, 36 78
+             C 42 90, 50 92, 50 92
+             C 50 92, 58 90, 64 78
+             C 72 58, 72 38, 68 18"/>
+    <!-- Top-left tip cap -->
+    <path d="M 17 14 L 23 14 L 23 6 L 17 6 Z"/>
+    <!-- Top-right tip cap -->
+    <path d="M 77 14 L 83 14 L 83 6 L 77 6 Z"/>
+    <!-- 5-point star (centered) -->
+    <path d="M 50 40
+             L 53.8 52
+             L 66 52
+             L 56 59.4
+             L 60 71
+             L 50 64
+             L 40 71
+             L 44 59.4
+             L 34 52
+             L 46.2 52 Z"/>
+  </g>
+  <!-- Nail dots along the horseshoe band (small filled circles) -->
+  <g fill="currentColor" stroke="currentColor" stroke-width="0.5">
+    <circle cx="25" cy="32" r="0.9"/>
+    <circle cx="24" cy="50" r="0.9"/>
+    <circle cx="27" cy="68" r="0.9"/>
+    <circle cx="34" cy="82" r="0.9"/>
+    <circle cx="44" cy="89" r="0.9"/>
+    <circle cx="56" cy="89" r="0.9"/>
+    <circle cx="66" cy="82" r="0.9"/>
+    <circle cx="73" cy="68" r="0.9"/>
+    <circle cx="76" cy="50" r="0.9"/>
+    <circle cx="75" cy="32" r="0.9"/>
+  </g>
+</svg>
