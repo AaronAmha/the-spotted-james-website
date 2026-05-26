@@ -3,304 +3,200 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Spotted James — Design Showcase</title>
-<meta name="description" content="A collection of design directions for The Spotted James. Pick a version to explore." />
-<meta name="robots" content="noindex" />
-<link rel="icon" type="image/svg+xml" href="v1/assets/horseshoe.svg" />
-<link rel="icon" type="image/png" sizes="96x96" href="v1/assets/horseshoe-96.png" />
-<link rel="apple-touch-icon" sizes="256x256" href="v1/assets/horseshoe-256.png" />
+
+<title>The Spotted James | A Boulder Bar With Good Taste — Live DJs, Pool, Dance Floor</title>
+<meta name="description" content="The Spotted James — Boulder's late-night neon bar at 1911 11th St. Live DJs, dance floor, pool, signature cocktails. Two blocks off Pearl Street, walking distance from CU Boulder and downtown hotels." />
+<meta name="keywords" content="Boulder bar, Boulder nightlife, CU Boulder bar, Pearl Street bars, Boulder dance club, Boulder cocktails, downtown Boulder bar, late night Boulder, Boulder DJ, Spotted James" />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Spotted James — Boulder's Late-Night Neon Bar" />
+<meta property="og:description" content="Live DJs, dance floor, pool. Two blocks off Pearl Street, walking distance from CU." />
+<meta property="og:url" content="https://thespottedjames.com/" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Spotted James — Boulder's Late-Night Neon Bar" />
+<meta name="twitter:description" content="Live DJs, dance floor, pool. Two blocks off Pearl Street, walking distance from CU." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/photos/hero-crowd.jpg" />
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","@id":"https://thespottedjames.com/#bar","name":"The Spotted James","alternateName":["Spotted James Boulder"],"description":"Late-night neon bar in downtown Boulder featuring pool tables, a dance floor, weekly DJs, and signature cocktails. Walking distance from CU Boulder, Pearl Street Mall, and downtown hotels.","image":"https://thespottedjames.com/assets/photos/hero-crowd.jpg","logo":"https://thespottedjames.com/assets/horse-logo.jpg","url":"https://thespottedjames.com","telephone":"+1-303-555-5263","priceRange":"$$","servesCuisine":["American","Bar Food","Cocktails"],"address":{"@type":"PostalAddress","streetAddress":"1911 11th St, Suite 100","addressLocality":"Boulder","addressRegion":"CO","postalCode":"80302","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":40.0167,"longitude":-105.2786},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"18:00","closes":"02:00"}],"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Pool Tables","value":true},{"@type":"LocationFeatureSpecification","name":"Dance Floor","value":true},{"@type":"LocationFeatureSpecification","name":"Live DJs","value":true},{"@type":"LocationFeatureSpecification","name":"VIP / Bottle Service","value":true},{"@type":"LocationFeatureSpecification","name":"Private Events","value":true},{"@type":"LocationFeatureSpecification","name":"Wheelchair Accessible","value":true}],"publicAccess":true,"smokingAllowed":false,"sameAs":["https://www.instagram.com/thespottedjames","https://www.facebook.com/thespottedjames","https://www.tiktok.com/@thespottedjames"]}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
+<link rel="icon" type="image/png" sizes="96x96" href="assets/horseshoe-96.png" />
+<link rel="apple-touch-icon" sizes="256x256" href="assets/horseshoe-256.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&family=Monoton&display=swap" rel="stylesheet" />
-
-<style>
-:root {
-  --ink: #06080F;
-  --ink-2: #0B0E18;
-  --neon-red: #FF2B4F;
-  --neon-blue: #2EA8FF;
-  --bone: #ECEFF7;
-  --smoke: rgba(236, 239, 247, 0.62);
-  --line: rgba(46, 168, 255, 0.22);
-  --line-soft: rgba(236, 239, 247, 0.08);
-  --gold: #E8B85C;
-
-  --display: 'Bebas Neue', sans-serif;
-  --neon-display: 'Monoton', cursive;
-  --script: 'Caveat', cursive;
-  --serif: 'Cormorant Garamond', serif;
-  --sans: 'Inter', system-ui, sans-serif;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { min-height: 100vh; }
-body {
-  background: radial-gradient(circle at 20% 0%, rgba(255,43,79,0.08), transparent 55%),
-              radial-gradient(circle at 80% 100%, rgba(46,168,255,0.1), transparent 55%),
-              var(--ink);
-  color: var(--bone);
-  font-family: var(--sans);
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  display: grid;
-  place-items: center;
-  padding: 60px 24px;
-  position: relative;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
-  mix-blend-mode: overlay;
-  opacity: 0.5;
-}
-a { text-decoration: none; color: inherit; }
-
-.shell { position: relative; z-index: 2; max-width: 760px; width: 100%; text-align: center; }
-
-.logo {
-  width: 96px;
-  height: auto;
-  margin: 0 auto 28px;
-  display: block;
-  filter: drop-shadow(0 0 12px rgba(46,168,255,0.5)) drop-shadow(0 0 28px rgba(46,168,255,0.25));
-}
-
-.eyebrow {
-  font-family: var(--script);
-  color: var(--gold);
-  font-size: 26px;
-  margin-bottom: 6px;
-  text-shadow: 0 0 12px rgba(232,184,92,0.3);
-}
-
-h1 {
-  font-family: var(--neon-display);
-  font-size: clamp(44px, 8vw, 80px);
-  letter-spacing: 0.04em;
-  line-height: 1;
-  color: var(--neon-blue);
-  text-shadow: 0 0 8px var(--neon-blue), 0 0 22px rgba(46,168,255,0.6), 0 0 44px rgba(46,168,255,0.4);
-  margin-bottom: 14px;
-}
-
-.sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--smoke);
-  max-width: 44ch;
-  margin: 0 auto 48px;
-}
-
-.choices {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.choice {
-  display: block;
-  padding: 28px 26px;
-  background: var(--ink-2);
-  border: 1px solid var(--line-soft);
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-  transition: all .3s;
-}
-.choice::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 100% 0%, rgba(46,168,255,0.18), transparent 60%);
-  opacity: 0;
-  transition: opacity .3s;
-}
-.choice:hover {
-  border-color: var(--neon-blue);
-  box-shadow: 0 0 22px rgba(46,168,255,0.3);
-  transform: translateY(-3px);
-}
-.choice:hover::before { opacity: 1; }
-
-.choice--v1 { border-color: rgba(255,43,79,0.25); }
-.choice--v1:hover { border-color: var(--neon-red); box-shadow: 0 0 22px rgba(255,43,79,0.35); }
-.choice--v1::before { background: radial-gradient(circle at 100% 0%, rgba(255,43,79,0.18), transparent 60%); }
-
-.choice--v3 { border-color: rgba(232,184,92,0.25); }
-.choice--v3:hover { border-color: var(--gold); box-shadow: 0 0 22px rgba(232,184,92,0.35); }
-.choice--v3::before { background: radial-gradient(circle at 100% 0%, rgba(232,184,92,0.18), transparent 60%); }
-.choice--v3 .choice__cta { color: var(--gold); text-shadow: 0 0 6px rgba(232,184,92,0.5); }
-
-.choice--v4 {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-}
-.choice--v4:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 32px rgba(255, 255, 255, 0.06);
-}
-.choice--v4::before { background: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.06), transparent 60%); }
-.choice--v4 .choice__title {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
-.choice--v4 .choice__cta {
-  color: #2997ff;
-  text-shadow: none;
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.014em;
-  text-transform: none;
-}
-
-.choice--v5 {
-  border-color: rgba(10, 132, 255, 0.32);
-  background: linear-gradient(180deg, rgba(10,132,255,0.08), rgba(10,132,255,0.02));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.choice--v5:hover {
-  border-color: rgba(10, 132, 255, 0.7);
-  box-shadow: 0 12px 40px rgba(10, 132, 255, 0.2);
-  transform: translateY(-4px);
-}
-.choice--v5::before { background: radial-gradient(circle at 100% 0%, rgba(10,132,255,0.18), transparent 60%); }
-.choice--v5 .choice__title {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
-.choice--v5 .choice__cta {
-  color: #0a84ff;
-  text-shadow: none;
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.014em;
-  text-transform: none;
-}
-
-.choice__num {
-  font-family: var(--display);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: var(--smoke);
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-.choice__title {
-  font-family: var(--display);
-  font-size: 30px;
-  letter-spacing: 0.04em;
-  color: var(--bone);
-  margin-bottom: 6px;
-  position: relative;
-  z-index: 1;
-}
-.choice__sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--smoke);
-  margin-bottom: 18px;
-  position: relative;
-  z-index: 1;
-}
-.choice__cta {
-  font-family: var(--display);
-  font-size: 12px;
-  letter-spacing: 0.24em;
-  color: var(--neon-blue);
-  text-shadow: 0 0 6px rgba(46,168,255,0.5);
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.choice--v1 .choice__cta { color: var(--neon-red); text-shadow: 0 0 6px rgba(255,43,79,0.5); }
-.choice__cta::after {
-  content: '→';
-  transition: transform .25s;
-}
-.choice:hover .choice__cta::after { transform: translateX(4px); }
-
-.foot {
-  margin-top: 48px;
-  font-family: var(--display);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: var(--smoke);
-  text-transform: uppercase;
-}
-
-@media (max-width: 480px) {
-  body { padding: 40px 18px; }
-  .choices { gap: 14px; }
-  .choice { padding: 22px 20px; }
-  .sub { margin-bottom: 32px; font-size: 16px; }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<div class="shell">
-  <picture>
-    <source srcset="v1/assets/horseshoe-144.webp" type="image/webp" />
-    <img src="v1/assets/horseshoe-144.png" alt="The Spotted James" class="logo" width="96" height="104" decoding="async" />
-  </picture>
-  <p class="eyebrow">— pick your version —</p>
-  <h1>THE SPOTTED JAMES</h1>
-  <p class="sub">Five design directions for the same Boulder bar. Tap one to explore.</p>
+<header class="nav">
+  <a href="index.html" class="nav__brand" aria-label="The Spotted James home">
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James logo" width="72" height="72" decoding="async" /></picture>
+    <span class="nav__brand-text">
+      <span class="nav__brand-the">THE</span>
+      <span class="nav__brand-name">Spotted James</span>
+    </span>
+  </a>
+  <nav aria-label="primary">
+    <ul class="nav__menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
 
-  <div class="choices">
-    <a class="choice choice--v1" href="v1/index.html">
-      <div class="choice__num">— Design 01 —</div>
-      <div class="choice__title">Single Page</div>
-      <div class="choice__sub">Long-scroll neon storyboard. Hero, weekly calendar, FAQ — one continuous experience.</div>
-      <span class="choice__cta">Open V1</span>
-    </a>
+<main id="main" class="home-wrap">
 
-    <a class="choice" href="v2/index.html">
-      <div class="choice__num">— Design 02 —</div>
-      <div class="choice__title">Multi-Page</div>
-      <div class="choice__sub">Structured layout split across Events, Drinks, Private Parties, Gallery, About, Contact, &amp; Directions.</div>
-      <span class="choice__cta">Open V2</span>
-    </a>
+  <!-- ====== HERO BAND ====== -->
+  <section class="home-hero">
+    <div class="home-hero__text">
+      <h1 class="home-hero__headline">
+        <span>A BAR WITH</span>
+        <strong>GOOD TASTE.</strong>
+        <span>A PLACE WORTH</span>
+        <strong>BEING SEEN.</strong>
+      </h1>
+      <p class="home-hero__sub">Good music. A full bar.<br/>Nights that don't end when they should.</p>
+      <div class="home-hero__buttons">
+        <a href="events.html" class="btn btn--solid">Get Spotted Tonight</a>
+        <a href="events.html" class="btn">See What's Happening</a>
+      </div>
+    </div>
 
-    <a class="choice choice--v3" href="v3/index.html">
-      <div class="choice__num">— Design 03 —</div>
-      <div class="choice__title">SEO &amp; Tourism</div>
-      <div class="choice__sub">V2 layout layered with full SEO, GEO meta, and JSON-LD. Copy tuned for CU students, wedding guests, Buffs fans, and visitors.</div>
-      <span class="choice__cta">Open V3</span>
-    </a>
+    <figure class="home-hero__photo">
+      <picture>
+        <source srcset="assets/photos/hero-crowd.webp" type="image/webp" />
+        <img src="assets/photos/hero-crowd.jpg" alt="Crowd at The Spotted James under the horseshoe + star neon" width="511" height="341" fetchpriority="high" decoding="async" />
+      </picture>
+    </figure>
+  </section>
 
-    <a class="choice choice--v4" href="v4/index.html">
-      <div class="choice__num">— Design 04 —</div>
-      <div class="choice__title">Apple-Inspired</div>
-      <div class="choice__sub">Restrained. System font, generous whitespace, full-bleed photography. The version Apple would ship.</div>
-      <span class="choice__cta">Open V4 →</span>
-    </a>
+  <!-- ====== SPOTTED BAND ====== -->
+  <section class="home-spotted">
+    <div class="home-spotted__intro">
+      <div class="home-spotted__eyebrow">YOU'VE BEEN</div>
+      <div class="home-spotted__title">SPOTTED</div>
+      <p class="home-spotted__copy">Don't just go out. Show up.</p>
+      <a href="gallery.html" class="btn btn--ghost" style="max-width: 160px;">View Gallery</a>
+    </div>
 
-    <a class="choice choice--v5" href="v5/index.html">
-      <div class="choice__num">— Design 05 —</div>
-      <div class="choice__title">Multi-Page · Apple Polish</div>
-      <div class="choice__sub">V2's structure with v4's craft — frosted glass surfaces, scroll-triggered animations, system font, pill buttons.</div>
-      <span class="choice__cta">Open V5 →</span>
-    </a>
-  </div>
+    <div class="home-spotted__collage">
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/women-sparkler.webp" type="image/webp" /><img src="assets/photos/women-sparkler.jpg" alt="A group of friends with a sparkler" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/dj.webp" type="image/webp" /><img src="assets/photos/dj.jpg" alt="DJ at the decks during a set" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/cheers.webp" type="image/webp" /><img src="assets/photos/cheers.jpg" alt="Friends clinking glasses overhead" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <figure class="photo-tile">
+        <picture><source srcset="assets/photos/dance-floor.webp" type="image/webp" /><img src="assets/photos/dance-floor.jpg" alt="Packed dance floor under red light" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+    </div>
 
-  <div class="foot">More versions coming soon</div>
-</div>
+    <div class="home-spotted__feature">
+      <div class="home-spotted__feature-label">★ Spotted Of The Week</div>
+      <figure class="home-spotted__feature-photo photo-tile">
+        <picture><source srcset="assets/photos/wall-sign.webp" type="image/webp" /><img src="assets/photos/wall-sign.jpg" alt="The 'You've been spotted' neon sign on the wall" loading="lazy" decoding="async" width="511" height="341" /></picture>
+      </figure>
+      <p class="home-spotted__feature-cap">Tag @thespottedjames<br/>to get featured + unlock perks.</p>
+    </div>
+  </section>
+
+  <!-- ====== TONIGHT BAND ====== -->
+  <section class="home-tonight">
+    <div class="home-tonight__intro">
+      <div class="home-tonight__label">TONIGHT AT</div>
+      <div class="home-tonight__name">JAMES</div>
+      <a href="events.html" class="btn btn--ghost" style="max-width: 180px;">View Full Lineup</a>
+    </div>
+
+    <article class="home-tonight__card">
+      <div class="home-tonight__card-day">Thursday</div>
+      <div class="home-tonight__card-title">THROWBACK<br/>+ HIP HOP</div>
+      <div class="home-tonight__card-time">9PM — CLOSE</div>
+    </article>
+
+    <article class="home-tonight__card">
+      <div class="home-tonight__card-day">Friday</div>
+      <div class="home-tonight__card-title">DJ SET<br/>HIGH ENERGY</div>
+      <div class="home-tonight__card-time">9PM — CLOSE</div>
+    </article>
+
+    <article class="home-tonight__card">
+      <div class="home-tonight__card-day">Saturday</div>
+      <div class="home-tonight__card-title">SPOTTED<br/>SATURDAYS <span style="color:var(--neon);font-size:18px;">★★</span></div>
+      <div class="home-tonight__card-time">9PM — CLOSE</div>
+    </article>
+  </section>
+
+  <!-- ====== FEATURES STRIP ====== -->
+  <section class="home-features">
+    <div class="home-feature">
+      <div class="home-feature__icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 17 L9 5 L20 3 L20 15" />
+          <circle cx="6.5" cy="17" r="2.5" />
+          <circle cx="17.5" cy="15" r="2.5" />
+        </svg>
+      </div>
+      <div>
+        <div class="home-feature__title">Music That Hits</div>
+        <div class="home-feature__copy">DJs and playlists that actually keep the night going.</div>
+      </div>
+    </div>
+
+    <div class="home-feature">
+      <div class="home-feature__icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 4 L18 4 L15 12 L15 19 L18 20 L18 21 L6 21 L6 20 L9 19 L9 12 Z" />
+        </svg>
+      </div>
+      <div>
+        <div class="home-feature__title">A Full Bar, Done Right</div>
+        <div class="home-feature__copy">Classics, crowd favorites, and no waiting forever for one.</div>
+      </div>
+    </div>
+
+    <div class="home-feature">
+      <div class="home-feature__icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M 7 4 Q 4 12 7 18 Q 9 21 12 21 Q 15 21 17 18 Q 20 12 17 4" />
+          <polygon points="12,9 13.5,12.5 17,12.5 14.2,14.7 15.2,18 12,16 8.8,18 9.8,14.7 7,12.5 10.5,12.5" />
+        </svg>
+      </div>
+      <div>
+        <div class="home-feature__title">The Right Crowd</div>
+        <div class="home-feature__copy">The kind of people you want to be around.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 </body>
 </html>

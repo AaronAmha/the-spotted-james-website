@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /confirmation.html
+Disallow: /versions/
 
 Sitemap: https://thespottedjames.com/sitemap.xml
