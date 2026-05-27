@@ -132,7 +132,15 @@
   </section>
 
   <aside>
-    <form class="form-card" action="confirmation.html" method="get" novalidate>
+    <form class="form-card" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <!-- Web3Forms config: replace YOUR_ACCESS_KEY_HERE with the key from web3forms.com after first signup -->
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+      <input type="hidden" name="subject" value="New Contact Message — The Spotted James" />
+      <input type="hidden" name="from_name" value="thespottedjames.com contact form" />
+      <input type="hidden" name="redirect" value="https://thespottedjames.com/confirmation.html" />
+      <!-- Honeypot spam trap (must stay empty) -->
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
       <div class="form-card__title">SEND US A MESSAGE</div>
       <div class="form-card__sub">&nbsp;</div>
       <div class="form-grid">
