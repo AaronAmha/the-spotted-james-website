@@ -408,6 +408,44 @@ button { font-family: inherit; cursor: pointer; }
   margin-top: 6px;
   font-style: italic;
 }
+/* Specials deal list inside an event card */
+.event-card__deals {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.event-card__deals li {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--smoke);
+  line-height: 1.45;
+  padding-left: 14px;
+  position: relative;
+}
+.event-card__deals li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--neon);
+  box-shadow: 0 0 5px var(--neon);
+  border-radius: 50%;
+}
+.event-card__deals .price {
+  color: var(--bone);
+  font-weight: 500;
+}
+/* Make all-day specials cards a touch taller and let the photo be optional */
+.event-card--special { min-height: 96px; }
+.event-card--special .event-card__time {
+  color: var(--neon-soft);
+  text-shadow: 0 0 5px rgba(91,190,255,0.4);
+}
 .event-card__photo {
   background-size: cover;
   background-position: center;
