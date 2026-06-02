@@ -1435,3 +1435,216 @@ button { font-family: inherit; cursor: pointer; }
 
 .confirmation picture { display: inline-block; margin: 0 auto 16px; }
 .confirmation picture img { width: 100%; height: auto; max-width: 230px; }
+
+/* ===============================================
+   PRIVATE PARTIES — conversion layout
+   =============================================== */
+.pp-hero {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+.pp-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.pp-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.85) 100%);
+}
+.pp-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 50px 48px;
+}
+.pp-hero__eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--neon);
+  text-shadow: 0 0 8px rgba(46,168,255,0.6);
+  margin-bottom: 12px;
+}
+.pp-hero__title {
+  font-family: var(--display);
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--bone);
+  margin-bottom: 16px;
+  max-width: 16ch;
+}
+.pp-hero__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(17px, 2.2vw, 22px);
+  color: rgba(255,255,255,0.9);
+  max-width: 42ch;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+.pp-hero__cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 700px) {
+  .pp-hero { min-height: 380px; }
+  .pp-hero__inner { padding: 0 22px 36px; }
+}
+
+/* Section wrapper */
+.pp-section { max-width: 1280px; margin: 0 auto; padding: 64px 50px; }
+.pp-section--tight { padding-top: 40px; padding-bottom: 40px; }
+@media (max-width: 700px) { .pp-section { padding: 44px 22px; } }
+.pp-section__head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+.pp-section__kicker {
+  font-family: var(--sans); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--neon);
+  text-shadow: 0 0 6px rgba(46,168,255,0.5); margin-bottom: 12px;
+}
+.pp-section__title {
+  font-family: var(--display); font-size: clamp(32px, 4.5vw, 52px);
+  letter-spacing: 0.03em; color: var(--bone); line-height: 1; margin-bottom: 14px;
+}
+.pp-section__lead {
+  font-family: var(--sans); font-size: 15px; color: var(--smoke);
+  line-height: 1.65; max-width: 60ch; margin: 0 auto;
+}
+
+/* What you get — benefit cards */
+.pp-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 880px) { .pp-benefits { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .pp-benefits { grid-template-columns: 1fr; } }
+.pp-benefit {
+  border: 1px solid var(--line-soft);
+  background: var(--ink-2);
+  padding: 26px 24px;
+  transition: all .25s;
+}
+.pp-benefit:hover { border-color: var(--neon); box-shadow: 0 0 18px rgba(46,168,255,0.18); transform: translateY(-2px); }
+.pp-benefit__icon { width: 30px; height: 30px; margin-bottom: 14px; }
+.pp-benefit__icon svg { width: 100%; height: 100%; fill: none; stroke: var(--neon); stroke-width: 1.5; filter: drop-shadow(0 0 5px var(--neon)); }
+.pp-benefit__title {
+  font-family: var(--display); font-size: 22px; letter-spacing: 0.04em;
+  color: var(--bone); margin-bottom: 8px; line-height: 1;
+}
+.pp-benefit__body { font-family: var(--sans); font-size: 13px; color: var(--smoke); line-height: 1.6; }
+
+/* Occasions strip with photos */
+.pp-occasions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 880px) { .pp-occasions { grid-template-columns: repeat(2, 1fr); } }
+.pp-occasion {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+}
+.pp-occasion img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: transform .5s;
+}
+.pp-occasion:hover img { transform: scale(1.06); }
+.pp-occasion__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+}
+.pp-occasion__label {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 16px 14px;
+  font-family: var(--display); font-size: 20px; letter-spacing: 0.06em;
+  color: var(--bone); text-align: center; z-index: 1;
+}
+
+/* Pricing callout */
+.pp-pricing {
+  border: 1.5px solid var(--neon);
+  background: rgba(46,168,255,0.04);
+  box-shadow: 0 0 24px rgba(46,168,255,0.12) inset;
+  padding: 36px 32px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.pp-pricing__big {
+  font-family: var(--display); font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: 0.03em; color: var(--neon);
+  text-shadow: 0 0 10px rgba(46,168,255,0.5); margin-bottom: 10px; line-height: 1.05;
+}
+.pp-pricing__body { font-family: var(--sans); font-size: 14px; color: var(--smoke); line-height: 1.6; max-width: 50ch; margin: 0 auto; }
+
+/* Trust band */
+.pp-trust {
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--ink-2);
+}
+.pp-trust__inner { max-width: 1280px; margin: 0 auto; padding: 28px 50px; text-align: center; }
+@media (max-width: 700px) { .pp-trust__inner { padding: 24px 22px; } }
+.pp-trust__label {
+  font-family: var(--sans); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); margin-bottom: 18px;
+}
+.pp-trust__logos {
+  display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: center; align-items: center;
+  font-family: var(--display); font-size: 19px; letter-spacing: 0.06em; color: rgba(255,255,255,0.85);
+}
+.pp-trust__logos span { opacity: 0.85; }
+.pp-trust__logos span::before { content: '✦'; color: var(--neon); margin-right: 10px; font-size: 12px; vertical-align: middle; opacity: 0.7; }
+
+/* Testimonials */
+.pp-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 880px) { .pp-quotes { grid-template-columns: 1fr; } }
+.pp-quote { border: 1px solid var(--line-soft); background: var(--ink-2); padding: 26px 24px; }
+.pp-quote__stars { color: var(--neon); letter-spacing: 2px; font-size: 14px; margin-bottom: 12px; text-shadow: 0 0 6px rgba(46,168,255,0.5); }
+.pp-quote__text { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--bone); line-height: 1.5; margin-bottom: 14px; }
+.pp-quote__who { font-family: var(--sans); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--smoke); }
+
+/* Booking section: form + side rail */
+.pp-book {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 50px;
+  align-items: start;
+}
+@media (max-width: 880px) { .pp-book { grid-template-columns: 1fr; padding: 44px 22px; } }
+.pp-book__rail { display: flex; flex-direction: column; gap: 18px; }
+.pp-rail-card { border: 1px solid var(--line-soft); background: var(--ink-2); padding: 22px 22px; }
+.pp-rail-card__title { font-family: var(--display); font-size: 18px; letter-spacing: 0.06em; color: var(--bone); margin-bottom: 12px; }
+.pp-rail-step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+.pp-rail-step:last-child { margin-bottom: 0; }
+.pp-rail-step__num {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  border: 1px solid var(--neon); color: var(--neon);
+  display: grid; place-items: center; font-family: var(--display); font-size: 13px;
+  text-shadow: 0 0 5px rgba(46,168,255,0.5);
+}
+.pp-rail-step__txt { font-family: var(--sans); font-size: 13px; color: var(--smoke); line-height: 1.5; }
+.pp-rail-contact a { display: flex; gap: 10px; align-items: center; font-family: var(--sans); font-size: 14px; color: var(--bone); padding: 9px 0; transition: color .2s; }
+.pp-rail-contact a:hover { color: var(--neon); }
+.pp-rail-contact svg { width: 18px; height: 18px; fill: none; stroke: var(--neon); stroke-width: 1.5; flex-shrink: 0; }
+.pp-response {
+  font-family: var(--sans); font-size: 12px; color: var(--neon);
+  text-align: center; letter-spacing: 0.04em; margin-top: 12px;
+  text-shadow: 0 0 6px rgba(46,168,255,0.35);
+}
+.pp-optional { font-weight: 300; opacity: 0.65; text-transform: none; letter-spacing: 0; font-style: italic; }
