@@ -193,9 +193,66 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: 0 0 12px rgba(46,168,255,0.4);
 }
 
+/* Hamburger toggle — hidden on desktop */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--bone);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (max-width: 880px) {
-  .nav { padding: 14px 18px; gap: 12px; flex-wrap: wrap; }
-  .nav__menu { display: none; }
+  .nav { padding: 12px 18px; gap: 12px; flex-wrap: wrap; }
+  /* Let the <nav> wrapper's <ul> participate directly in the .nav flex row */
+  .nav > nav { display: contents; }
+  .nav__toggle { display: flex; order: 3; }
+  .nav__cta { order: 2; margin-left: auto; }
+
+  /* Menu becomes a full-width dropdown below the bar */
+  .nav__menu {
+    display: none;
+    order: 4;
+    flex-basis: 100%;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin: 8px -18px -12px;
+    padding: 4px 0 8px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+  }
+  .nav__menu.is-open { display: flex; }
+  .nav__menu li { width: 100%; }
+  .nav__menu a {
+    display: block;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav__menu li:last-child a { border-bottom: none; }
+  .nav__menu a.active::after { display: none; }
+  .nav__menu a.active {
+    background: rgba(46,168,255,0.08);
+    border-left: 2px solid var(--neon);
+  }
 }
 
 /* ============ PAGE LAYOUT ============ */

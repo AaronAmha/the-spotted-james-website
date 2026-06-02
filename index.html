@@ -54,7 +54,7 @@
     </span>
   </a>
   <nav aria-label="primary">
-    <ul class="nav__menu">
+    <ul class="nav__menu" id="navmenu">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="drinks.html">Drinks</a></li>
@@ -64,6 +64,9 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
@@ -197,5 +200,23 @@
 
 </main>
 
+<script>
+  (function(){
+    var t = document.querySelector('.nav__toggle');
+    var m = document.getElementById('navmenu');
+    if (!t || !m) return;
+    t.addEventListener('click', function(){
+      var open = m.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close menu when a link is tapped
+    m.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        m.classList.remove('is-open');
+        t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
