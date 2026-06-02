@@ -144,6 +144,14 @@ button { font-family: inherit; cursor: pointer; }
   .nav__brand-name { font-size: 24px; }
   .nav__brand-the { font-size: 9px; letter-spacing: 0.28em; }
 }
+@media (max-width: 400px) {
+  .nav { padding: 10px 12px; gap: 8px; }
+  .nav__brand { gap: 8px; }
+  .nav__brand-mark { width: 46px; height: 46px; }
+  .nav__brand-name { font-size: 20px; }
+  .nav__cta { font-size: 8px; padding: 8px 10px; letter-spacing: 0.12em; }
+  .nav__toggle { width: 38px; height: 38px; padding: 8px; }
+}
 
 .nav__menu {
   display: flex;
@@ -220,11 +228,19 @@ button { font-family: inherit; cursor: pointer; }
 .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 880px) {
-  .nav { padding: 12px 18px; gap: 12px; flex-wrap: wrap; }
+  .nav { padding: 12px 16px; gap: 10px; flex-wrap: wrap; }
   /* Let the <nav> wrapper's <ul> participate directly in the .nav flex row */
   .nav > nav { display: contents; }
-  .nav__toggle { display: flex; order: 3; }
-  .nav__cta { order: 2; margin-left: auto; }
+  .nav__toggle { display: flex; order: 3; width: 42px; height: 42px; padding: 9px; flex-shrink: 0; }
+  .nav__cta {
+    order: 2;
+    margin-left: auto;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    padding: 9px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
 
   /* Menu becomes a full-width dropdown below the bar */
   .nav__menu {
