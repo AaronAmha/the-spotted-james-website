@@ -1760,26 +1760,20 @@ button { font-family: inherit; cursor: pointer; }
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
   background: var(--ink-2);
+  padding: 28px 0;
 }
-.pp-trust__inner { max-width: 1280px; margin: 0 auto; padding: 28px 50px; text-align: center; }
-@media (max-width: 700px) { .pp-trust__inner { padding: 24px 22px; } }
+@media (max-width: 700px) { .pp-trust { padding: 24px 0; } }
+.pp-trust__inner { max-width: 1280px; margin: 0 auto; padding: 0 50px; text-align: center; }
+@media (max-width: 700px) { .pp-trust__inner { padding: 0 22px; } }
 .pp-trust__label {
   font-family: var(--sans); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); margin-bottom: 18px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke);
 }
-.pp-trust__logos {
-  display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: center; align-items: center;
-  font-family: var(--display); font-size: 19px; letter-spacing: 0.06em; color: rgba(255,255,255,0.85);
-}
-.pp-trust__logos span { opacity: 0.85; }
-.pp-trust__logos span::before { content: '✦'; color: var(--neon); margin-right: 10px; font-size: 12px; vertical-align: middle; opacity: 0.7; }
 
 /* Rotating ticker of Boulder event types */
 .pp-ticker {
   position: relative;
   margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line-soft);
   overflow: hidden;
   /* fade edges so terms slide in/out cleanly */
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
