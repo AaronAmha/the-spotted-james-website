@@ -125,10 +125,10 @@
   </section>
 
   <aside>
-    <form class="form-card" action="https://api.web3forms.com/submit" method="POST" novalidate>
-      <!-- Web3Forms config: replace 63626f14-3b8c-4067-8fdb-90b2c3025fb1 with the key from web3forms.com after first signup -->
+    <form id="contact-form" class="form-card" action="https://api.web3forms.com/submit" method="POST" novalidate>
       <input type="hidden" name="access_key" value="63626f14-3b8c-4067-8fdb-90b2c3025fb1" />
-      <input type="hidden" name="subject" value="New Contact Message — The Spotted James" />
+      <!-- Subject is set dynamically from the "Reason" dropdown by the script below -->
+      <input type="hidden" name="subject" id="form-subject" value="New Contact Message — The Spotted James" />
       <input type="hidden" name="from_name" value="thespottedjames.com contact form" />
       <input type="hidden" name="redirect" value="https://thespottedjames.com/confirmation.html" />
       <!-- Honeypot spam trap (must stay empty) -->
@@ -137,11 +137,24 @@
       <div class="form-card__title">SEND US A MESSAGE</div>
       <div class="form-card__sub">&nbsp;</div>
       <div class="form-grid">
-        <div class="field field--full"><label>Name</label><input type="text" required name="name" autocomplete="name" /></div>
-        <div class="field field--full"><label>Email</label><input type="email" required name="email" autocomplete="email" /></div>
-        <div class="field field--full"><label>Message</label><textarea name="message" autocomplete="off" style="min-height:150px;"></textarea></div>
         <div class="field field--full">
-          <button class="btn btn--block" type="submit">Send Message</button>
+          <label for="reason">Reason for contact</label>
+          <select id="reason" name="reason" required>
+            <option value="" disabled selected>Choose one…</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Lost &amp; Found">Lost &amp; Found</option>
+            <option value="DJ Submission">DJ Submission</option>
+            <option value="Private Event / Booking">Private Event / Booking</option>
+            <option value="Press / Media">Press / Media</option>
+            <option value="Feedback">Feedback</option>
+          </select>
+        </div>
+        <div class="field field--full"><label for="cf-name">Name</label><input id="cf-name" type="text" required name="name" autocomplete="name" /></div>
+        <div class="field field--full"><label for="cf-email">Email</label><input id="cf-email" type="email" required name="email" autocomplete="email" /></div>
+        <div class="field field--full"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required autocomplete="off" style="min-height:150px;"></textarea></div>
+        <div class="field field--full">
+          <button id="cf-submit" class="btn btn--block" type="submit">Send Message</button>
+          <p id="cf-note" style="font-family:var(--sans); font-size:12px; color:var(--smoke); margin-top:10px; min-height:1em;" aria-live="polite"></p>
         </div>
       </div>
     </form>
@@ -162,6 +175,54 @@
         m.classList.remove('is-open');
         t.setAttribute('aria-expanded', 'false');
       }
+    });
+  })();
+</script>
+<script>
+  // Contact form: dynamic subject + spam / double-submit protection
+  (function(){
+    var form    = document.getElementById('contact-form');
+    if (!form) return;
+    var reason  = document.getElementById('reason');
+    var subject = document.getElementById('form-subject');
+    var btn     = document.getElementById('cf-submit');
+    var note    = document.getElementById('cf-note');
+
+    var COOLDOWN_MS = 60 * 1000;          // 60s between submissions
+    var LAST_KEY    = 'tsj_contact_last'; // localStorage timestamp key
+
+    // Keep the email subject in sync with the chosen reason
+    function syncSubject(){
+      var label = reason && reason.value ? reason.value : 'Contact';
+      // Decode the &amp; back to & for a clean email subject line
+      label = label.replace(/&amp;/g, '&');
+      subject.value = label + ' — The Spotted James';
+    }
+    if (reason) reason.addEventListener('change', syncSubject);
+    syncSubject();
+
+    function lastSubmit(){
+      try { return parseInt(localStorage.getItem(LAST_KEY) || '0', 10); }
+      catch (e) { return 0; }
+    }
+
+    form.addEventListener('submit', function(e){
+      // 1) Enforce cooldown — block rapid repeat submissions
+      var since = Date.now() - lastSubmit();
+      if (since < COOLDOWN_MS) {
+        e.preventDefault();
+        var wait = Math.ceil((COOLDOWN_MS - since) / 1000);
+        note.textContent = 'Please wait ' + wait + 's before sending another message.';
+        return;
+      }
+      // 2) Make sure the subject reflects the current selection
+      syncSubject();
+      // 3) Disable the button so it can't be double-clicked
+      try { localStorage.setItem(LAST_KEY, String(Date.now())); } catch (e2) {}
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      note.textContent = '';
+      // Form submits normally to Web3Forms and redirects to confirmation.html
     });
   })();
 </script>
