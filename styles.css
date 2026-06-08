@@ -1862,3 +1862,169 @@ button { font-family: inherit; cursor: pointer; }
   text-shadow: 0 0 6px rgba(46,168,255,0.35);
 }
 .pp-optional { font-weight: 300; opacity: 0.65; text-transform: none; letter-spacing: 0; font-style: italic; }
+
+/* ============================================================
+   NAME NIGHT  (name-night.html)
+   Reuses the site's tokens: --ink/--ink-2, --neon, --bone,
+   --smoke, --line/--line-soft, --display/--sans. Card idiom &
+   neon-callout recipe mirror .event-card / .happy-hour.
+   ============================================================ */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.nn-section { padding: 56px 50px; border-top: 1px solid var(--line-soft); }
+.nn-section--alt { background: var(--ink-2); }
+.nn-wrap { max-width: 1280px; margin: 0 auto; }
+.nn-head { margin-bottom: 26px; }
+.nn-h2 {
+  font-family: var(--display); font-size: clamp(34px, 6vw, 56px);
+  letter-spacing: 0.03em; line-height: 0.95; color: var(--bone); margin-bottom: 8px;
+}
+.nn-sub { font-family: var(--sans); font-size: 14px; color: var(--smoke); max-width: 60ch; line-height: 1.55; }
+
+/* This week — big neon callout (happy-hour recipe) */
+.nn-thisweek { display: flex; }
+.nn-tw-card {
+  flex: 1; padding: 32px 28px; text-align: center;
+  border: 1.5px solid var(--neon); background: rgba(46,168,255,0.04);
+  box-shadow: 0 0 24px rgba(46,168,255,0.16) inset;
+}
+.nn-tw-card__label {
+  font-family: var(--sans); font-weight: 500; font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon);
+  text-shadow: 0 0 6px rgba(46,168,255,0.5); margin-bottom: 12px;
+}
+.nn-tw-card__names {
+  font-family: var(--display); font-size: clamp(40px, 8vw, 84px);
+  letter-spacing: 0.02em; line-height: 0.95; color: var(--bone);
+  text-shadow: 0 0 12px rgba(46,168,255,0.45), 0 0 30px rgba(46,168,255,0.25);
+  margin-bottom: 12px;
+}
+.nn-tw-card__date {
+  font-family: var(--sans); font-weight: 500; font-size: 12px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke);
+}
+
+/* Search */
+.nn-search-wrap { max-width: 760px; }
+.nn-search__label {
+  display: block; font-family: var(--sans); font-weight: 500; font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); margin-bottom: 6px;
+}
+.nn-search__row { position: relative; display: flex; }
+.nn-search__input {
+  width: 100%; background: var(--ink); border: 1px solid var(--line-soft);
+  color: var(--bone); font-family: var(--display); font-size: 26px;
+  letter-spacing: 0.04em; padding: 16px 46px 16px 18px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.nn-search__input::placeholder { color: var(--smoke-soft); }
+.nn-search__input:focus {
+  outline: 2px solid var(--neon); outline-offset: 1px;
+  border-color: var(--neon); box-shadow: 0 0 0 2px rgba(46,168,255,0.18);
+}
+.nn-search__clear {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  width: 30px; height: 30px; border: none; background: transparent;
+  color: var(--smoke); font-size: 26px; line-height: 1; cursor: pointer;
+}
+.nn-search__clear:hover { color: var(--neon); }
+.nn-search__status {
+  font-family: var(--sans); font-size: 13px; color: var(--neon-soft);
+  margin-top: 12px; min-height: 1.2em; text-shadow: 0 0 6px rgba(91,190,255,0.35);
+}
+.nn-search__results { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.nn-search__cta {
+  display: inline-block; font-family: var(--sans); font-weight: 500; font-size: 12px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon);
+  border-bottom: 1px solid var(--neon); padding-bottom: 2px; width: fit-content;
+}
+.nn-hit {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 16px;
+  border: 1px solid var(--line-soft); background: var(--ink-2);
+  padding: 16px 20px; transition: all .25s;
+}
+.nn-hit:hover { border-color: var(--line); box-shadow: 0 0 12px rgba(46,168,255,0.2); }
+.nn-hit__name {
+  font-family: var(--display); font-size: 30px; letter-spacing: 0.03em; color: var(--bone);
+}
+.nn-hit__when {
+  font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--smoke); grid-column: 1 / 2;
+}
+.nn-hit__perk {
+  grid-row: 1 / 3; grid-column: 2; align-self: center;
+  font-family: var(--sans); font-weight: 500; font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon);
+  padding: 7px 12px; text-shadow: 0 0 6px rgba(46,168,255,0.4); white-space: nowrap;
+}
+
+/* Calendar */
+.nn-cal-tools { margin-bottom: 18px; max-width: 420px; }
+.nn-cal-tools__label {
+  display: block; font-family: var(--sans); font-weight: 500; font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); margin-bottom: 6px;
+}
+.nn-cal-filter {
+  width: 100%; background: var(--ink); border: 1px solid var(--line-soft);
+  color: var(--bone); font-family: var(--sans); font-size: 13px; padding: 10px 12px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.nn-cal-filter:focus {
+  outline: 2px solid var(--neon); outline-offset: 1px;
+  border-color: var(--neon); box-shadow: 0 0 0 2px rgba(46,168,255,0.18);
+}
+.nn-cal-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+}
+.nn-cal-row {
+  display: grid; grid-template-columns: 130px 1fr; align-items: center; gap: 14px;
+  border: 1px solid var(--line-soft); background: var(--ink-2);
+  padding: 14px 18px; transition: all .25s;
+}
+.nn-cal-row:hover { border-color: var(--line); box-shadow: 0 0 12px rgba(46,168,255,0.2); }
+.nn-cal-row--now {
+  border-color: var(--neon); background: rgba(46,168,255,0.05);
+  box-shadow: 0 0 14px rgba(46,168,255,0.22) inset;
+}
+.nn-cal-row__week {
+  font-family: var(--sans); font-weight: 500; font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--neon); text-shadow: 0 0 6px rgba(46,168,255,0.4);
+  line-height: 1.5;
+}
+.nn-cal-row__date { color: var(--smoke); text-shadow: none; letter-spacing: 0.1em; }
+.nn-cal-row__names {
+  font-family: var(--display); font-size: 24px; letter-spacing: 0.03em; color: var(--bone); line-height: 1;
+}
+.nn-cal-row__amp { color: var(--neon); font-size: 18px; padding: 0 2px; }
+.nn-cal-empty { font-family: var(--sans); font-size: 14px; color: var(--smoke); margin-top: 16px; }
+
+/* Forms row + rules */
+.nn-forms { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+.nn-form-note {
+  font-family: var(--sans); font-size: 12px; color: var(--neon-soft);
+  margin-top: 10px; min-height: 1em; text-shadow: 0 0 6px rgba(91,190,255,0.3);
+}
+.nn-rules { margin-top: 26px; }
+.nn-rules__txt {
+  font-family: var(--sans); font-size: 12px; color: var(--smoke); line-height: 1.6;
+  max-width: 80ch; border-left: 2px solid var(--line); padding-left: 14px;
+}
+.nn-rules__txt strong { color: var(--bone); font-weight: 500; }
+
+@media (max-width: 980px) {
+  /* collapse the section gutter in lockstep with the .page hero above (980px) to avoid an edge seam */
+  .nn-section { padding: 44px 22px; }
+}
+@media (max-width: 880px) {
+  .nn-forms { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nn-cal-grid { grid-template-columns: 1fr; }
+  .nn-cal-row { grid-template-columns: 110px 1fr; gap: 10px; }
+  .nn-hit { grid-template-columns: 1fr; }
+  .nn-hit__perk { grid-row: auto; grid-column: 1; justify-self: start; }
+}
