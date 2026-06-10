@@ -200,6 +200,25 @@
   });
 </script>
 <script>
+  // Highlight + enlarge today's event card
+  (function(){
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var today = days[new Date().getDay()];
+    var cards = document.querySelectorAll('#this-week .event-card');
+    for (var i=0;i<cards.length;i++){
+      var dayEl = cards[i].querySelector('.event-card__day');
+      if (dayEl && dayEl.textContent.trim().toLowerCase() === today.toLowerCase()){
+        cards[i].classList.add('event-card--today');
+        var tag = document.createElement('span');
+        tag.className = 'event-card__today-tag';
+        tag.textContent = 'Tonight';
+        cards[i].querySelector('.event-card__body').insertBefore(tag, cards[i].querySelector('.event-card__day'));
+        break;
+      }
+    }
+  })();
+</script>
+<script>
   (function(){
     var t = document.querySelector('.nav__toggle');
     var m = document.getElementById('navmenu');

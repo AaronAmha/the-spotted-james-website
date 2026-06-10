@@ -448,6 +448,24 @@ button { font-family: inherit; cursor: pointer; }
   border-color: var(--line);
   box-shadow: 0 0 12px rgba(46,168,255,0.2);
 }
+/* Today's card: enlarged + neon-highlighted */
+.event-card--today {
+  border-color: var(--neon);
+  background: rgba(46,168,255,0.06);
+  box-shadow: 0 0 22px rgba(46,168,255,0.28);
+  transform: scale(1.025);
+  z-index: 2;
+}
+.event-card--today .event-card__title { font-size: 36px; }
+.event-card--today .event-card__body { padding: 26px 28px; }
+.event-card__today-tag {
+  align-self: flex-start;
+  font-family: var(--sans); font-weight: 600; font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #000; background: var(--neon);
+  padding: 3px 10px; margin-bottom: 10px;
+  box-shadow: 0 0 12px rgba(46,168,255,0.6);
+}
+@media (max-width: 600px) { .event-card--today { transform: none; } }
 .event-card__body { padding: 18px 22px; display: flex; flex-direction: column; justify-content: center; }
 .event-card__day {
   font-family: var(--sans);
@@ -595,6 +613,17 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 14px;
   text-transform: uppercase;
 }
+.nn-specials-none {
+  font-family: var(--sans); font-size: 13px; color: var(--smoke);
+  margin-bottom: 14px; line-height: 1.5;
+}
+.nn-specials-toggle {
+  display: inline-block; background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--neon); padding: 0; margin-bottom: 16px;
+  text-shadow: 0 0 6px rgba(46,168,255,0.4); transition: opacity .2s;
+}
+.nn-specials-toggle:hover { opacity: 0.7; }
 .drinks-layout {
   display: grid;
   grid-template-columns: 1.6fr 1fr;

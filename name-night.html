@@ -32,7 +32,7 @@
 <meta name="twitter:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Event","name":"Monday Name Night at The Spotted James","description":"Every Monday at The Spotted James in Boulder, a featured name is up — if it's yours, your drinks are free (capped at 100 for the night). Names rotate on a 52-week calendar.","eventSchedule":{"@type":"Schedule","repeatFrequency":"P1W","byDay":"https://schema.org/Monday","startDate":"2026-06-08"},"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"BarOrPub","name":"The Spotted James","@id":"https://thespottedjames.com/#bar","address":{"@type":"PostalAddress","streetAddress":"1911 11th St, Suite 100","addressLocality":"Boulder","addressRegion":"CO","postalCode":"80302","addressCountry":"US"}},"organizer":{"@type":"BarOrPub","name":"The Spotted James","url":"https://thespottedjames.com"},"offers":{"@type":"Offer","description":"Free drinks for guests whose featured name is up that week (capped at 100 for the night).","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://thespottedjames.com/name-night.html"}}
+{"@context":"https://schema.org","@type":"Event","name":"Monday Name Night at The Spotted James","description":"Every Monday at The Spotted James in Boulder, a featured name is up — if it's yours, your drinks are free (capped at 100 for the night). Names rotate on a 52-week calendar.","eventSchedule":{"@type":"Schedule","repeatFrequency":"P1W","byDay":"https://schema.org/Monday","startDate":"2026-06-08","endDate":"2027-05-31"},"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"BarOrPub","name":"The Spotted James","@id":"https://thespottedjames.com/#bar","address":{"@type":"PostalAddress","streetAddress":"1911 11th St, Suite 100","addressLocality":"Boulder","addressRegion":"CO","postalCode":"80302","addressCountry":"US"}},"organizer":{"@type":"BarOrPub","name":"The Spotted James","url":"https://thespottedjames.com"},"offers":{"@type":"Offer","description":"Free drinks for guests whose featured name is up that week (capped at 100 for the night).","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://thespottedjames.com/name-night.html"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Name Night in Boulder?","acceptedAnswer":{"@type":"Answer","text":"Name Night is a weekly promotion at The Spotted James in downtown Boulder. Every Monday a featured first name is up — if it's yours, your drinks are free all night (capped at 100). The featured names rotate on a 52-week calendar."}},{"@type":"Question","name":"How do I know if my name is up?","acceptedAnswer":{"@type":"Answer","text":"Search your first name on the Name Night page to see which week you're up, or browse the full 52-week calendar. You can also enter your email to get a reminder when your name comes around."}},{"@type":"Question","name":"Is it really free drinks?","acceptedAnswer":{"@type":"Answer","text":"Yes. If your featured name is up that Monday, your drinks are free for the night, capped at 100. Bring your ID — names are honored at ID-exact spelling when it's busy. Must be 21+."}}]}
@@ -130,7 +130,7 @@
   <div class="nn-wrap">
     <div class="nn-head">
       <h2 id="nn-cal-h" class="nn-h2">The Name Calendar</h2>
-      <p class="nn-sub">52 weeks of names in Boulder, kicking off Monday, June 8, 2026. After week 52 it loops back to week 1.</p>
+      <p class="nn-sub">52 weeks of names in Boulder, kicking off Monday, June 8, 2026, and running through May 31, 2027.</p>
     </div>
 
     <div class="nn-cal-tools">
@@ -263,7 +263,7 @@
   </div>
 
   <div class="nn-rules nn-wrap">
-    <p class="nn-rules__txt"><strong>The fine print:</strong> Free drinks for anyone whose featured name is up that Monday, capped at 100 for the night. Bring ID — names are honored at ID-exact spelling when it's busy (Erica, not Erika). 21+. The schedule loops every 52 weeks.</p>
+    <p class="nn-rules__txt"><strong>The fine print:</strong> Free drinks for anyone whose featured name is up that Monday, capped at 100 for the night. Bring ID — names are honored at ID-exact spelling when it's busy (Erica, not Erika). 21+. A one-time 52-week run, June 8, 2026 through May 31, 2027.</p>
   </div>
 </section>
 
@@ -337,22 +337,30 @@
     function fmt(s){ var dt = parseDate(s); return MONTHS[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear(); }
     function esc(str){ return String(str).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
 
+    // Returns {entry, state} where state is 'before' | 'current' | 'ended'.
+    // The 52-week run does NOT loop — after week 52 the season has ended.
     function currentEntry(){
       var now = new Date(); now.setHours(0,0,0,0);
       var start = parseDate(NAME_NIGHT.kickoff);
       var diffWeeks = Math.floor((now - start) / (7*24*60*60*1000));
-      if (diffWeeks < 0) return DATA[0];
-      var idx = ((diffWeeks % DATA.length) + DATA.length) % DATA.length;
-      return DATA[idx];
+      if (diffWeeks < 0) return { entry: DATA[0], state: 'before' };
+      if (diffWeeks >= DATA.length) return { entry: null, state: 'ended' };
+      return { entry: DATA[diffWeeks], state: 'current' };
     }
 
     // ---- This week highlight ----
     var twNames = document.getElementById('nn-tw-names');
     var twDate  = document.getElementById('nn-tw-date');
-    var cur = currentEntry();
-    if (twNames && cur){
-      twNames.textContent = cur.g + '  &  ' + cur.b;
-      if (twDate) twDate.textContent = 'Monday ' + fmt(cur.d);
+    var curInfo = currentEntry();
+    var cur = curInfo.entry;
+    if (twNames){
+      if (curInfo.state === 'ended'){
+        twNames.textContent = "That's a wrap";
+        if (twDate) twDate.textContent = 'This season of Name Night has ended — check back for the next round.';
+      } else if (cur){
+        twNames.textContent = cur.g + '  &  ' + cur.b;
+        if (twDate) twDate.textContent = (curInfo.state === 'before' ? 'Kicks off Monday ' : 'Monday ') + fmt(cur.d);
+      }
     }
 
     // ---- Where's my name search (min length 2; renders ALL matching names per week) ----
@@ -407,8 +415,8 @@
     var calStat= document.getElementById('nn-cal-status');
     var rows   = grid ? Array.prototype.slice.call(grid.querySelectorAll('.nn-cal-row')) : [];
 
-    // Mark the current week
-    if (cur){
+    // Mark the current week (only while the season is actually running)
+    if (cur && curInfo.state === 'current'){
       for (var r=0;r<rows.length;r++){
         if (parseInt(rows[r].getAttribute('data-week'),10) === cur.w){
           rows[r].classList.add('nn-cal-row--now');

@@ -87,10 +87,12 @@
 
   <div class="drinks-layout">
     <div>
-      <div class="drink-list-title">WEEKLY DRINK SPECIALS</div>
+      <div class="drink-list-title" id="nn-specials-title">TONIGHT'S SPECIAL</div>
+      <p id="nn-specials-none" class="nn-specials-none" hidden></p>
+      <button id="nn-specials-toggle" class="nn-specials-toggle" type="button" hidden>See the full week →</button>
 
-      <div class="event-list">
-        <article class="event-card event-card--special">
+      <div class="event-list" id="nn-specials-list">
+        <article class="event-card event-card--special" data-day="Tuesday">
           <div class="event-card__body">
             <div class="event-card__day">Tuesday</div>
             <div class="event-card__title">TEQUILA TUESDAY</div>
@@ -101,7 +103,7 @@
           </div>
         </article>
 
-        <article class="event-card event-card--special">
+        <article class="event-card event-card--special" data-day="Thursday">
           <div class="event-card__body">
             <div class="event-card__day">Thursday</div>
             <div class="event-card__title">THIRSTY THURSDAY <span style="opacity:.7; font-weight:400;">· College Night</span></div>
@@ -113,7 +115,7 @@
           </div>
         </article>
 
-        <article class="event-card event-card--special">
+        <article class="event-card event-card--special" data-day="Friday">
           <div class="event-card__body">
             <div class="event-card__day">Friday</div>
             <div class="event-card__title">DJ SET · HIGH ENERGY</div>
@@ -125,7 +127,7 @@
           </div>
         </article>
 
-        <article class="event-card event-card--special">
+        <article class="event-card event-card--special" data-day="Saturday">
           <div class="event-card__body">
             <div class="event-card__day">Saturday</div>
             <div class="event-card__title">SPOTTED SATURDAYS</div>
@@ -137,7 +139,7 @@
           </div>
         </article>
 
-        <article class="event-card event-card--special">
+        <article class="event-card event-card--special" data-day="Sunday">
           <div class="event-card__body">
             <div class="event-card__day">Sunday</div>
             <div class="event-card__title">SUNDAY FUNDAY <span style="opacity:.7; font-weight:400;">· Industry Night</span></div>
@@ -169,6 +171,52 @@
   </div>
 </section>
 
+<script>
+  // Drinks page: show only TODAY's special by default, with a toggle for the full week.
+  (function(){
+    var list   = document.getElementById('nn-specials-list');
+    if (!list) return;
+    var title  = document.getElementById('nn-specials-title');
+    var none   = document.getElementById('nn-specials-none');
+    var toggle = document.getElementById('nn-specials-toggle');
+    var cards  = Array.prototype.slice.call(list.querySelectorAll('.event-card'));
+    var days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var today  = days[new Date().getDay()];
+
+    var todayCard = null;
+    for (var i=0;i<cards.length;i++){
+      if (cards[i].getAttribute('data-day') === today){ todayCard = cards[i]; break; }
+    }
+
+    var showingAll = false;
+    function render(){
+      if (showingAll){
+        title.textContent = 'WEEKLY DRINK SPECIALS';
+        none.hidden = true;
+        for (var i=0;i<cards.length;i++) cards[i].hidden = false;
+        toggle.textContent = 'Show only tonight →';
+        toggle.hidden = false;
+        return;
+      }
+      // collapsed: only today's special
+      for (var j=0;j<cards.length;j++) cards[j].hidden = (cards[j] !== todayCard);
+      if (todayCard){
+        title.textContent = "TONIGHT'S SPECIAL";
+        none.hidden = true;
+      } else {
+        // No drink special today (Mon / Wed) — say so, keep cards hidden
+        title.textContent = 'DRINK SPECIALS';
+        none.textContent = 'No drink special tonight — full bar’s open. Here’s the rest of the week:';
+        none.hidden = false;
+        for (var k=0;k<cards.length;k++) cards[k].hidden = false; // show the week so the page isn't empty
+      }
+      toggle.textContent = 'See the full week →';
+      toggle.hidden = !todayCard; // only need the toggle when we collapsed to one
+    }
+    toggle.addEventListener('click', function(){ showingAll = !showingAll; render(); });
+    render();
+  })();
+</script>
 <script>
   (function(){
     var t = document.querySelector('.nav__toggle');
