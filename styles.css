@@ -2014,6 +2014,8 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid var(--line-soft); background: var(--ink-2);
   padding: 14px 18px; transition: all .25s;
 }
+/* hidden attribute must beat the grid display above when filtering */
+.nn-cal-row[hidden] { display: none !important; }
 .nn-cal-row:hover { border-color: var(--line); box-shadow: 0 0 12px rgba(46,168,255,0.2); }
 .nn-cal-row--now {
   border-color: var(--neon); background: rgba(46,168,255,0.05);

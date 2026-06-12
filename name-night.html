@@ -266,7 +266,7 @@
   </div>
 
   <div class="nn-rules nn-wrap">
-    <p class="nn-rules__txt"><strong>The fine print:</strong> Free drinks for anyone whose featured name is up that Monday, capped at 100 for the night. Bring ID — names are honored at ID-exact spelling when it's busy (Erica, not Erika). 21+. A one-time 52-week run, June 8, 2026 through May 31, 2027.</p>
+    <p class="nn-rules__txt"><strong>The fine print:</strong> Free drinks for anyone whose featured name is up that Monday, capped at 100 for the night. Bring ID — names are honored at ID-exact spelling when it's busy (Erica, not Erika). 21+.</p>
   </div>
 </section>
 
@@ -440,7 +440,7 @@
         row.hidden = !match;
         if (match) shown++;
       }
-      empty.hidden = shown !== 0;
+      if (empty) empty.hidden = shown !== 0;
       if (calStat) calStat.textContent = q ? (shown ? 'Showing ' + shown + ' of ' + rows.length + ' weeks.' : 'No names match that search.') : '';
     }
     if (filter){ filter.addEventListener('input', filterCal); }
