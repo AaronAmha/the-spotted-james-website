@@ -9,7 +9,7 @@
       </feMerge>
     </filter>
   </defs>
-  <g filter="url(#glow)" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <g filter="url(#glow)" fill="none" stroke="#2EA8FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
     <!-- Outer horseshoe arc (U-shape opening upward) -->
     <path d="M 20 14
              C 16 36, 14 60, 26 84
@@ -39,7 +39,7 @@
              L 46.2 52 Z"/>
   </g>
   <!-- Nail dots along the horseshoe band (small filled circles) -->
-  <g fill="currentColor" stroke="currentColor" stroke-width="0.5">
+  <g fill="#2EA8FF" stroke="#2EA8FF" stroke-width="0.5">
     <circle cx="25" cy="32" r="0.9"/>
     <circle cx="24" cy="50" r="0.9"/>
     <circle cx="27" cy="68" r="0.9"/>
