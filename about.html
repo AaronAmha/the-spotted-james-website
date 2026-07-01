@@ -36,9 +36,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
 <link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<!-- Self-hosted fonts: preload the two render-critical faces, then load styles.css -->
+<link rel="preload" href="assets/fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
       <li><a href="drinks.html">Drinks</a></li>
       <li><a href="parties.html">Private Parties</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="giveaway.html">Giveaway</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>

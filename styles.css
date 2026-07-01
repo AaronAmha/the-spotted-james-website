@@ -2,6 +2,74 @@
    THE SPOTTED JAMES — v2 (exact replica)
    =============================================== */
 
+/* ============ SELF-HOSTED FONTS ============
+   Local woff2 (latin subset). Eliminates the render-blocking
+   Google Fonts request. font-display:swap + metric-matched
+   fallback faces below keep CLS near zero. */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/bebas-neue-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('assets/fonts/caveat.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/cormorant-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/cormorant-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url('assets/fonts/inter.woff2') format('woff2');
+}
+
+/* ---- Metric-matched fallbacks: text occupies the same box
+        before and after the web font loads, so swapping in the
+        real font does not shift layout (kills CLS). ---- */
+@font-face {
+  font-family: 'Bebas Neue Fallback';
+  src: local('Arial Narrow'), local('Arial');
+  size-adjust: 84%;
+  ascent-override: 110%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Cormorant Fallback';
+  src: local('Times New Roman'), local('Georgia');
+  size-adjust: 95%;
+  ascent-override: 92%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
 :root {
   --ink: #000000;
   --ink-2: #06080F;
@@ -15,10 +83,10 @@
   --line: rgba(46, 168, 255, 0.4);
   --line-soft: rgba(255, 255, 255, 0.1);
 
-  --display: 'Bebas Neue', sans-serif;
+  --display: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
   --script: 'Caveat', cursive;
-  --serif: 'Cormorant Garamond', serif;
-  --sans: 'Inter', system-ui, sans-serif;
+  --serif: 'Cormorant Garamond', 'Cormorant Fallback', serif;
+  --sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
 }
 
 /* ============ A11Y: Skip link + visible focus ============ */

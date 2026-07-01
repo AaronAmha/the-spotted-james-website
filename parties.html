@@ -36,9 +36,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
 <link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<!-- Self-hosted fonts: preload the two render-critical faces, then load styles.css -->
+<link rel="preload" href="assets/fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="styles.css" />
 
 <!-- JSON-LD: EventVenue + private-event service -->
@@ -147,6 +147,7 @@
       <li><a href="drinks.html">Drinks</a></li>
       <li><a href="parties.html" class="active">Private Parties</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="giveaway.html">Giveaway</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -355,14 +356,14 @@
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="form-grid">
-          <div class="field"><label>Full Name *</label><input type="text" required name="name" autocomplete="name" /></div>
-          <div class="field"><label>Email *</label><input type="email" required name="email" autocomplete="email" /></div>
-          <div class="field"><label>Phone *</label><input type="tel" required name="phone" autocomplete="tel" /></div>
-          <div class="field"><label>Date Requested *</label><input type="date" required name="date" /></div>
-          <div class="field"><label>Headcount *</label><input type="number" min="1" required name="headcount" /></div>
+          <div class="field"><label for="pp-name">Full Name *</label><input id="pp-name" type="text" required name="name" autocomplete="name" /></div>
+          <div class="field"><label for="pp-email">Email *</label><input id="pp-email" type="email" required name="email" autocomplete="email" /></div>
+          <div class="field"><label for="pp-phone">Phone *</label><input id="pp-phone" type="tel" required name="phone" autocomplete="tel" /></div>
+          <div class="field"><label for="pp-date">Date Requested *</label><input id="pp-date" type="date" required name="date" /></div>
+          <div class="field"><label for="pp-headcount">Headcount *</label><input id="pp-headcount" type="number" min="1" required name="headcount" /></div>
           <div class="field">
-            <label>Occasion *</label>
-            <select required name="occasion">
+            <label for="pp-occasion">Occasion *</label>
+            <select id="pp-occasion" required name="occasion">
               <option value="">Select…</option>
               <option>Bachelorette / Bachelor</option>
               <option>Birthday</option>
@@ -374,11 +375,11 @@
               <option>Other</option>
             </select>
           </div>
-          <div class="field field--full"><label>Tell us about your night <span class="pp-optional">(optional)</span></label><textarea name="notes" autocomplete="off" placeholder="Date flexibility, vibe, drink packages, anything we should know…"></textarea></div>
-          <div class="field"><label>Budget / Person <span class="pp-optional">(optional)</span></label><input type="text" name="budget" autocomplete="off" placeholder="Your estimated budget" /></div>
+          <div class="field field--full"><label for="pp-notes">Tell us about your night <span class="pp-optional">(optional)</span></label><textarea id="pp-notes" name="notes" autocomplete="off" placeholder="Date flexibility, vibe, drink packages, anything we should know…"></textarea></div>
+          <div class="field"><label for="pp-budget">Budget / Person <span class="pp-optional">(optional)</span></label><input id="pp-budget" type="text" name="budget" autocomplete="off" placeholder="Your estimated budget" /></div>
           <div class="field">
-            <label>Heard About Us <span class="pp-optional">(optional)</span></label>
-            <select name="source">
+            <label for="pp-source">Heard About Us <span class="pp-optional">(optional)</span></label>
+            <select id="pp-source" name="source">
               <option value="">Select…</option>
               <option>Instagram</option>
               <option>Friend / Word of mouth</option>
