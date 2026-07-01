@@ -72,6 +72,16 @@
   .gv-form .field input { font-size: 16px; }         /* prevent iOS zoom */
   .gv-form .btn--block { min-height: 52px; }          /* comfortable tap target */
 
+  /* Marketing consent disclosure — small, muted, centered under the button */
+  .gv-consent {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--smoke);
+    opacity: 0.75;
+    text-align: center;
+  }
+
   /* Success ("GOOD LUCK!") — hidden until JS reveals it */
   .gv-success { display: none; text-align: center; padding: 8px 0; }
   .gv-success__big {
@@ -160,6 +170,7 @@
 
           <div class="field field--full">
             <button id="giveaway-submit" class="btn btn--block" type="submit">Enter The Giveaway</button>
+            <p class="gv-consent">By entering, you agree we may contact you about this giveaway and send occasional events &amp; specials from The Spotted James. You can unsubscribe anytime.</p>
             <p id="giveaway-error" class="gv-error" role="alert" aria-live="assertive">Something went wrong. Please check your info and try again.</p>
           </div>
         </div>
