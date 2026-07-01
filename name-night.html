@@ -478,6 +478,42 @@
 
     function validEmail(v){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); }
 
+    // ---- Also save a copy to the Google Sheet (Apps Script Web App) ----
+    // Fires during the native submit; sendBeacon guarantees dispatch before the
+    // page navigates to confirmation.html. Fire-and-forget: never touches or
+    // blocks the Web3Forms email submit.
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzYvBtiOikiBWXKettdis79KxJhCMA1edOZNbgSym8zm72qjg1moD-GQgVF3GNuA0kP/exec';
+
+    function sendToSheet(fields){
+      try {
+        var params = new URLSearchParams();
+        params.set('source', 'name-night');
+        params.set('page', location.href);
+        params.set('ts', new Date().toISOString());
+        Object.keys(fields || {}).forEach(function(k){
+          if (fields[k] != null) params.set(k, String(fields[k]));
+        });
+        var body = params.toString();
+
+        // sendBeacon sets the request Content-Type to the Blob's type. A
+        // urlencoded Blob keeps this a CORS "simple request" (no OPTIONS
+        // preflight, which Apps Script can't answer) and lands the fields in
+        // e.parameter server-side. The browser dispatches it independently of
+        // the document, so navigating to confirmation.html can't cancel it.
+        var blob = new Blob([body], { type: 'application/x-www-form-urlencoded;charset=UTF-8' });
+        if (navigator.sendBeacon && navigator.sendBeacon(SCRIPT_URL, blob)) return;
+
+        // Fallback if sendBeacon is missing or the UA queue rejects (returns false).
+        fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: body
+        }).catch(function(){});
+      } catch (_) { /* never block the native submit */ }
+    }
+
     // reminders: sync opt-in to hidden field, validate, personalize subject
     var optin = document.getElementById('nn-remind-optin');
     var optinHidden = document.getElementById('nn-remind-optin-hidden');
@@ -497,6 +533,13 @@
         var subj = document.getElementById('nn-remind-subject');
         if (nm && subj) subj.value = 'Name Night Reminder Signup (' + nm + ') — The Spotted James';
         if (optin && optinHidden) optinHidden.value = optin.checked ? 'yes' : 'no';
+        // ALSO save to the Google Sheet ("Name Night Reminders" tab)
+        sendToSheet({
+          formType: 'reminder',
+          name: nm,
+          email: document.getElementById('nn-remind-email').value.trim(),
+          marketing_opt_in: (optin && optin.checked) ? 'yes' : 'no'
+        });
       });
 
     guardForm('nn-suggest-form','nn-suggest-submit','nn-suggest-note','tsj_nn_suggest',
@@ -506,7 +549,16 @@
         if (!nm) return 'Please enter a name to add.';
         if (em && !validEmail(em)) return 'Please enter a valid email (or leave it blank).';
         return '';
-      }, null);
+      },
+      function(){
+        // ALSO save to the Google Sheet ("Name Suggestions" tab)
+        sendToSheet({
+          formType: 'suggestion',
+          suggested_name: document.getElementById('nn-suggest-name').value.trim(),
+          email: document.getElementById('nn-suggest-email').value.trim(),
+          message: document.getElementById('nn-suggest-msg').value.trim()
+        });
+      });
 
     // Deep-link ?name=Foo
     try {

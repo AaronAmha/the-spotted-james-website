@@ -44,7 +44,24 @@
   /* Giveaway-only tweaks; everything else reuses the shared styles.css.
      Mobile-first (scanned via QR on phones): single column, big tap
      targets, 16px inputs so iOS doesn't zoom on focus. */
-  .gv-wrap { max-width: 560px; margin: 0 auto; }
+
+  /* The shared .page class is a 2-column grid (heading | image) meant for the
+     Name Night hero. This is a single centered form, so override .page here to
+     one centered column at every width. Scoped to .gv-page so no other page
+     is affected. */
+  main.gv-page {
+    display: block;                 /* cancel the .page grid */
+    max-width: 620px;               /* comfortable reading/measure for the form */
+    margin-inline: auto;            /* center the column in the viewport */
+    padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 40px) clamp(48px, 8vw, 80px);
+    text-align: center;
+  }
+  .gv-wrap { width: 100%; margin: 0 auto; }
+
+  /* Center the shared .page__lead (it ships with a left-biased max-width) and
+     give the title comfortable size on this standalone page. */
+  main.gv-page .page__lead { max-width: 46ch; margin-inline: auto; margin-bottom: 28px; }
+  main.gv-page .page__title { font-size: clamp(44px, 12vw, 88px); }
   .gv-logo {
     display: block;
     width: 108px; height: 108px;
@@ -107,7 +124,7 @@
   <a href="directions.html" class="nav__cta">Get Directions</a>
 </header>
 
-<main id="main" class="page page--narrow">
+<main id="main" class="page page--narrow gv-page">
   <div class="gv-wrap">
     <section style="text-align:center;">
       <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="gv-logo" alt="The Spotted James" width="108" height="108" decoding="async" /></picture>
