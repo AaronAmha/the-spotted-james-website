@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /confirmation.html
-
-Sitemap: https://thespottedjames.com/sitemap.xml
