@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Drinks &amp; Daily Specials | The Spotted James — Boulder Bar</title>
-<meta name="description" content="Weekly drink specials at The Spotted James in downtown Boulder: $3 off Tequila Tuesday, Thirsty Thursday college night, $4 Sunday Funday You-Call-It, and Happy Hour Fri & Sat 4–7PM with $4 wells. Full bar." />
+<meta name="description" content="Weekly drink specials at The Spotted James in downtown Boulder: drink-free Name Night Mondays, $3 off Tequila Tuesday, Thirsty Thursday college night, $4 Sunday Funday, and Happy Hour Fri & Sat 4–7PM. Full bar." />
 <meta name="keywords" content="Boulder bar drinks, cheap drinks Boulder, Boulder happy hour, downtown Boulder bar, fast bar Boulder, Pearl Street happy hour" />
 <meta name="author" content="The Spotted James" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -21,18 +21,18 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Drinks & Daily Specials at The Spotted James" />
-<meta property="og:description" content="Weekly drink specials in downtown Boulder — Tequila Tuesday, Thirsty Thursday, Sunday Funday, and Happy Hour Fri & Sat 4–7PM." />
+<meta property="og:description" content="Weekly drink specials in downtown Boulder — Name Night Mondays, Tequila Tuesday, Thirsty Thursday, Sunday Funday, and Happy Hour Fri & Sat 4–7PM." />
 <meta property="og:url" content="https://thespottedjames.com/drinks.html" />
 <meta property="og:site_name" content="The Spotted James" />
 <meta property="og:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Drinks & Daily Specials at The Spotted James" />
-<meta name="twitter:description" content="Weekly drink specials in downtown Boulder — Tequila Tuesday, Thirsty Thursday, Sunday Funday, and Happy Hour Fri & Sat 4–7PM." />
+<meta name="twitter:description" content="Weekly drink specials in downtown Boulder — Name Night Mondays, Tequila Tuesday, Thirsty Thursday, Sunday Funday, and Happy Hour Fri & Sat 4–7PM." />
 <meta name="twitter:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Menu","name":"The Spotted James — Weekly Drink Specials","provider":{"@type":"BarOrPub","name":"The Spotted James","@id":"https://thespottedjames.com/#bar"},"description":"Weekly drink specials and happy hour at The Spotted James in downtown Boulder. Tequila Tuesday, Thirsty Thursday college night, Sunday Funday, and Happy Hour Friday & Saturday 4-7PM.","hasMenuSection":[{"@type":"MenuSection","name":"Weekly Specials","hasMenuItem":[{"@type":"MenuItem","name":"Tequila Tuesday — $3 off all tequila"},{"@type":"MenuItem","name":"Thirsty Thursday College Night — $4 wells & pickle shots, $5 High Noons & green tea shots, $6 Vodka Red Bull"},{"@type":"MenuItem","name":"Sunday Funday / Industry Night — $4 You Call It"}]},{"@type":"MenuSection","name":"Happy Hour (Fri & Sat 4–7PM)","hasMenuItem":[{"@type":"MenuItem","name":"Wells","offers":{"@type":"Offer","price":"4","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Labatt Blue","offers":{"@type":"Offer","price":"4","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Micro Brews","offers":{"@type":"Offer","price":"5","priceCurrency":"USD"}}]}]}
+{"@context":"https://schema.org","@type":"Menu","name":"The Spotted James — Weekly Drink Specials","provider":{"@type":"BarOrPub","name":"The Spotted James","@id":"https://thespottedjames.com/#bar"},"description":"Weekly drink specials and happy hour at The Spotted James in downtown Boulder. Name Night Monday, Tequila Tuesday, Thirsty Thursday college night, Sunday Funday, and Happy Hour Friday & Saturday 4-7PM.","hasMenuSection":[{"@type":"MenuSection","name":"Weekly Specials","hasMenuItem":[{"@type":"MenuItem","name":"Name Night Monday — drink free if your name's on the list (capped at 100); $9 shot & beer combos"},{"@type":"MenuItem","name":"Tequila Tuesday — $3 off all tequila"},{"@type":"MenuItem","name":"Thirsty Thursday College Night — $4 wells & pickle shots, $5 High Noons & green tea shots, $6 Vodka Red Bull"},{"@type":"MenuItem","name":"Sunday Funday / Industry Night — $4 You Call It"}]},{"@type":"MenuSection","name":"Happy Hour (Fri & Sat 4–7PM)","hasMenuItem":[{"@type":"MenuItem","name":"Wells","offers":{"@type":"Offer","price":"4","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Labatt Blue","offers":{"@type":"Offer","price":"4","priceCurrency":"USD"}},{"@type":"MenuItem","name":"Micro Brews","offers":{"@type":"Offer","price":"5","priceCurrency":"USD"}}]}]}
 </script>
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -95,6 +95,18 @@
       <button id="nn-specials-toggle" class="nn-specials-toggle" type="button" hidden>See the full week →</button>
 
       <div class="event-list" id="nn-specials-list">
+        <article class="event-card event-card--special" data-day="Monday">
+          <div class="event-card__body">
+            <div class="event-card__day">Monday</div>
+            <div class="event-card__title">NAME NIGHT</div>
+            <ul class="event-card__deals">
+              <li>If your name's on the list, show your ID &amp; <span class="price">drink free</span> (capped at 100)</li>
+              <li><span class="price">$9</span> shot &amp; beer combos — Twisted Tea + Tito's, or Budweiser + Jim Beam</li>
+            </ul>
+            <div class="event-card__note"><a href="name-night.html" style="color:var(--neon-soft);">Is your name up this week? Check the list →</a></div>
+          </div>
+        </article>
+
         <article class="event-card event-card--special" data-day="Tuesday">
           <div class="event-card__body">
             <div class="event-card__day">Tuesday</div>
@@ -207,7 +219,7 @@
         title.textContent = "TONIGHT'S SPECIAL";
         none.hidden = true;
       } else {
-        // No drink special today (Mon / Wed) — say so, keep cards hidden
+        // No drink special today (Wed) — say so, keep cards hidden
         title.textContent = 'DRINK SPECIALS';
         none.textContent = 'No drink special tonight — full bar’s open. Here’s the rest of the week:';
         none.hidden = false;
@@ -238,5 +250,53 @@
     });
   })();
 </script>
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__col footer__col--brand">
+      <div class="footer__brand">THE SPOTTED <span>JAMES</span></div>
+      <p class="footer__tag">Good music. A full bar. Downtown Boulder — walking distance from CU, just off Pearl Street.</p>
+    </div>
+    <div class="footer__col">
+      <h5>Visit</h5>
+      <ul>
+        <li>1911 11th St, Suite 100</li>
+        <li>Boulder, CO 80302</li>
+        <li><a href="directions.html">Get Directions</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>Hours</h5>
+      <ul>
+        <li>Mon–Thu · 6PM–2AM</li>
+        <li>Fri–Sun · 4PM–2AM</li>
+        <li>Happy Hour Fri &amp; Sat · 4–7PM</li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:thespottedjames@gmail.com">thespottedjames@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/thespottedjames" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@thespottedjames" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="name-night.html">Name Night</a></li>
+        <li><a href="musical-bingo.html">Musical Bingo</a></li>
+        <li><a href="drinks.html">Drinks</a></li>
+        <li><a href="parties.html">Private Parties</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 The Spotted James · Boulder, CO</span>
+    <span>21+ · Please Drink Responsibly</span>
+  </div>
+</footer>
 </body>
 </html>

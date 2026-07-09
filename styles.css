@@ -2127,3 +2127,111 @@ button { font-family: inherit; cursor: pointer; }
   .nn-hit { grid-template-columns: 1fr; }
   .nn-hit__perk { grid-row: auto; grid-column: 1; justify-self: start; }
 }
+
+/* ============ FOOTER (sitewide) ============ */
+.footer {
+  border-top: 1px solid var(--line-soft);
+  background: var(--ink);
+  padding: 54px 50px 30px;
+  margin-top: 60px;
+}
+.footer__grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 36px;
+  padding-bottom: 38px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.footer__brand {
+  font-family: var(--display);
+  font-size: 26px;
+  letter-spacing: 0.12em;
+  color: var(--bone);
+}
+.footer__brand span { color: var(--neon); text-shadow: 0 0 12px rgba(46,168,255,0.5); }
+.footer__tag {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--smoke-soft);
+  line-height: 1.7;
+  max-width: 300px;
+  margin-top: 10px;
+}
+.footer__col h5 {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--neon);
+  margin: 0 0 14px;
+}
+.footer__col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.footer__col li, .footer__col a {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--smoke);
+  text-decoration: none;
+  line-height: 1.5;
+}
+.footer__col a { transition: color .25s; }
+.footer__col a:hover { color: var(--neon-soft); }
+.footer__bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--smoke-soft);
+}
+@media (max-width: 880px) {
+  .footer { padding: 44px 24px 26px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer__col--brand { grid-column: 1 / -1; }
+}
+@media (max-width: 400px) {
+  .footer__grid { grid-template-columns: 1fr; }
+}
+
+/* ─────────────────────────────────────────
+   MUSICAL BINGO PAGE
+───────────────────────────────────────── */
+.mb-steps { display: flex; gap: 14px; flex-wrap: wrap; }
+.mb-steps .nn-tw-card { min-width: 230px; }
+.mb-steps .nn-tw-card__names { font-size: clamp(32px, 4.5vw, 54px); }
+.mb-themes { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 18px 0 0; }
+.mb-theme {
+  font-family: var(--sans); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone);
+  border: 1px solid var(--line-soft); background: var(--ink-2); padding: 10px 16px;
+}
+.mb-prose p {
+  font-family: var(--sans); font-size: 15px; line-height: 1.7;
+  color: var(--smoke); max-width: 72ch; margin: 0 0 16px;
+}
+.mb-prose strong { color: var(--bone); font-weight: 600; }
+.mb-prose a { color: var(--neon); }
+.mb-flyer { margin: 26px 0 0; border: 1px solid var(--line-soft); max-width: 860px; }
+.mb-flyer img { width: 100%; height: auto; display: block; }
+.mb-faq { max-width: 860px; }
+.mb-faq details { border: 1px solid var(--line-soft); background: var(--ink-2); margin-bottom: 10px; }
+.mb-faq summary {
+  cursor: pointer; padding: 16px 18px;
+  font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--bone);
+}
+.mb-faq summary:hover { color: var(--neon); }
+.mb-faq details p {
+  padding: 0 18px 16px; margin: 0;
+  font-family: var(--sans); font-size: 14px; line-height: 1.65; color: var(--smoke); max-width: 70ch;
+}
+@media (max-width: 720px) {
+  .mb-steps { flex-direction: column; }
+}
+.nn-section { scroll-margin-top: 96px; }
