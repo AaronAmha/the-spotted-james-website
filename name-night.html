@@ -95,7 +95,7 @@
   <div class="nn-wrap">
     <div class="nn-head">
       <h2 id="nn-thisweek-h" class="nn-h2">Up This Monday</h2>
-      <p class="nn-sub">This week's names drink free at The Spotted James in Boulder.</p>
+      <p class="nn-sub">If your name's up Monday, you drink free at The Spotted James in Boulder.</p>
     </div>
     <div class="nn-thisweek">
       <div class="nn-tw-card">
@@ -340,20 +340,32 @@
     function fmt(s){ var dt = parseDate(s); return MONTHS[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear(); }
     function esc(str){ return String(str).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
 
-    // Returns {entry, state} where state is 'before' | 'current' | 'ended'.
-    // The 52-week run does NOT loop — after week 52 the season has ended.
+    // Returns {entry, state} where state is 'before' | 'tonight' | 'upcoming' | 'ended'.
+    // On Monday (through the 2am close) the card features TONIGHT's names; from
+    // Tuesday on it rolls forward to the UPCOMING Monday's names, so the page
+    // never advertises a night that already happened. The 52-week run does NOT
+    // loop — once the last Monday has passed, the season has ended.
     function currentEntry(){
-      var now = new Date(); now.setHours(0,0,0,0);
+      // "Bar time": Monday night runs until the 2am close, so shift the clock
+      // back 2 hours — at 1am Tuesday the featured names are still tonight's.
+      var now = new Date(Date.now() - 2*60*60*1000);
+      now.setHours(0,0,0,0);
       var start = parseDate(NAME_NIGHT.kickoff);
-      var diffWeeks = Math.floor((now - start) / (7*24*60*60*1000));
-      if (diffWeeks < 0) return { entry: DATA[0], state: 'before' };
-      if (diffWeeks >= DATA.length) return { entry: null, state: 'ended' };
-      return { entry: DATA[diffWeeks], state: 'current' };
+      // Round to whole days first so a DST hour can't skew the week math.
+      var days = Math.round((now - start) / (24*60*60*1000));
+      if (days < 0) return { entry: DATA[0], state: 'before' };
+      var diffWeeks = Math.floor(days / 7);
+      var isMonday = now.getDay() === 1;
+      // Tue–Sun: advance to the next Monday's entry.
+      var idx = isMonday ? diffWeeks : diffWeeks + 1;
+      if (idx >= DATA.length) return { entry: null, state: 'ended' };
+      return { entry: DATA[idx], state: isMonday ? 'tonight' : 'upcoming' };
     }
 
-    // ---- This week highlight ----
+    // ---- Featured-names card (tonight on Monday, next Monday afterward) ----
     var twNames = document.getElementById('nn-tw-names');
     var twDate  = document.getElementById('nn-tw-date');
+    var twLabel = document.querySelector('.nn-tw-card__label');
     var curInfo = currentEntry();
     var cur = curInfo.entry;
     if (twNames){
@@ -362,7 +374,12 @@
         if (twDate) twDate.textContent = 'This season of Name Night has ended — check back for the next round.';
       } else if (cur){
         twNames.textContent = cur.g + '  &  ' + cur.b;
-        if (twDate) twDate.textContent = (curInfo.state === 'before' ? 'Kicks off Monday ' : 'Monday ') + fmt(cur.d);
+        if (twDate) twDate.textContent =
+          (curInfo.state === 'before' ? 'Kicks off Monday ' :
+           curInfo.state === 'tonight' ? 'Tonight · Monday ' : 'Monday ') + fmt(cur.d);
+        if (twLabel) twLabel.textContent =
+          curInfo.state === 'tonight' ? 'Tonight' :
+          curInfo.state === 'before' ? 'Kicking Off' : 'Up Next';
       }
     }
 
@@ -418,13 +435,16 @@
     var calStat= document.getElementById('nn-cal-status');
     var rows   = grid ? Array.prototype.slice.call(grid.querySelectorAll('.nn-cal-row')) : [];
 
-    // Mark the current week (only while the season is actually running)
-    if (cur && curInfo.state === 'current'){
+    // Mark the featured week (only while the season is actually running):
+    // tonight's row on Monday, the upcoming Monday's row the rest of the week.
+    if (cur && (curInfo.state === 'tonight' || curInfo.state === 'upcoming')){
       for (var r=0;r<rows.length;r++){
         if (parseInt(rows[r].getAttribute('data-week'),10) === cur.w){
           rows[r].classList.add('nn-cal-row--now');
           var wk = rows[r].querySelector('.nn-cal-row__week');
-          if (wk && wk.firstChild) wk.insertBefore(document.createTextNode('This week · '), wk.firstChild);
+          if (wk && wk.firstChild) wk.insertBefore(
+            document.createTextNode(curInfo.state === 'tonight' ? 'Tonight · ' : 'Up next · '),
+            wk.firstChild);
           break;
         }
       }
