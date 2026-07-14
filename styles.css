@@ -882,6 +882,8 @@ button { font-family: inherit; cursor: pointer; }
 #contact-form.is-jobs .jobs-only { display: flex; }
 #contact-form .dj-only { display: none; }
 #contact-form.is-dj .dj-only { display: flex; }
+#contact-form .djsub-only { display: none; }
+#contact-form.is-djsub .djsub-only { display: flex; }
 .field input[type="file"] { padding: 7px 9px; cursor: pointer; }
 .field input[type="file"]::file-selector-button {
   background: transparent;

@@ -170,11 +170,11 @@
             <option value="Other">Other</option>
           </select>
         </div>
-        <div class="field jobs-only"><label for="jf-phone">Phone</label><input id="jf-phone" type="tel" name="phone" autocomplete="tel" required disabled /></div>
-        <div class="field jobs-only"><label for="jf-availability">Availability</label><input id="jf-availability" type="text" name="availability" placeholder="e.g. Thu–Sat nights, weekends" required disabled /></div>
+        <div class="field jobs-only djsub-only"><label for="jf-phone">Phone</label><input id="jf-phone" type="tel" name="phone" autocomplete="tel" required disabled /></div>
+        <div class="field jobs-only djsub-only"><label for="jf-availability">Availability</label><input id="jf-availability" type="text" name="availability" placeholder="e.g. Thu–Sat nights, weekends" required disabled /></div>
         <div class="field jobs-only"><label for="jf-start">Earliest start date</label><input id="jf-start" type="date" name="earliest_start_date" disabled /></div>
-        <div class="field field--full jobs-only"><label for="jf-socials">Social links</label><input id="jf-socials" type="text" name="social_links" placeholder="Instagram / TikTok / LinkedIn — handles or links" required disabled /></div>
-        <div class="field field--full dj-only">
+        <div class="field field--full jobs-only djsub-only"><label for="jf-socials">Social links</label><input id="jf-socials" type="text" name="social_links" placeholder="Instagram / TikTok / LinkedIn — handles or links" required disabled /></div>
+        <div class="field field--full dj-only djsub-only">
           <label for="jf-mix">Your mix</label>
           <input id="jf-mix" type="text" name="dj_mix_link" placeholder="SoundCloud / Mixcloud / Drive / Dropbox link" required disabled />
           <span class="field__hint">Link to a roughly 45-minute mix we can stream or download (MP3 preferred).</span>
@@ -184,7 +184,7 @@
           <input id="jf-resume" type="file" name="attachment" accept=".pdf,.doc,.docx" required disabled />
           <span class="field__hint">PDF or Word doc, 5 MB max.</span>
         </div>
-        <div class="field field--full field--checkbox jobs-only">
+        <div class="field field--full field--checkbox jobs-only djsub-only">
           <input id="jf-age" type="checkbox" name="confirms_21_or_older" value="Yes" required disabled />
           <label for="jf-age" style="text-transform:none; letter-spacing:0; font-size:11px;">I confirm I'm 21 or older.</label>
         </div>
@@ -228,9 +228,8 @@
 
     var position   = document.getElementById('jf-position');
     var resume     = document.getElementById('jf-resume');
-    var mix        = document.getElementById('jf-mix');
     var msgLabel   = document.getElementById('cf-message-label');
-    var jobsInputs = form.querySelectorAll('.jobs-only input, .jobs-only select');
+    var togglable  = form.querySelectorAll('.jobs-only, .dj-only, .djsub-only');
 
     var COOLDOWN_MS  = 60 * 1000;          // 60s between submissions
     var LAST_KEY     = 'tsj_contact_last'; // localStorage timestamp key
@@ -238,12 +237,7 @@
 
     function isJobs(){ return reason && reason.value === 'Job Application'; }
     function isDJ(){ return isJobs() && position && position.value === 'DJ'; }
-
-    // DJ applicants must include a link to a ~45 min mix
-    function syncDJ(){
-      form.classList.toggle('is-dj', isDJ());
-      if (mix) mix.disabled = !isDJ();
-    }
+    function isDJSub(){ return reason && reason.value === 'DJ Submission'; }
 
     // Keep the email subject in sync with the chosen reason
     function syncSubject(){
@@ -258,19 +252,28 @@
       subject.value = label + ' — The Spotted James';
     }
 
-    // Show job fields only for job applications; disabled fields are
-    // skipped by validation and left out of the submitted email
-    function syncJobs(){
-      var jobs = isJobs();
+    // Reveal extra fields per reason: Jobs shows the application fields,
+    // DJ applicants and DJ Submissions both show the mix link + DJ fields.
+    // Disabled fields are skipped by validation and left out of the email.
+    function syncFields(){
+      var jobs = isJobs(), dj = isDJ(), djsub = isDJSub();
       form.classList.toggle('is-jobs', jobs);
-      for (var i = 0; i < jobsInputs.length; i++) jobsInputs[i].disabled = !jobs;
-      if (msgLabel) msgLabel.textContent = jobs ? 'Tell us about yourself & your experience' : 'Message';
+      form.classList.toggle('is-dj', dj);
+      form.classList.toggle('is-djsub', djsub);
+      for (var i = 0; i < togglable.length; i++){
+        var f = togglable[i];
+        var show = (jobs  && f.classList.contains('jobs-only')) ||
+                   (dj    && f.classList.contains('dj-only'))   ||
+                   (djsub && f.classList.contains('djsub-only'));
+        var els = f.querySelectorAll('input, select');
+        for (var j = 0; j < els.length; j++) els[j].disabled = !show;
+      }
+      if (msgLabel) msgLabel.textContent = (jobs || djsub) ? 'Tell us about yourself & your experience' : 'Message';
     }
 
-    if (reason) reason.addEventListener('change', function(){ syncJobs(); syncDJ(); syncSubject(); });
-    if (position) position.addEventListener('change', function(){ syncDJ(); syncSubject(); });
-    syncJobs();
-    syncDJ();
+    if (reason) reason.addEventListener('change', function(){ syncFields(); syncSubject(); });
+    if (position) position.addEventListener('change', function(){ syncFields(); syncSubject(); });
+    syncFields();
     syncSubject();
 
     function lastSubmit(){
