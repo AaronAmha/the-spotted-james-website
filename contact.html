@@ -164,7 +164,6 @@
             <option value="" disabled selected>Choose one…</option>
             <option value="Bartender">Bartender</option>
             <option value="Barback">Barback</option>
-            <option value="Server / Cocktail">Server / Cocktail</option>
             <option value="Security / Door">Security / Door</option>
             <option value="DJ">DJ</option>
             <option value="Promo / Social Media">Promo / Social Media</option>
@@ -175,6 +174,11 @@
         <div class="field jobs-only"><label for="jf-availability">Availability</label><input id="jf-availability" type="text" name="availability" placeholder="e.g. Thu–Sat nights, weekends" required disabled /></div>
         <div class="field jobs-only"><label for="jf-start">Earliest start date</label><input id="jf-start" type="date" name="earliest_start_date" disabled /></div>
         <div class="field field--full jobs-only"><label for="jf-socials">Social links</label><input id="jf-socials" type="text" name="social_links" placeholder="Instagram / TikTok / LinkedIn — handles or links" required disabled /></div>
+        <div class="field field--full dj-only">
+          <label for="jf-mix">Your mix</label>
+          <input id="jf-mix" type="text" name="dj_mix_link" placeholder="SoundCloud / Mixcloud / Drive / Dropbox link" required disabled />
+          <span class="field__hint">Link to a roughly 45-minute mix we can stream or download (MP3 preferred).</span>
+        </div>
         <div class="field field--full jobs-only">
           <label for="jf-resume">Resume</label>
           <input id="jf-resume" type="file" name="attachment" accept=".pdf,.doc,.docx" required disabled />
@@ -224,6 +228,7 @@
 
     var position   = document.getElementById('jf-position');
     var resume     = document.getElementById('jf-resume');
+    var mix        = document.getElementById('jf-mix');
     var msgLabel   = document.getElementById('cf-message-label');
     var jobsInputs = form.querySelectorAll('.jobs-only input, .jobs-only select');
 
@@ -232,6 +237,13 @@
     var MAX_RESUME_B = 5 * 1024 * 1024;    // Web3Forms attachment limit: 5 MB
 
     function isJobs(){ return reason && reason.value === 'Job Application'; }
+    function isDJ(){ return isJobs() && position && position.value === 'DJ'; }
+
+    // DJ applicants must include a link to a ~45 min mix
+    function syncDJ(){
+      form.classList.toggle('is-dj', isDJ());
+      if (mix) mix.disabled = !isDJ();
+    }
 
     // Keep the email subject in sync with the chosen reason
     function syncSubject(){
@@ -255,9 +267,10 @@
       if (msgLabel) msgLabel.textContent = jobs ? 'Tell us about yourself & your experience' : 'Message';
     }
 
-    if (reason) reason.addEventListener('change', function(){ syncJobs(); syncSubject(); });
-    if (position) position.addEventListener('change', syncSubject);
+    if (reason) reason.addEventListener('change', function(){ syncJobs(); syncDJ(); syncSubject(); });
+    if (position) position.addEventListener('change', function(){ syncDJ(); syncSubject(); });
     syncJobs();
+    syncDJ();
     syncSubject();
 
     function lastSubmit(){
