@@ -877,6 +877,28 @@ button { font-family: inherit; cursor: pointer; }
 /* Date input fix */
 .field input[type="date"] { color-scheme: dark; }
 
+/* Job application fields (contact form) — revealed when Reason = Jobs */
+#contact-form .jobs-only { display: none; }
+#contact-form.is-jobs .jobs-only { display: flex; }
+.field input[type="file"] { padding: 7px 9px; cursor: pointer; }
+.field input[type="file"]::file-selector-button {
+  background: transparent;
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.field__hint {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--smoke);
+}
+
 /* ============ GALLERY ============ */
 .gallery-filters {
   display: flex;
