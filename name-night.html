@@ -44,7 +44,9 @@
 <link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
 <!-- Self-hosted fonts: preload the two render-critical faces, then load styles.css -->
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" href="assets/real/dancefloor-hands-700w.webp" imagesrcset="assets/real/dancefloor-hands-400w.webp 400w, assets/real/dancefloor-hands-700w.webp 700w, assets/real/dancefloor-hands-1000w.webp 1000w, assets/real/dancefloor-hands.webp 1600w" imagesizes="(max-width: 980px) calc(100vw - 44px), 40vw" />
 <link rel="preload" href="assets/fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/caveat.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -86,7 +88,7 @@
   </section>
 
   <aside>
-    <figure class="hero-img hero-img--crowd"><picture><source srcset="assets/real/dancefloor-hands.webp" type="image/webp" /><img src="assets/real/dancefloor-hands.jpg" alt="Crowd celebrating on the dance floor at The Spotted James in Boulder" loading="eager" decoding="async" width="511" height="341" /></picture></figure>
+    <figure class="hero-img hero-img--crowd"><picture><source type="image/webp" srcset="assets/real/dancefloor-hands-400w.webp 400w, assets/real/dancefloor-hands-700w.webp 700w, assets/real/dancefloor-hands-1000w.webp 1000w, assets/real/dancefloor-hands.webp 1600w" sizes="(max-width: 980px) calc(100vw - 44px), 40vw" /><img src="assets/real/dancefloor-hands-700w.jpg" srcset="assets/real/dancefloor-hands-400w.jpg 400w, assets/real/dancefloor-hands-700w.jpg 700w, assets/real/dancefloor-hands-1000w.jpg 1000w, assets/real/dancefloor-hands.jpg 1600w" sizes="(max-width: 980px) calc(100vw - 44px), 40vw" alt="Crowd celebrating on the dance floor at The Spotted James in Boulder" loading="eager" decoding="sync" fetchpriority="high" width="800" height="1000" /></picture></figure>
   </aside>
 </main>
 
@@ -275,63 +277,34 @@
   // The 52-row calendar itself is static HTML above (crawlable, no layout shift);
   // this array powers search and the live "this week" highlight only.
   // Source of truth also kept at assets/name-night.json.
-  var NAME_NIGHT = {
-    kickoff: "2026-06-08",
-    schedule: [
-      {w:1,d:"2026-06-08",g:"Vanessa",b:"Trevor"},
-      {w:2,d:"2026-06-15",g:"Erica",b:"Spencer"},
-      {w:3,d:"2026-06-22",g:"Courtney",b:"Garrett"},
-      {w:4,d:"2026-06-29",g:"Brittany",b:"Colton"},
-      {w:5,d:"2026-07-06",g:"Marissa",b:"Tanner"},
-      {w:6,d:"2026-07-13",g:"Kelsey",b:"Derek"},
-      {w:7,d:"2026-07-20",g:"Lindsey",b:"Cody"},
-      {w:8,d:"2026-07-27",g:"Bianca",b:"Travis"},
-      {w:9,d:"2026-08-03",g:"Heather",b:"Wesley"},
-      {w:10,d:"2026-08-10",g:"Tiffany",b:"Marcus"},
-      {w:11,d:"2026-08-17",g:"Andrea",b:"Victor"},
-      {w:12,d:"2026-08-24",g:"Monica",b:"Oscar"},
-      {w:13,d:"2026-08-31",g:"Diana",b:"Diego"},
-      {w:14,d:"2026-09-07",g:"Melissa",b:"Xavier"},
-      {w:15,d:"2026-09-14",g:"Crystal",b:"Julian"},
-      {w:16,d:"2026-09-21",g:"Cassandra",b:"Adrian"},
-      {w:17,d:"2026-09-28",g:"Whitney",b:"Damian"},
-      {w:18,d:"2026-10-05",g:"Jenna",b:"Omar"},
-      {w:19,d:"2026-10-12",g:"Carly",b:"Miles"},
-      {w:20,d:"2026-10-19",g:"Holly",b:"Graham"},
-      {w:21,d:"2026-10-26",g:"Naomi",b:"Bennett"},
-      {w:22,d:"2026-11-02",g:"Leah",b:"Sawyer"},
-      {w:23,d:"2026-11-09",g:"Veronica",b:"Bryce"},
-      {w:24,d:"2026-11-16",g:"Sabrina",b:"Blake"},
-      {w:25,d:"2026-11-23",g:"Adriana",b:"Chase"},
-      {w:26,d:"2026-11-30",g:"Selena",b:"Grant"},
-      {w:27,d:"2026-12-07",g:"Priscilla",b:"Drew"},
-      {w:28,d:"2026-12-14",g:"Mariah",b:"Vincent"},
-      {w:29,d:"2026-12-21",g:"Camille",b:"Dominic"},
-      {w:30,d:"2026-12-28",g:"Daphne",b:"Mateo"},
-      {w:31,d:"2027-01-04",g:"Renee",b:"Santiago"},
-      {w:32,d:"2027-01-11",g:"Tessa",b:"Roman"},
-      {w:33,d:"2027-01-18",g:"Clara",b:"Theo"},
-      {w:34,d:"2027-01-25",g:"Nora",b:"Simon"},
-      {w:35,d:"2027-02-01",g:"Quinn",b:"Ian"},
-      {w:36,d:"2027-02-08",g:"Reese",b:"Shane"},
-      {w:37,d:"2027-02-15",g:"Lauren",b:"Dustin"},
-      {w:38,d:"2027-02-22",g:"Camila",b:"Brett"},
-      {w:39,d:"2027-03-01",g:"Daniela",b:"Curtis"},
-      {w:40,d:"2027-03-08",g:"Regina",b:"Malcolm"},
-      {w:41,d:"2027-03-15",g:"Felicia",b:"Andre"},
-      {w:42,d:"2027-03-22",g:"Bailey",b:"Darius"},
-      {w:43,d:"2027-03-29",g:"Cassidy",b:"Quincy"},
-      {w:44,d:"2027-04-05",g:"Delaney",b:"Felix"},
-      {w:45,d:"2027-04-12",g:"Annika",b:"Leo"},
-      {w:46,d:"2027-04-19",g:"Esther",b:"Maxwell"},
-      {w:47,d:"2027-04-26",g:"Lydia",b:"Lorenzo"},
-      {w:48,d:"2027-05-03",g:"Joanna",b:"Rafael"},
-      {w:49,d:"2027-05-10",g:"Tara",b:"Sergio"},
-      {w:50,d:"2027-05-17",g:"Dana",b:"Emilio"},
-      {w:51,d:"2027-05-24",g:"Phoebe",b:"Reid"},
-      {w:52,d:"2027-05-31",g:"Sienna",b:"Brock"}
-    ]
-  };
+  // Name Night data — derived from the static 52-row calendar in the HTML above,
+  // which is the single source of truth (crawlable, no duplication, no drift).
+  // Mirror also kept at assets/name-night.json for external consumers.
+  var NAME_NIGHT = (function(){
+    var MON = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+    function pad(n){ return (n<10?'0':'')+n; }
+    var rows = document.querySelectorAll('.nn-cal-row[data-week]');
+    var schedule = [];
+    Array.prototype.forEach.call(rows, function(li){
+      var dEl = li.querySelector('.nn-cal-row__date');
+      var iso = '';
+      if (dEl) {
+        var m = /([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})/.exec(dEl.textContent || '');
+        if (m && MON[m[1]] !== undefined) iso = m[3]+'-'+pad(MON[m[1]]+1)+'-'+pad(+m[2]);
+      }
+      var names = (li.querySelector('.nn-cal-row__names') || {}).textContent || '';
+      var parts = names.split('&');
+      schedule.push({
+        w: +li.getAttribute('data-week'),
+        d: iso,
+        g: (parts[0]||'').trim(),
+        b: (parts[1]||'').trim()
+      });
+    });
+    schedule.sort(function(a,b){ return a.w - b.w; });
+    return { kickoff: (schedule[0] && schedule[0].d) || '2026-06-08', schedule: schedule };
+  })();
+
 
   (function(){
     var DATA = NAME_NIGHT.schedule;
