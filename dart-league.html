@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Dart League Signup — The Spotted James | Boulder</title>
+<meta name="description" content="Sign up for the Boulder dart league forming at The Spotted James. Drop your name and skill level. Enough interest and we start a season." />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/dart-league.html" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Dart League Signup — The Spotted James" />
+<meta property="og:description" content="A dart league is forming at The Spotted James in Boulder. Put your name in — enough interest and we run a season." />
+<meta property="og:url" content="https://thespottedjames.com/dart-league.html" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dart League Signup — The Spotted James" />
+<meta name="twitter:description" content="A dart league is forming in Boulder. Put your name in." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<!-- Self-hosted fonts: preload the render-critical faces, then load styles.css -->
+<link rel="preload" href="assets/fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/caveat.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* Dart-league-only tweaks; everything else reuses the shared styles.css.
+     Mobile-first (this page is reached by QR code on a phone): single
+     column, big tap targets, 16px inputs so iOS doesn't zoom on focus. */
+
+  /* The shared .page class is a 2-column grid (heading | image) meant for the
+     Name Night hero. This is a single centered form, so override .page here to
+     one centered column at every width. Scoped to .dl-page so no other page
+     is affected. */
+  main.dl-page {
+    display: block;                 /* cancel the .page grid */
+    max-width: 620px;               /* comfortable measure for the form */
+    margin-inline: auto;            /* center the column in the viewport */
+    padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 40px) clamp(48px, 8vw, 80px);
+    text-align: center;
+  }
+  .dl-wrap { width: 100%; margin: 0 auto; }
+
+  /* Center the shared .page__lead (it ships with a left-biased max-width) and
+     give the title comfortable size on this standalone page. */
+  main.dl-page .page__lead { max-width: 46ch; margin-inline: auto; margin-bottom: 22px; }
+  main.dl-page .page__title { font-size: clamp(44px, 12vw, 88px); }
+  .dl-logo {
+    display: block;
+    width: 108px; height: 108px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .dl-form .field input,
+  .dl-form .field select,
+  .dl-form .field textarea { font-size: 16px; }      /* prevent iOS zoom */
+  .dl-form .btn--block { min-height: 52px; }         /* comfortable tap target */
+  .dl-form .field select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  /* "How it works" strip — sets expectations before the form so nobody
+     thinks they're committing to a season that doesn't exist yet. */
+  .dl-how {
+    list-style: none;
+    margin: 0 auto 26px;
+    padding: 0;
+    max-width: 46ch;
+    display: grid;
+    gap: 10px;
+    text-align: left;
+  }
+  .dl-how li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+  .dl-how li::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 0.62em;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    opacity: 0.75;
+  }
+
+  /* Checkbox row: box beside its label, not stacked under it. */
+  .dl-form .field--checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+  }
+  .dl-form .field--checkbox input { width: auto; margin-top: 2px; flex: none; }
+  .dl-form .field--checkbox label {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* Consent / fine print — small, muted, centered under the button */
+  .dl-consent {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--smoke);
+    opacity: 0.75;
+    text-align: center;
+  }
+
+  /* Success ("YOU'RE ON THE BOARD!") — hidden until JS reveals it */
+  .dl-success { display: none; text-align: center; padding: 8px 0; }
+  .dl-success__big {
+    font-family: 'Bebas Neue', system-ui, sans-serif;
+    font-size: clamp(44px, 12vw, 76px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .dl-success__sub { opacity: 0.75; font-size: 15px; line-height: 1.6; }
+
+  /* Inline error (hidden until JS reveals it) */
+  .dl-error {
+    display: none;
+    margin-top: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #ff6e8a;
+  }
+  @media (max-width: 480px) { .dl-logo { width: 92px; height: 92px; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
+    <span class="nav__brand-text">
+      <span class="nav__brand-the">THE</span>
+      <span class="nav__brand-name">Spotted James</span>
+    </span>
+  </a>
+  <nav>
+    <ul class="nav__menu" id="navmenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="name-night.html">Name Night</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main id="main" class="page page--narrow dl-page">
+  <div class="dl-wrap">
+    <section style="text-align:center;">
+      <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="dl-logo" alt="The Spotted James" width="108" height="108" decoding="async" /></picture>
+      <h1 class="page__title">DART<br/>LEAGUE</h1>
+      <p class="page__lead">We're putting together a dart league at The Spotted James in Boulder. Put your name in below. Get enough players and we run a real season, right here on 11th Street.</p>
+
+      <ul class="dl-how">
+        <li>Add your name. It takes about twenty seconds and costs nothing.</li>
+        <li>We count the interest and pick the night, Sunday or Wednesday, that works for the most people.</li>
+        <li>If it's a go, everyone on this list hears first with the format, the schedule and the entry fee.</li>
+        <li>No commitment yet. Signing up just says you'd play.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="dl-form-h" style="margin-top:8px;">
+      <h2 id="dl-form-h" class="sr-only">Sign up for the dart league</h2>
+
+      <form class="form-card dl-form" id="dart-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Web3Forms: delivers each signup to the booking inbox. -->
+        <input type="hidden" name="access_key" value="63626f14-3b8c-4067-8fdb-90b2c3025fb1" />
+        <input type="hidden" name="subject" value="Dart League Signup — The Spotted James" />
+        <input type="hidden" name="from_name" value="thespottedjames.com dart league" />
+        <input type="hidden" name="source" value="qr-dart-league" />
+        <!-- Web3Forms' own spam trap; must stay unchecked. -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-card__title">PUT ME ON THE LIST</div>
+        <div class="form-card__sub">Interest list only. We'll email you once we know if the league is happening.</div>
+
+        <div class="form-grid">
+          <div class="field field--full">
+            <label for="dl-name">Name</label>
+            <input id="dl-name" type="text" name="name" required autocomplete="name" placeholder="Your name" />
+          </div>
+          <div class="field field--full">
+            <label for="dl-email">Email</label>
+            <input id="dl-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@email.com" />
+          </div>
+          <div class="field field--full">
+            <label for="dl-phone">Phone <span style="opacity:.7;">(optional)</span></label>
+            <input id="dl-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" />
+          </div>
+          <div class="field field--full">
+            <label for="dl-skill">How's your game?</label>
+            <select id="dl-skill" name="skill_level" required>
+              <option value="">Pick one</option>
+              <option value="New to darts">New to darts, here for fun</option>
+              <option value="Casual">Casual, I play at the bar</option>
+              <option value="Solid">Solid, I know the games</option>
+              <option value="Competitive">Competitive, I've played in a league</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="dl-night">Which night works better?</label>
+            <select id="dl-night" name="preferred_night" required>
+              <option value="">Pick one</option>
+              <option value="Sunday">Sunday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Either works">Either one works for me</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="dl-notes">Anything else <span style="opacity:.7;">(optional)</span></label>
+            <textarea id="dl-notes" name="message" autocomplete="off" placeholder="Bringing a team? Have a format you love? Tell us."></textarea>
+          </div>
+
+          <div class="field field--full field--checkbox">
+            <input id="dl-teammates" type="checkbox" />
+            <label for="dl-teammates">I'd bring at least one other player with me.</label>
+          </div>
+          <!-- Mirrors the checkbox above; checkboxes post nothing when
+               unchecked, so JS keeps this hidden field in sync and every
+               submission carries an explicit yes or no. -->
+          <input type="hidden" name="brings_teammates" id="dl-teammates-hidden" value="no" />
+
+          <div class="field field--full field--checkbox">
+            <input id="dl-21" type="checkbox" required />
+            <label for="dl-21">I'm 21 or over. (The Spotted James is a 21+ venue.)</label>
+          </div>
+          <input type="hidden" name="confirmed_21_plus" id="dl-21-hidden" value="no" />
+
+          <!-- Honeypot: bots fill this; humans never see it -->
+          <div class="field field--full" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+            <label for="dl-gotcha">Leave this field empty</label>
+            <input id="dl-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="field field--full">
+            <button id="dart-submit" class="btn btn--block" type="submit">Add Me To The League</button>
+            <p class="dl-consent">By signing up you agree we may contact you about the dart league and send occasional events &amp; specials from The Spotted James. You can unsubscribe anytime.</p>
+            <p id="dart-error" class="dl-error" role="alert" aria-live="assertive">Something went wrong. Please check your info and try again.</p>
+          </div>
+        </div>
+
+        <!-- Success — revealed in place after a successful signup -->
+        <div id="dart-success" class="dl-success" role="status" aria-live="polite" tabindex="-1">
+          <div class="dl-success__big">YOU'RE ON<br/>THE BOARD!</div>
+          <p class="dl-success__sub">You're on the list. We'll email you as soon as we know the night and the format. Come throw a few in the meantime.</p>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<!-- ============================================================
+     DART LEAGUE FORM WIRING — vanilla JS, no deps.
+     POSTs the signup to Web3Forms as JSON, then reveals the success
+     message in place. The form keeps its action/method attributes so
+     it still submits (to confirmation.html) if JS never runs.
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  var ENDPOINT   = 'https://api.web3forms.com/submit';
+  var TIMEOUT_MS = 12000;
+
+  function init() {
+    var form    = document.getElementById('dart-form');
+    var btn     = document.getElementById('dart-submit');
+    var success = document.getElementById('dart-success');
+    var errorEl = document.getElementById('dart-error');
+    if (!form || !btn || !success || !errorEl) return;
+
+    // Without JS the form posts normally and Web3Forms redirects; with JS
+    // we handle it inline, so only add the redirect field in the no-JS case.
+    var redirect = document.createElement('input');
+    redirect.type = 'hidden';
+    redirect.name = 'redirect';
+    redirect.value = 'https://thespottedjames.com/confirmation.html';
+    form.appendChild(redirect);
+
+    var teammates       = document.getElementById('dl-teammates');
+    var teammatesHidden = document.getElementById('dl-teammates-hidden');
+    var age             = document.getElementById('dl-21');
+    var ageHidden       = document.getElementById('dl-21-hidden');
+
+    // Keep the hidden mirrors in sync so unchecked boxes still post a value.
+    function syncPair(box, hidden) {
+      if (!box || !hidden) return;
+      var apply = function () { hidden.value = box.checked ? 'yes' : 'no'; };
+      box.addEventListener('change', apply);
+      apply();
+    }
+    syncPair(teammates, teammatesHidden);
+    syncPair(age, ageHidden);
+
+    var btnDefaultText = btn.textContent;
+    var grid = form.querySelector('.form-grid');
+    // Explicit display values — '' would revert to the stylesheet's
+    // display:none, so the message would never actually show.
+    var show = function (el) { el.style.display = 'block'; };
+    var hide = function (el) { el.style.display = 'none'; };
+
+    function setSubmitting(on) {
+      btn.disabled = on;
+      btn.setAttribute('aria-busy', on ? 'true' : 'false');
+      btn.textContent = on ? 'Submitting…' : btnDefaultText;
+    }
+    var validEmail = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+
+    function fail(msg) { setSubmitting(false); errorEl.textContent = msg; show(errorEl); }
+    function succeed() {
+      hide(errorEl);
+      if (grid) hide(grid);                        // hide the fields + button
+      show(success);                               // <-- the confirmation
+      try { success.focus(); } catch (_) {}
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (btn.disabled) return;                    // double-submit guard
+
+      var d        = new FormData(form);
+      var name     = (d.get('name')            || '').toString().trim();
+      var email    = (d.get('email')           || '').toString().trim();
+      var skill    = (d.get('skill_level')     || '').toString().trim();
+      var night    = (d.get('preferred_night') || '').toString().trim();
+      var honeypot = (d.get('_gotcha')         || '').toString().trim();
+
+      // Honeypot: real humans never fill a hidden field. Silently "succeed"
+      // and send nothing — the bot thinks it worked; no junk email is sent.
+      if (honeypot) { succeed(); return; }
+
+      hide(errorEl);
+      if (!name || !email)    return fail('Please add your name and email.');
+      if (!validEmail(email)) return fail('That email doesn’t look right — please check it.');
+      if (!skill)             return fail('Let us know how you play so we can set the format.');
+      if (!night)             return fail('Let us know whether Sunday or Wednesday works better.');
+      if (age && !age.checked) return fail('The Spotted James is 21+ — please confirm your age.');
+
+      setSubmitting(true);
+
+      // Web3Forms accepts a JSON body and answers with CORS headers, so we
+      // can read the real result instead of firing blind.
+      var payload = {};
+      d.forEach(function (value, key) {
+        if (key === '_gotcha' || key === 'redirect') return;
+        payload[key] = value;
+      });
+      payload.page = location.href;
+      payload.ts   = new Date().toISOString();
+
+      var ctrl  = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, TIMEOUT_MS);
+
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+        cache: 'no-store',
+        signal: ctrl.signal
+      })
+        .then(function (res) { return res.json().catch(function () { return {}; }); })
+        .then(function (data) {
+          clearTimeout(timer);
+          if (data && data.success) { succeed(); }
+          else {
+            console.error('[dart-league] rejected:', data);
+            fail('Hmm, that didn’t go through. Please try again in a moment.');
+          }
+        })
+        .catch(function (err) {
+          clearTimeout(timer);
+          console.error('[dart-league] submit failed:', err);
+          fail('Hmm, that didn’t go through. Check your connection and try again.');
+        });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<!-- Mobile nav toggle (same behavior as the rest of the site) -->
+<script>
+  (function(){
+    var t = document.querySelector('.nav__toggle');
+    var m = document.getElementById('navmenu');
+    if (!t || !m) return;
+    t.addEventListener('click', function(){
+      var open = m.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    m.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        m.classList.remove('is-open');
+        t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
