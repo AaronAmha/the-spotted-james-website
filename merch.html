@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Merch — The Spotted James | Boulder</title>
+<meta name="description" content="Official Spotted James merch. Tees, hoodies, hats and glassware from Boulder's late-night bar on 11th Street. Pick your size, grab your fit." />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#000000" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Merch — The Spotted James" />
+<meta property="og:description" content="Wear the bar. Tees, hoodies, hats and glassware from The Spotted James." />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/real/ww-bartender-shirt.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Merch — The Spotted James" />
+<meta name="twitter:description" content="Wear the bar. Official Spotted James merch." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/real/ww-bartender-shirt.jpg" />
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+
+<link rel="preload" href="assets/fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/caveat.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* =========================================================
+     MERCH — page-scoped styles. Everything else inherits
+     styles.css (tokens, nav, footer, .btn). Mobile-first:
+     one column, big tap targets, sticky cart bar on phones.
+     ========================================================= */
+
+  /* .page in styles.css is a 2-col grid built for Name Night.
+     This page manages its own sections, so reset to block. */
+  main.mx { display: block; padding: 0; }
+
+  .mx-wrap {
+    width: min(1180px, 100%);
+    margin-inline: auto;
+    padding-inline: clamp(18px, 5vw, 40px);
+  }
+
+  /* ---------- HERO: the bartender shot, full bleed ---------- */
+  .mx-hero {
+    position: relative;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    background: var(--ink);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  @media (min-width: 768px) {
+    /* Copy left, photo right. Nothing sits on top of the shirt. */
+    .mx-hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      /* Fixed row height: without it the copy column dictates the height and
+         the photo never crops, leaving the shirt slogan below the fold. */
+      grid-template-rows: clamp(430px, 62vh, 560px);
+    }
+  }
+  .mx-hero__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Frame on the shirt itself: the slogan sits mid-torso, so hold the
+       crop there rather than drifting up to heads and ceiling. */
+    object-position: 54% 70%;
+  }
+  @media (min-width: 768px) {
+    .mx-hero__img {
+      grid-area: 1 / 2;
+      height: 100%;
+    }
+  }
+  /* Two-stop scrim: darkens the bottom for text, leaves the
+     shirt legible up top. */
+  .mx-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  @media (min-width: 768px) {
+    /* Soft seam where the photo meets the copy column. */
+    .mx-hero::after {
+      background: linear-gradient(to right, var(--ink) 46%, rgba(0,0,0,0.55) 53%, rgba(0,0,0,0) 66%);
+    }
+  }
+  .mx-hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-block: clamp(28px, 6vw, 64px);
+  }
+  @media (min-width: 768px) {
+    .mx-hero__inner {
+      grid-area: 1 / 1;
+      align-self: center;
+      width: 100%;
+      max-width: 620px;
+      margin-left: auto;
+      padding-inline: clamp(24px, 5vw, 56px);
+    }
+  }
+
+  .mx-hero__eyebrow {
+    font-family: var(--script);
+    font-size: clamp(22px, 5vw, 30px);
+    color: var(--neon-soft);
+    line-height: 1;
+    margin-bottom: 6px;
+    text-shadow: 0 0 18px rgba(46,168,255,0.5);
+  }
+  .mx-hero__title {
+    font-family: var(--display);
+    font-size: clamp(52px, 14vw, 132px);
+    line-height: 0.86;
+    letter-spacing: 0.01em;
+    color: var(--bone);
+    margin: 0 0 14px;
+    text-transform: uppercase;
+  }
+  .mx-hero__lead {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: clamp(14px, 3.4vw, 17px);
+    line-height: 1.65;
+    color: var(--smoke);
+    max-width: 46ch;
+    margin: 0 0 22px;
+  }
+  .mx-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* On phones the shirt print fills the narrow crop, so overlaying the
+     headline on it is unreadable no matter how heavy the scrim. Split the
+     hero instead: photo on top, copy on solid black underneath. */
+  @media (max-width: 767px) {
+    .mx-hero { display: block; }
+    .mx-hero__img {
+      height: clamp(340px, 56vh, 460px);
+      object-position: 56% 72%;   /* hold the slogan in frame */
+    }
+    .mx-hero__inner { padding-block: clamp(20px, 5vw, 32px) clamp(30px, 8vw, 48px); }
+  }
+
+  /* ---------- Section headings ---------- */
+  .mx-section { padding-block: clamp(48px, 9vw, 92px); }
+  .mx-head { margin-bottom: clamp(26px, 5vw, 44px); }
+  .mx-head__kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--neon);
+    margin-bottom: 10px;
+  }
+  .mx-head__title {
+    font-family: var(--display);
+    font-size: clamp(34px, 8vw, 62px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin: 0;
+  }
+  .mx-head__sub {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--smoke-soft);
+    max-width: 54ch;
+    margin: 12px 0 0;
+  }
+
+  /* ---------- FEATURED product: image + buy panel ---------- */
+  .mx-feature {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 48px);
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .mx-feature { grid-template-columns: 1.05fr 1fr; gap: 56px; }
+  }
+  .mx-feature__media {
+    position: relative;
+    border: 1px solid var(--line-soft);
+    background: var(--panel);
+    overflow: hidden;
+  }
+  /* Product shots are small source files (~184x297) on a dark ground.
+     Contain them on a stage rather than upscaling to full bleed, so
+     they stay crisp at every width. */
+  .mx-views {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    padding: clamp(14px, 3vw, 28px);
+    background:
+      radial-gradient(ellipse at 50% 38%, rgba(46,168,255,0.16), rgba(0,0,0,0) 62%),
+      var(--ink-2);
+  }
+  .mx-view {
+    grid-area: 1 / 1;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.985);
+    transition: opacity .3s, transform .3s;
+  }
+  .mx-view.is-active { opacity: 1; transform: scale(1); }
+
+  /* Front / Back toggle */
+  .mx-viewtabs {
+    display: flex;
+    border-top: 1px solid var(--line-soft);
+  }
+  .mx-viewtab {
+    flex: 1;
+    min-height: 44px;
+    background: transparent;
+    border: 0;
+    border-right: 1px solid var(--line-soft);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke-soft);
+    cursor: pointer;
+    transition: color .2s, background .2s;
+  }
+  .mx-viewtab:last-child { border-right: 0; }
+  .mx-viewtab:hover { color: var(--bone); }
+  .mx-viewtab.is-active { color: var(--ink); background: var(--neon); }
+  .mx-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    z-index: 2;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--neon);
+    padding: 7px 12px;
+  }
+
+  /* ---------- Buy panel ---------- */
+  .mx-buy { display: flex; flex-direction: column; }
+  .mx-buy__name {
+    font-family: var(--display);
+    font-size: clamp(32px, 7vw, 54px);
+    line-height: 0.94;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin: 0 0 8px;
+  }
+  .mx-buy__price {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--neon);
+    margin: 0 0 16px;
+  }
+  .mx-buy__desc {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--smoke);
+    margin: 0 0 8px;
+  }
+  .mx-buy__meta {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--smoke-soft);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .mx-buy__meta li::before {
+    content: "—";
+    color: var(--neon);
+    margin-right: 8px;
+  }
+
+  /* ---------- Size picker ---------- */
+  .mx-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-bottom: 10px;
+  }
+  .mx-label__hint {
+    letter-spacing: 0.06em;
+    text-transform: none;
+    font-size: 12px;
+    color: var(--smoke-soft);
+  }
+  .mx-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  /* Radio-driven so it is keyboard and screen-reader native.
+     The input is visually hidden; the label is the chip. */
+  .mx-size { position: relative; }
+  .mx-size input {
+    position: absolute;
+    opacity: 0;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .mx-size span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    min-height: 46px;             /* comfortable tap target */
+    padding: 0 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--smoke);
+    border: 1px solid var(--line-soft);
+    background: transparent;
+    transition: all .2s;
+    pointer-events: none;         /* the input above takes the click */
+  }
+  .mx-size input:hover + span { border-color: var(--neon); color: var(--bone); }
+  .mx-size input:checked + span {
+    border-color: var(--neon);
+    background: var(--neon);
+    color: var(--ink);
+    box-shadow: 0 0 16px rgba(46,168,255,0.45);
+  }
+  .mx-size input:focus-visible + span { outline: 2px solid var(--bone); outline-offset: 3px; }
+  .mx-size input:disabled + span {
+    opacity: 0.3;
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+
+  /* ---------- Quantity stepper ---------- */
+  .mx-qty {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line-soft);
+    margin-bottom: 20px;
+  }
+  .mx-qty button {
+    width: 46px; height: 46px;
+    background: transparent;
+    border: 0;
+    color: var(--smoke);
+    font-family: var(--sans);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .2s, background .2s;
+  }
+  .mx-qty button:hover { color: var(--ink); background: var(--neon); }
+  .mx-qty output {
+    min-width: 44px;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--bone);
+  }
+
+  /* Inline validation message under Add to Cart */
+  .mx-note {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 12px;
+    min-height: 20px;
+    color: var(--smoke-soft);
+  }
+  .mx-note--warn { color: #ff6e8a; }
+  .mx-note--ok { color: var(--neon-soft); }
+
+  /* ---------- Product grid ---------- */
+  .mx-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: clamp(16px, 3vw, 28px);
+  }
+  @media (max-width: 599px) {
+    /* Two-up on phones keeps the page from feeling endless. */
+    .mx-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  }
+  .mx-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line-soft);
+    background: var(--panel);
+    transition: border-color .25s, transform .25s;
+  }
+  .mx-card:hover { border-color: var(--line); transform: translateY(-3px); }
+  .mx-card__media {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink-2);
+  }
+  .mx-card .mx-views { padding: clamp(10px, 2.5vw, 20px); aspect-ratio: 3 / 4; }
+  .mx-card .mx-viewtab { font-size: 10px; letter-spacing: 0.16em; min-height: 40px; }
+  .mx-card__blurb {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--smoke-soft);
+    margin: 0 0 14px;
+  }
+  @media (max-width: 599px) { .mx-card__blurb { display: none; } }
+  .mx-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: clamp(12px, 2.5vw, 18px);
+  }
+  .mx-card__name {
+    font-family: var(--display);
+    font-size: clamp(18px, 4.4vw, 24px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin: 0 0 4px;
+  }
+  .mx-card__price {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--neon);
+    margin: 0 0 12px;
+  }
+  .mx-card__sizes { margin-bottom: 12px; }
+  .mx-card .mx-sizes { gap: 6px; margin-bottom: 0; }
+  .mx-card .mx-size span { min-width: 40px; min-height: 40px; padding: 0 8px; font-size: 12px; }
+  .mx-card__cta { margin-top: auto; }
+  .mx-card .mx-note { font-size: 12px; min-height: 16px; margin-top: 8px; }
+  .mx-soldout {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke-soft);
+    border: 1px solid var(--line-soft);
+    padding: 13px 26px;
+    text-align: center;
+  }
+
+  /* ---------- Cart button in the header row ---------- */
+  .mx-cartbtn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mx-cartbtn__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px; height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--neon);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .mx-cartbtn[data-empty="true"] .mx-cartbtn__count { display: none; }
+
+  /* ---------- Cart drawer ---------- */
+  .mx-drawer {
+    position: fixed;
+    top: 0; right: 0;
+    z-index: 300;
+    width: min(420px, 100%);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--ink-2);
+    border-left: 1px solid var(--line);
+    transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    visibility: hidden;
+  }
+  .mx-drawer.is-open { transform: translateX(0); visibility: visible; }
+  .mx-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 299;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s;
+  }
+  .mx-scrim.is-open { opacity: 1; visibility: visible; }
+  .mx-drawer__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .mx-drawer__title {
+    font-family: var(--display);
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin: 0;
+  }
+  .mx-drawer__close {
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 1px solid var(--line-soft);
+    color: var(--smoke);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .mx-drawer__close:hover { border-color: var(--neon); color: var(--neon); }
+  .mx-drawer__body {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+  }
+  .mx-drawer__foot {
+    padding: 20px;
+    border-top: 1px solid var(--line-soft);
+    background: var(--panel);
+  }
+
+  .mx-empty {
+    text-align: center;
+    padding: 40px 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--smoke-soft);
+  }
+  .mx-empty__mark {
+    font-family: var(--script);
+    font-size: 34px;
+    color: var(--neon-soft);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .mx-line {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    gap: 14px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .mx-line:last-child { border-bottom: 0; margin-bottom: 0; }
+  .mx-line__thumb {
+    width: 68px; height: 85px;
+    object-fit: cover;
+    border: 1px solid var(--line-soft);
+    background: var(--panel);
+  }
+  .mx-line__name {
+    font-family: var(--display);
+    font-size: 18px;
+    line-height: 1.08;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin: 0 0 3px;
+  }
+  .mx-line__variant {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--smoke-soft);
+    margin: 0 0 8px;
+  }
+  .mx-line__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .mx-line .mx-qty { margin-bottom: 0; }
+  .mx-line .mx-qty button { width: 34px; height: 34px; font-size: 16px; }
+  .mx-line .mx-qty output { min-width: 32px; font-size: 13px; }
+  .mx-line__price {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--bone);
+  }
+  .mx-line__remove {
+    background: none;
+    border: 0;
+    padding: 6px 0 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--smoke-soft);
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .mx-line__remove:hover { color: #ff6e8a; }
+
+  .mx-totals {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-family: var(--sans);
+    margin-bottom: 6px;
+  }
+  .mx-totals__label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--smoke);
+  }
+  .mx-totals__value {
+    font-family: var(--display);
+    font-size: 30px;
+    color: var(--bone);
+  }
+  .mx-totals__note {
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--smoke-soft);
+    margin: 0 0 16px;
+  }
+
+  /* ---------- Sticky mobile cart bar ---------- */
+  .mx-sticky {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 250;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(6,8,15,0.96);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .mx-sticky.is-shown { transform: translateY(0); }
+  .mx-sticky__meta {
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--smoke);
+  }
+  .mx-sticky__meta strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--bone);
+    letter-spacing: 0.02em;
+  }
+  .mx-sticky .btn { padding: 13px 20px; }
+  @media (max-width: 899px) { .mx-sticky { display: flex; } }
+  /* Keep the last section clear of the sticky bar */
+  @media (max-width: 899px) { .mx-tail { padding-bottom: 110px; } }
+
+  /* ---------- Size guide table ---------- */
+  .mx-guide { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .mx-guide table {
+    width: 100%;
+    min-width: 460px;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+  .mx-guide th, .mx-guide td {
+    text-align: left;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--smoke);
+  }
+  .mx-guide th {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--neon);
+  }
+  .mx-guide tbody tr:hover td { color: var(--bone); background: rgba(46,168,255,0.05); }
+
+  /* ---------- Pickup strip ---------- */
+  .mx-pickup {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: clamp(22px, 5vw, 40px);
+    text-align: center;
+  }
+  .mx-pickup__title {
+    font-family: var(--display);
+    font-size: clamp(28px, 6vw, 44px);
+    text-transform: uppercase;
+    color: var(--bone);
+    margin: 0 0 10px;
+  }
+  .mx-pickup__text {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--smoke);
+    max-width: 52ch;
+    margin: 0 auto 20px;
+  }
+
+  /* Toast confirmation on add-to-cart */
+  .mx-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 280;
+    transform: translate(-50%, 140%);
+    background: var(--neon);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+    max-width: calc(100% - 32px);
+    text-align: center;
+  }
+  .mx-toast.is-shown { transform: translate(-50%, 0); }
+  @media (max-width: 899px) {
+    /* Sit above the sticky bar */
+    .mx-toast { bottom: calc(84px + env(safe-area-inset-bottom)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mx-drawer, .mx-scrim, .mx-sticky, .mx-toast,
+    .mx-card, .mx-card__media img { transition: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
+    <span class="nav__brand-text">
+      <span class="nav__brand-the">THE</span>
+      <span class="nav__brand-name">Spotted James</span>
+    </span>
+  </a>
+  <nav>
+    <ul class="nav__menu" id="navmenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="name-night.html">Name Night</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <button class="nav__cta mx-cartbtn" type="button" id="cart-open" data-empty="true" aria-haspopup="dialog">
+    Cart <span class="mx-cartbtn__count" id="cart-count">0</span>
+  </button>
+</header>
+
+<main id="main" class="mx">
+
+  <!-- ================= HERO ================= -->
+  <section class="mx-hero" aria-labelledby="mx-hero-h">
+    <picture>
+      <source srcset="assets/real/ww-bartender-shirt.webp" type="image/webp" />
+      <img src="assets/real/ww-bartender-shirt.jpg" class="mx-hero__img"
+           alt="A Spotted James bartender working the bar in the black I Support Your Bad Decisions tee"
+           width="1065" height="1600" fetchpriority="high" decoding="async" />
+    </picture>
+    <div class="mx-hero__inner mx-wrap">
+      <p class="mx-hero__eyebrow">Straight off the bar</p>
+      <h1 class="mx-hero__title" id="mx-hero-h">Wear<br/>The Bar</h1>
+      <p class="mx-hero__lead">Four shirts, embroidered up front and loud on the back. The same ones our bartenders close the night in. Pick a size, grab your fit, pick it up at the bar.</p>
+      <div class="mx-hero__actions">
+        <a class="btn" href="#shop">Shop The Drop</a>
+        <a class="btn btn--ghost" href="#sizing">Size Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED ================= -->
+  <section class="mx-section mx-wrap" id="shop" aria-labelledby="mx-feat-h">
+    <div class="mx-head">
+      <p class="mx-head__kicker">The Drop</p>
+      <h2 class="mx-head__title" id="mx-feat-h">Big Dill Tee</h2>
+      <p class="mx-head__sub">Embroidered pickle on the front, the punchline on the back. Vintage-wash black, and the one people keep stopping our staff about.</p>
+    </div>
+
+    <div class="mx-feature">
+      <div class="mx-feature__media">
+        <span class="mx-badge">Best Seller</span>
+        <!-- Front/back swap: both images stack, JS toggles is-active -->
+        <div class="mx-views" data-views>
+          <img class="mx-view is-active" data-view="front"
+               src="assets/merch/01_big_dill_front.jpg"
+               alt="Front of the black I&rsquo;m Kind Of A Big Dill tee with an embroidered pickle in sunglasses"
+               width="184" height="297" fetchpriority="high" decoding="async" />
+          <img class="mx-view" data-view="back"
+               src="assets/merch/01_big_dill_back.jpg"
+               alt="Back of the tee reading I&rsquo;m Kind Of A Big Dill, The Spotted James, Boulder CO"
+               width="188" height="294" loading="lazy" decoding="async" />
+        </div>
+        <div class="mx-viewtabs" role="group" aria-label="View front or back">
+          <button type="button" class="mx-viewtab is-active" data-show="front">Front</button>
+          <button type="button" class="mx-viewtab" data-show="back">Back</button>
+        </div>
+      </div>
+
+      <div class="mx-buy"
+           data-product="big-dill-tee"
+           data-name="Big Dill Tee"
+           data-price="35"
+           data-image="assets/merch/01_big_dill_back.jpg">
+        <h3 class="mx-buy__name">&ldquo;I&rsquo;m Kind Of<br/>A Big Dill&rdquo;</h3>
+        <p class="mx-buy__price">$35</p>
+        <p class="mx-buy__desc">Vintage-wash black tee. Embroidered pickle-in-shades on the left chest, full back print with the star and Boulder, CO underneath. Soft, heavyweight, built to survive a Saturday.</p>
+        <ul class="mx-buy__meta">
+          <li>Embroidered front detail, screen-printed back</li>
+          <li>Unisex fit, runs true to size</li>
+          <li>Printed in Colorado</li>
+        </ul>
+
+        <fieldset style="border:0; padding:0; margin:0;">
+          <legend class="mx-label" style="width:100%;">
+            <span>Select Size</span>
+            <a class="mx-label__hint" href="#sizing">Size guide</a>
+          </legend>
+          <div class="mx-sizes" role="radiogroup" aria-label="Big Dill Tee size">
+            <label class="mx-size"><input type="radio" name="size-big-dill-tee" value="XS" /><span>XS</span></label>
+            <label class="mx-size"><input type="radio" name="size-big-dill-tee" value="S" /><span>S</span></label>
+            <label class="mx-size"><input type="radio" name="size-big-dill-tee" value="M" /><span>M</span></label>
+            <label class="mx-size"><input type="radio" name="size-big-dill-tee" value="L" /><span>L</span></label>
+            <label class="mx-size"><input type="radio" name="size-big-dill-tee" value="XL" /><span>XL</span></label>
+            <label class="mx-size"><input type="radio" name="size-big-dill-tee" value="2XL" /><span>2XL</span></label>
+          </div>
+        </fieldset>
+
+        <div class="mx-label">Quantity</div>
+        <div class="mx-qty" data-qty>
+          <button type="button" data-step="-1" aria-label="Decrease quantity">&minus;</button>
+          <output data-qty-value aria-live="polite">1</output>
+          <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+        </div>
+
+        <button class="btn btn--block" type="button" data-add>Add To Cart</button>
+        <p class="mx-note" data-note role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GRID ================= -->
+  <section class="mx-section mx-wrap" aria-labelledby="mx-grid-h">
+    <div class="mx-head">
+      <p class="mx-head__kicker">The Rest Of It</p>
+      <h2 class="mx-head__title" id="mx-grid-h">The Collection</h2>
+      <p class="mx-head__sub">Four shirts, printed in small batches. Tap front or back to see both sides. When a size is gone it stays gone until the next run.</p>
+    </div>
+
+    <div class="mx-grid">
+
+      <article class="mx-card"
+               data-product="pool-hall-tee"
+               data-name="Nice Rack Tee"
+               data-price="35"
+               data-image="assets/merch/02_pool_hall_back.jpg">
+        <div class="mx-card__media">
+          <div class="mx-views" data-views>
+            <img class="mx-view is-active" data-view="front" src="assets/merch/02_pool_hall_front.jpg" alt="Front of the olive Nice Rack tee with an embroidered 8-ball" width="184" height="297" loading="lazy" decoding="async" />
+            <img class="mx-view" data-view="back" src="assets/merch/02_pool_hall_back.jpg" alt="Back of the olive tee reading Nice Rack, The Spotted James" width="188" height="294" loading="lazy" decoding="async" />
+          </div>
+          <div class="mx-viewtabs" role="group" aria-label="View front or back">
+            <button type="button" class="mx-viewtab is-active" data-show="front">Front</button>
+            <button type="button" class="mx-viewtab" data-show="back">Back</button>
+          </div>
+        </div>
+        <div class="mx-card__body">
+          <h3 class="mx-card__name">Nice Rack Tee</h3>
+          <p class="mx-card__price">$35</p>
+          <p class="mx-card__blurb">Olive wash, embroidered 8-ball front, pool-hall punchline back.</p>
+          <div class="mx-card__sizes">
+            <div class="mx-sizes" role="radiogroup" aria-label="Nice Rack Tee size">
+              <label class="mx-size"><input type="radio" name="size-pool-hall-tee" value="S" /><span>S</span></label>
+              <label class="mx-size"><input type="radio" name="size-pool-hall-tee" value="M" /><span>M</span></label>
+              <label class="mx-size"><input type="radio" name="size-pool-hall-tee" value="L" /><span>L</span></label>
+              <label class="mx-size"><input type="radio" name="size-pool-hall-tee" value="XL" /><span>XL</span></label>
+              <label class="mx-size"><input type="radio" name="size-pool-hall-tee" value="2XL" /><span>2XL</span></label>
+            </div>
+          </div>
+          <div class="mx-card__cta">
+            <button class="btn btn--block" type="button" data-add>Add To Cart</button>
+            <p class="mx-note" data-note role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="mx-card"
+               data-product="been-spotted-tee"
+               data-name="You've Been Spotted"
+               data-price="35"
+               data-image="assets/merch/03_been_spotted_back.jpg">
+        <div class="mx-card__media">
+          <div class="mx-views" data-views>
+            <img class="mx-view is-active" data-view="front" src="assets/merch/03_been_spotted_front.jpg" alt="Front of the black You&rsquo;ve Been Spotted tee with an embroidered red star" width="184" height="297" loading="lazy" decoding="async" />
+            <img class="mx-view" data-view="back" src="assets/merch/03_been_spotted_back.jpg" alt="Back of the tee reading You&rsquo;ve Been Spotted, Boulder, Colorado" width="188" height="294" loading="lazy" decoding="async" />
+          </div>
+          <div class="mx-viewtabs" role="group" aria-label="View front or back">
+            <button type="button" class="mx-viewtab is-active" data-show="front">Front</button>
+            <button type="button" class="mx-viewtab" data-show="back">Back</button>
+          </div>
+        </div>
+        <div class="mx-card__body">
+          <h3 class="mx-card__name">You&rsquo;ve Been Spotted</h3>
+          <p class="mx-card__price">$35</p>
+          <p class="mx-card__blurb">Black wash, embroidered red star front, house slogan on the back.</p>
+          <div class="mx-card__sizes">
+            <div class="mx-sizes" role="radiogroup" aria-label="You've Been Spotted size">
+              <label class="mx-size"><input type="radio" name="size-been-spotted-tee" value="S" /><span>S</span></label>
+              <label class="mx-size"><input type="radio" name="size-been-spotted-tee" value="M" /><span>M</span></label>
+              <label class="mx-size"><input type="radio" name="size-been-spotted-tee" value="L" /><span>L</span></label>
+              <label class="mx-size"><input type="radio" name="size-been-spotted-tee" value="XL" /><span>XL</span></label>
+              <label class="mx-size"><input type="radio" name="size-been-spotted-tee" value="2XL" /><span>2XL</span></label>
+            </div>
+          </div>
+          <div class="mx-card__cta">
+            <button class="btn btn--block" type="button" data-add>Add To Cart</button>
+            <p class="mx-note" data-note role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="mx-card"
+               data-product="great-taste-tee"
+               data-name="Great Taste Tee"
+               data-price="35"
+               data-image="assets/merch/04_great_taste_back.jpg">
+        <div class="mx-card__media">
+          <div class="mx-views" data-views>
+            <img class="mx-view is-active" data-view="front" src="assets/merch/04_great_taste_front.jpg" alt="Front of the natural Great Taste tee with an embroidered pickle holding a glass" width="184" height="297" loading="lazy" decoding="async" />
+            <img class="mx-view" data-view="back" src="assets/merch/04_great_taste_back.jpg" alt="Back of the tee reading James Has Great Taste, ask around" width="188" height="294" loading="lazy" decoding="async" />
+          </div>
+          <div class="mx-viewtabs" role="group" aria-label="View front or back">
+            <button type="button" class="mx-viewtab is-active" data-show="front">Front</button>
+            <button type="button" class="mx-viewtab" data-show="back">Back</button>
+          </div>
+        </div>
+        <div class="mx-card__body">
+          <h3 class="mx-card__name">Great Taste Tee</h3>
+          <p class="mx-card__price">$35</p>
+          <p class="mx-card__blurb">Natural cream, embroidered lounging pickle, full-color back print.</p>
+          <div class="mx-card__sizes">
+            <div class="mx-sizes" role="radiogroup" aria-label="Great Taste Tee size">
+              <label class="mx-size"><input type="radio" name="size-great-taste-tee" value="S" /><span>S</span></label>
+              <label class="mx-size"><input type="radio" name="size-great-taste-tee" value="M" /><span>M</span></label>
+              <label class="mx-size"><input type="radio" name="size-great-taste-tee" value="L" /><span>L</span></label>
+              <label class="mx-size"><input type="radio" name="size-great-taste-tee" value="XL" /><span>XL</span></label>
+              <label class="mx-size"><input type="radio" name="size-great-taste-tee" value="2XL" disabled /><span>2XL</span></label>
+            </div>
+          </div>
+          <div class="mx-card__cta">
+            <button class="btn btn--block" type="button" data-add>Add To Cart</button>
+            <p class="mx-note" data-note role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= SIZE GUIDE ================= -->
+  <section class="mx-section mx-wrap" id="sizing" aria-labelledby="mx-size-h">
+    <div class="mx-head">
+      <p class="mx-head__kicker">Fit</p>
+      <h2 class="mx-head__title" id="mx-size-h">Size Guide</h2>
+      <p class="mx-head__sub">Unisex fit, true to size. Between two sizes? Size up. All four shirts are a heavyweight vintage wash, so they hold their shape after a wash.</p>
+    </div>
+    <div class="mx-guide">
+      <table>
+        <caption class="sr-only">Garment measurements in inches</caption>
+        <thead>
+          <tr><th scope="col">Size</th><th scope="col">Chest</th><th scope="col">Length</th><th scope="col">Fits</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>XS</td><td>32&ndash;34"</td><td>27"</td><td>Slim</td></tr>
+          <tr><td>S</td><td>35&ndash;37"</td><td>28"</td><td>Standard</td></tr>
+          <tr><td>M</td><td>38&ndash;41"</td><td>29"</td><td>Standard</td></tr>
+          <tr><td>L</td><td>42&ndash;45"</td><td>30"</td><td>Relaxed</td></tr>
+          <tr><td>XL</td><td>46&ndash;49"</td><td>31"</td><td>Relaxed</td></tr>
+          <tr><td>2XL</td><td>50&ndash;53"</td><td>32"</td><td>Oversized</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= PICKUP ================= -->
+  <section class="mx-section mx-wrap mx-tail" aria-labelledby="mx-pick-h">
+    <div class="mx-pickup">
+      <h2 class="mx-pickup__title" id="mx-pick-h">Pick It Up At The Bar</h2>
+      <p class="mx-pickup__text">Everything is pickup only for now. Build your order, send it over, and we will set it aside behind the bar at 1911 11th Street. Pay when you grab it. No shipping, no waiting on a truck.</p>
+      <a class="btn" href="directions.html">Get Directions</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= CART DRAWER ================= -->
+<div class="mx-scrim" id="cart-scrim" hidden></div>
+<aside class="mx-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">
+  <div class="mx-drawer__head">
+    <h2 class="mx-drawer__title" id="cart-title">Your Bag</h2>
+    <button class="mx-drawer__close" type="button" id="cart-close" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="mx-drawer__body" id="cart-body"></div>
+  <div class="mx-drawer__foot">
+    <div class="mx-totals">
+      <span class="mx-totals__label">Total</span>
+      <span class="mx-totals__value" id="cart-total">$0</span>
+    </div>
+    <p class="mx-totals__note">Pickup only at 1911 11th St. Pay at the bar when you collect.</p>
+    <a class="btn btn--block" id="cart-checkout" href="contact.html?subject=Merch%20Order">Reserve My Order</a>
+  </div>
+</aside>
+
+<!-- Sticky mobile cart bar -->
+<div class="mx-sticky" id="sticky-bar">
+  <div class="mx-sticky__meta">
+    <strong id="sticky-total">$0</strong>
+    <span id="sticky-count">0 items</span>
+  </div>
+  <button class="btn" type="button" id="sticky-open">View Bag</button>
+</div>
+
+<div class="mx-toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__col footer__col--brand">
+      <div class="footer__brand">THE SPOTTED <span>JAMES</span></div>
+      <p class="footer__tag">Good music. A full bar. Downtown Boulder — walking distance from CU, just off Pearl Street.</p>
+    </div>
+    <div class="footer__col">
+      <h5>Visit</h5>
+      <ul>
+        <li>1911 11th St, Suite 100</li>
+        <li>Boulder, CO 80302</li>
+        <li><a href="directions.html">Get Directions</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>Hours</h5>
+      <ul>
+        <li>Mon–Thu · 6PM–2AM</li>
+        <li>Fri–Sun · 4PM–2AM</li>
+        <li>Happy Hour Fri &amp; Sat · 4–7PM</li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:thespottedjames@gmail.com">thespottedjames@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/thespottedjames" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@thespottedjames" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="name-night.html">Name Night</a></li>
+        <li><a href="musical-bingo.html">Musical Bingo</a></li>
+        <li><a href="drinks.html">Drinks</a></li>
+        <li><a href="parties.html">Private Parties</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="merch.html">Merch</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 The Spotted James · Boulder, CO</span>
+    <span>21+ · Please Drink Responsibly</span>
+  </div>
+</footer>
+
+<script>
+  /* Shared nav toggle — same behaviour as every other page. */
+  (function(){
+    var t = document.querySelector('.nav__toggle');
+    var m = document.getElementById('navmenu');
+    if (!t || !m) return;
+    t.addEventListener('click', function(){
+      var open = m.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    m.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        m.classList.remove('is-open');
+        t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+<script>
+/* =========================================================
+   MERCH CART
+   Cart lives in localStorage so a refresh (or a walk to the
+   bar) does not lose the bag. Storage is wrapped in try/catch
+   because private-mode Safari throws on write.
+   ========================================================= */
+(function(){
+  'use strict';
+
+  var KEY = 'tsj-merch-cart-v2';   /* v2: catalog repriced to $35 */
+
+  var els = {
+    body:      document.getElementById('cart-body'),
+    total:     document.getElementById('cart-total'),
+    count:     document.getElementById('cart-count'),
+    openBtn:   document.getElementById('cart-open'),
+    closeBtn:  document.getElementById('cart-close'),
+    drawer:    document.getElementById('cart-drawer'),
+    scrim:     document.getElementById('cart-scrim'),
+    sticky:    document.getElementById('sticky-bar'),
+    stickyTot: document.getElementById('sticky-total'),
+    stickyCnt: document.getElementById('sticky-count'),
+    stickyBtn: document.getElementById('sticky-open'),
+    checkout:  document.getElementById('cart-checkout'),
+    toast:     document.getElementById('toast')
+  };
+
+  /* ---------- state ---------- */
+  var cart = load();
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      var parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) { /* private mode */ }
+  }
+
+  function money(n) {
+    // Whole-dollar prices; keep cents only when they exist.
+    return '$' + (n % 1 === 0 ? n.toFixed(0) : n.toFixed(2));
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function lineId(id, size) { return id + '::' + size; }
+
+  /* ---------- mutations ---------- */
+  function addItem(item) {
+    var key = lineId(item.id, item.size);
+    var found = null;
+    for (var i = 0; i < cart.length; i++) {
+      if (lineId(cart[i].id, cart[i].size) === key) { found = cart[i]; break; }
+    }
+    if (found) { found.qty += item.qty; }
+    else { cart.push(item); }
+    save();
+    render();
+  }
+  function setQty(key, qty) {
+    for (var i = 0; i < cart.length; i++) {
+      if (lineId(cart[i].id, cart[i].size) === key) {
+        if (qty <= 0) { cart.splice(i, 1); }
+        else { cart[i].qty = Math.min(qty, 99); }
+        break;
+      }
+    }
+    save();
+    render();
+  }
+  function removeItem(key) { setQty(key, 0); }
+
+  /* ---------- render ---------- */
+  function totals() {
+    var n = 0, sum = 0;
+    for (var i = 0; i < cart.length; i++) {
+      n += cart[i].qty;
+      sum += cart[i].qty * cart[i].price;
+    }
+    return { count: n, sum: sum };
+  }
+
+  function render() {
+    var t = totals();
+
+    els.count.textContent = t.count;
+    els.openBtn.setAttribute('data-empty', t.count === 0 ? 'true' : 'false');
+    els.total.textContent = money(t.sum);
+    els.stickyTot.textContent = money(t.sum);
+    els.stickyCnt.textContent = t.count === 1 ? '1 item' : t.count + ' items';
+    els.sticky.classList.toggle('is-shown', t.count > 0);
+    els.checkout.style.display = t.count === 0 ? 'none' : '';
+
+    if (cart.length === 0) {
+      els.body.innerHTML =
+        '<div class="mx-empty">' +
+          '<span class="mx-empty__mark">Nothing yet</span>' +
+          'Your bag is empty. Pick a size and add something before the good ones go.' +
+        '</div>';
+      return;
+    }
+
+    var html = '';
+    for (var i = 0; i < cart.length; i++) {
+      var it = cart[i];
+      var key = lineId(it.id, it.size);
+      html +=
+        '<div class="mx-line" data-key="' + esc(key) + '">' +
+          '<img class="mx-line__thumb" src="' + esc(it.image) + '" alt="" width="68" height="85" loading="lazy" />' +
+          '<div>' +
+            '<h3 class="mx-line__name">' + esc(it.name) + '</h3>' +
+            '<p class="mx-line__variant">Size ' + esc(it.size) + '</p>' +
+            '<div class="mx-line__row">' +
+              '<div class="mx-qty">' +
+                '<button type="button" data-line-step="-1" aria-label="Decrease quantity of ' + esc(it.name) + '">&minus;</button>' +
+                '<output aria-live="polite">' + it.qty + '</output>' +
+                '<button type="button" data-line-step="1" aria-label="Increase quantity of ' + esc(it.name) + '">+</button>' +
+              '</div>' +
+              '<span class="mx-line__price">' + money(it.qty * it.price) + '</span>' +
+            '</div>' +
+            '<button class="mx-line__remove" type="button" data-remove>Remove</button>' +
+          '</div>' +
+        '</div>';
+    }
+    els.body.innerHTML = html;
+  }
+
+  /* ---------- drawer ---------- */
+  var lastFocus = null;
+
+  function openCart() {
+    lastFocus = document.activeElement;
+    els.scrim.hidden = false;
+    // next frame so the transition actually runs
+    requestAnimationFrame(function(){
+      els.drawer.classList.add('is-open');
+      els.scrim.classList.add('is-open');
+    });
+    els.drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    els.closeBtn.focus();
+    document.addEventListener('keydown', onKeydown);
+  }
+  function closeCart() {
+    els.drawer.classList.remove('is-open');
+    els.scrim.classList.remove('is-open');
+    els.drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKeydown);
+    setTimeout(function(){ els.scrim.hidden = true; }, 300);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function onKeydown(e) {
+    if (e.key === 'Escape') { closeCart(); return; }
+    if (e.key !== 'Tab') return;
+    // Trap focus inside the drawer while it is open.
+    var f = els.drawer.querySelectorAll('button, [href], input, select, textarea');
+    var list = [];
+    for (var i = 0; i < f.length; i++) {
+      if (f[i].offsetParent !== null || f[i] === document.activeElement) list.push(f[i]);
+    }
+    if (!list.length) return;
+    var first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  els.openBtn.addEventListener('click', openCart);
+  els.stickyBtn.addEventListener('click', openCart);
+  els.closeBtn.addEventListener('click', closeCart);
+  els.scrim.addEventListener('click', closeCart);
+
+  /* ---------- cart line controls (delegated) ---------- */
+  els.body.addEventListener('click', function(e){
+    var line = e.target.closest('.mx-line');
+    if (!line) return;
+    var key = line.getAttribute('data-key');
+
+    if (e.target.hasAttribute('data-remove')) { removeItem(key); return; }
+
+    var step = e.target.getAttribute('data-line-step');
+    if (step) {
+      for (var i = 0; i < cart.length; i++) {
+        if (lineId(cart[i].id, cart[i].size) === key) {
+          setQty(key, cart[i].qty + parseInt(step, 10));
+          return;
+        }
+      }
+    }
+  });
+
+  /* ---------- toast ---------- */
+  var toastTimer = null;
+  function toast(msg) {
+    els.toast.textContent = msg;
+    els.toast.classList.add('is-shown');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){
+      els.toast.classList.remove('is-shown');
+    }, 2600);
+  }
+
+  /* ---------- featured quantity stepper ---------- */
+  document.querySelectorAll('[data-qty]').forEach(function(box){
+    var out = box.querySelector('[data-qty-value]');
+    box.addEventListener('click', function(e){
+      var step = e.target.getAttribute('data-step');
+      if (!step) return;
+      var next = Math.min(99, Math.max(1, parseInt(out.textContent, 10) + parseInt(step, 10)));
+      out.textContent = next;
+    });
+  });
+
+  /* ---------- front / back view toggle ---------- */
+  document.querySelectorAll('.mx-viewtabs').forEach(function(tabs){
+    // The image stack is the sibling .mx-views within the same media box.
+    var media = tabs.parentElement;
+    var stack = media.querySelector('[data-views]');
+    if (!stack) return;
+
+    tabs.addEventListener('click', function(e){
+      var want = e.target.getAttribute('data-show');
+      if (!want) return;
+
+      stack.querySelectorAll('.mx-view').forEach(function(img){
+        img.classList.toggle('is-active', img.getAttribute('data-view') === want);
+      });
+      tabs.querySelectorAll('.mx-viewtab').forEach(function(b){
+        b.classList.toggle('is-active', b === e.target);
+      });
+    });
+  });
+
+  /* ---------- add to cart ---------- */
+  document.querySelectorAll('[data-add]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      // The product root is whichever ancestor carries data-product.
+      var root = btn.closest('[data-product]');
+      if (!root) return;
+
+      var note = root.querySelector('[data-note]');
+      var checked = root.querySelector('input[type="radio"]:checked');
+
+      if (!checked) {
+        if (note) {
+          note.textContent = 'Pick a size first.';
+          note.className = 'mx-note mx-note--warn';
+        }
+        var firstSize = root.querySelector('input[type="radio"]:not(:disabled)');
+        if (firstSize) firstSize.focus();
+        return;
+      }
+
+      var qtyOut = root.querySelector('[data-qty-value]');
+      var qty = qtyOut ? parseInt(qtyOut.textContent, 10) : 1;
+
+      addItem({
+        id:    root.getAttribute('data-product'),
+        name:  root.getAttribute('data-name'),
+        price: parseFloat(root.getAttribute('data-price')),
+        image: root.getAttribute('data-image'),
+        size:  checked.value,
+        qty:   qty
+      });
+
+      if (note) {
+        note.textContent = 'Added — ' + checked.value + ' × ' + qty;
+        note.className = 'mx-note mx-note--ok';
+      }
+      toast('Added to bag');
+    });
+  });
+
+  /* Clear a "pick a size" warning as soon as a size is chosen. */
+  document.querySelectorAll('[data-product]').forEach(function(root){
+    root.addEventListener('change', function(e){
+      if (e.target.type !== 'radio') return;
+      var note = root.querySelector('[data-note]');
+      if (note && note.classList.contains('mx-note--warn')) {
+        note.textContent = '';
+        note.className = 'mx-note';
+      }
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
