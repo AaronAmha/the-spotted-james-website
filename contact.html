@@ -130,12 +130,12 @@
   </section>
 
   <aside>
-    <form id="contact-form" class="form-card" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
+    <form id="contact-form" class="form-card" action="https://api.web3forms.com/submit" method="POST" novalidate>
       <input type="hidden" name="access_key" value="63626f14-3b8c-4067-8fdb-90b2c3025fb1" />
       <!-- Subject is set dynamically from the "Reason" dropdown by the script below -->
       <input type="hidden" name="subject" id="form-subject" value="New Contact Message — The Spotted James" />
       <input type="hidden" name="from_name" value="thespottedjames.com contact form" />
-      <input type="hidden" name="redirect" value="https://thespottedjames.com/confirmation.html" />
+      <input type="hidden" name="redirect" id="form-redirect" value="https://thespottedjames.com/confirmation.html" />
       <!-- Honeypot spam trap (must stay empty) -->
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
@@ -180,11 +180,6 @@
           <input id="jf-mix" type="text" name="dj_mix_link" placeholder="SoundCloud / Mixcloud / Drive / Dropbox link" required disabled />
           <span class="field__hint">Link to a roughly 45-minute mix we can stream or download (MP3 preferred).</span>
         </div>
-        <div class="field field--full jobs-only">
-          <label for="jf-resume">Resume</label>
-          <input id="jf-resume" type="file" name="attachment" accept=".pdf,.doc,.docx" required disabled />
-          <span class="field__hint">PDF or Word doc, 5 MB max.</span>
-        </div>
         <div class="field field--full field--checkbox jobs-only djsub-only">
           <input id="jf-age" type="checkbox" name="confirms_21_or_older" value="Yes" required disabled />
           <label for="jf-age" style="text-transform:none; letter-spacing:0; font-size:11px;">I confirm I'm 21 or older.</label>
@@ -228,13 +223,13 @@
     var note    = document.getElementById('cf-note');
 
     var position   = document.getElementById('jf-position');
-    var resume     = document.getElementById('jf-resume');
+    var redirect   = document.getElementById('form-redirect');
     var msgLabel   = document.getElementById('cf-message-label');
     var togglable  = form.querySelectorAll('.jobs-only, .dj-only, .djsub-only');
 
     var COOLDOWN_MS  = 60 * 1000;          // 60s between submissions
     var LAST_KEY     = 'tsj_contact_last'; // localStorage timestamp key
-    var MAX_RESUME_B = 5 * 1024 * 1024;    // Web3Forms attachment limit: 5 MB
+    var CONFIRM_URL  = 'https://thespottedjames.com/confirmation.html';
 
     function isJobs(){ return reason && reason.value === 'Job Application'; }
     function isDJ(){ return isJobs() && position && position.value === 'DJ'; }
@@ -251,6 +246,13 @@
       // Decode the &amp; back to & for a clean email subject line
       label = label.replace(/&amp;/g, '&');
       subject.value = label + ' — The Spotted James';
+    }
+
+    // Job applicants get sent to the confirmation page with ?jobs=1 so it can
+    // tell them where to email their resume. Every other reason redirects plain.
+    function syncRedirect(){
+      if (!redirect) return;
+      redirect.value = isJobs() ? (CONFIRM_URL + '?jobs=1') : CONFIRM_URL;
     }
 
     // Reveal extra fields per reason: Jobs shows the application fields,
@@ -272,10 +274,11 @@
       if (msgLabel) msgLabel.textContent = (jobs || djsub) ? 'Tell us about yourself & your experience' : 'Message';
     }
 
-    if (reason) reason.addEventListener('change', function(){ syncFields(); syncSubject(); });
-    if (position) position.addEventListener('change', function(){ syncFields(); syncSubject(); });
+    if (reason) reason.addEventListener('change', function(){ syncFields(); syncSubject(); syncRedirect(); });
+    if (position) position.addEventListener('change', function(){ syncFields(); syncSubject(); syncRedirect(); });
     syncFields();
     syncSubject();
+    syncRedirect();
 
     function lastSubmit(){
       try { return parseInt(localStorage.getItem(LAST_KEY) || '0', 10); }
@@ -289,11 +292,6 @@
         form.reportValidity();
         return;
       }
-      if (isJobs() && resume && resume.files.length && resume.files[0].size > MAX_RESUME_B) {
-        e.preventDefault();
-        note.textContent = 'Resume file must be under 5 MB.';
-        return;
-      }
       // 1) Enforce cooldown — block rapid repeat submissions
       var since = Date.now() - lastSubmit();
       if (since < COOLDOWN_MS) {
@@ -302,8 +300,9 @@
         note.textContent = 'Please wait ' + wait + 's before sending another message.';
         return;
       }
-      // 2) Make sure the subject reflects the current selection
+      // 2) Make sure the subject and redirect reflect the current selection
       syncSubject();
+      syncRedirect();
       // 3) Disable the button so it can't be double-clicked
       try { localStorage.setItem(LAST_KEY, String(Date.now())); } catch (e2) {}
       btn.disabled = true;

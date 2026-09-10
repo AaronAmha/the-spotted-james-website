@@ -79,9 +79,32 @@
     <p class="confirmation__msg">
       Thanks for reaching out. We'll be in touch soon<br/>to help you plan an unforgettable night.
     </p>
+
+    <!-- Shown only for job applications (redirected here with ?jobs=1) -->
+    <div class="confirmation__resume" id="resume-note" hidden>
+      <p class="confirmation__resume-title">ONE LAST STEP</p>
+      <p class="confirmation__resume-msg">
+        Send your resume over to
+        <a href="mailto:thespottedjames@gmail.com?subject=Resume%20%E2%80%94%20Job%20Application">thespottedjames@gmail.com</a>
+        and we'll pair it with your application.
+      </p>
+    </div>
+
     <a href="index.html" class="btn">Back To Home</a>
   </div>
 </main>
+<script>
+  // Job applicants arrive with ?jobs=1 — tell them where to email their resume.
+  (function(){
+    var note = document.getElementById('resume-note');
+    if (!note) return;
+    try {
+      if (new URLSearchParams(window.location.search).get('jobs') === '1') note.hidden = false;
+    } catch (e) {
+      if (window.location.search.indexOf('jobs=1') !== -1) note.hidden = false;
+    }
+  })();
+</script>
 <script>
   (function(){
     var t = document.querySelector('.nav__toggle');

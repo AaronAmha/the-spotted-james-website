@@ -1639,6 +1639,39 @@ button { font-family: inherit; cursor: pointer; }
   filter: drop-shadow(0 0 8px var(--neon)) drop-shadow(0 0 18px rgba(46,168,255,0.5));
 }
 
+/* Resume prompt — job applications only */
+.confirmation__resume {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 20px 22px;
+  margin: 0 auto 28px;
+  max-width: 42ch;
+}
+.confirmation__resume-title {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--neon);
+  margin: 0 0 8px;
+}
+.confirmation__resume-msg {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--smoke);
+  margin: 0;
+}
+.confirmation__resume-msg a {
+  color: var(--neon);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.confirmation__resume-msg a:hover { color: var(--neon-soft); }
+
 .confirmation picture { display: inline-block; margin: 0 auto 16px; }
 .confirmation picture img { width: 100%; height: auto; max-width: 230px; }
 
