@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Dart League Signup — The Spotted James | Boulder</title>
-<meta name="description" content="Sign up for the Boulder dart league forming at The Spotted James. Drop your name and skill level. Enough interest and we start a season." />
+<meta name="description" content="Sign up for the Boulder dart league forming at The Spotted James — Wednesdays at 7PM. Drop your name and skill level. Enough interest and we start a season." />
 <meta name="author" content="The Spotted James" />
 <meta name="robots" content="noindex, follow" />
 <meta name="theme-color" content="#000000" />
@@ -20,14 +20,14 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Dart League Signup — The Spotted James" />
-<meta property="og:description" content="A dart league is forming at The Spotted James in Boulder. Put your name in — enough interest and we run a season." />
+<meta property="og:description" content="A dart league is forming at The Spotted James in Boulder — Wednesdays at 7PM. Put your name in and we run a season." />
 <meta property="og:url" content="https://thespottedjames.com/dart-league.html" />
 <meta property="og:site_name" content="The Spotted James" />
 <meta property="og:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Dart League Signup — The Spotted James" />
-<meta name="twitter:description" content="A dart league is forming in Boulder. Put your name in." />
+<meta name="twitter:description" content="A dart league is forming in Boulder — Wednesdays, 7PM. Put your name in." />
 <meta name="twitter:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -189,11 +189,11 @@
     <section style="text-align:center;">
       <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="dl-logo" alt="The Spotted James" width="108" height="108" decoding="async" /></picture>
       <h1 class="page__title">DART<br/>LEAGUE</h1>
-      <p class="page__lead">We're putting together a dart league at The Spotted James in Boulder. Put your name in below. Get enough players and we run a real season, right here on 11th Street.</p>
+      <p class="page__lead">We're putting together a dart league at The Spotted James in Boulder — <strong>Wednesdays at 7PM</strong>. Put your name in below. Get enough players and we run a real season, right here on 11th Street.</p>
 
       <ul class="dl-how">
         <li>Add your name. It takes about twenty seconds and costs nothing.</li>
-        <li>We count the interest and pick the night, Sunday or Wednesday, that works for the most people.</li>
+        <li>League night is <strong>Wednesdays at 7PM</strong> — wrapped up before Musical Bingo at 9:30.</li>
         <li>If it's a go, everyone on this list hears first with the format, the schedule and the entry fee.</li>
         <li>No commitment yet. Signing up just says you'd play.</li>
       </ul>
@@ -212,7 +212,7 @@
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="form-card__title">PUT ME ON THE LIST</div>
-        <div class="form-card__sub">Interest list only. We'll email you once we know if the league is happening.</div>
+        <div class="form-card__sub">Interest list only — Wednesdays, 7PM. We'll email you once we know if the league is happening.</div>
 
         <div class="form-grid">
           <div class="field field--full">
@@ -238,12 +238,13 @@
             </select>
           </div>
           <div class="field field--full">
-            <label for="dl-night">Which night works better?</label>
+            <label for="dl-night">Can you make Wednesdays at 7PM?</label>
             <select id="dl-night" name="preferred_night" required>
               <option value="">Pick one</option>
-              <option value="Sunday">Sunday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Either works">Either one works for me</option>
+              <option value="Yes, every week">Yes, every week</option>
+              <option value="Most weeks">Most weeks</option>
+              <option value="Some weeks">Some weeks, depends on my schedule</option>
+              <option value="Wednesdays are hard">Wednesdays are hard for me</option>
             </select>
           </div>
           <div class="field field--full">
@@ -282,7 +283,7 @@
         <!-- Success — revealed in place after a successful signup -->
         <div id="dart-success" class="dl-success" role="status" aria-live="polite" tabindex="-1">
           <div class="dl-success__big">YOU'RE ON<br/>THE BOARD!</div>
-          <p class="dl-success__sub">You're on the list. We'll email you as soon as we know the night and the format. Come throw a few in the meantime.</p>
+          <p class="dl-success__sub">You're on the list. We'll email you as soon as we lock the format and the start date. Wednesdays at 7PM — come throw a few in the meantime.</p>
         </div>
       </form>
     </section>
@@ -373,7 +374,7 @@
       if (!name || !email)    return fail('Please add your name and email.');
       if (!validEmail(email)) return fail('That email doesn’t look right — please check it.');
       if (!skill)             return fail('Let us know how you play so we can set the format.');
-      if (!night)             return fail('Let us know whether Sunday or Wednesday works better.');
+      if (!night)             return fail('Let us know how often you can make Wednesdays at 7.');
       if (age && !age.checked) return fail('The Spotted James is 21+ — please confirm your age.');
 
       setSubmitting(true);
