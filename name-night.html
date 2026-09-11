@@ -212,7 +212,11 @@
       <input type="hidden" name="subject" id="nn-remind-subject" value="Name Night Reminder Signup — The Spotted James" />
       <input type="hidden" name="from_name" value="thespottedjames.com name-night reminders" />
       <input type="hidden" name="redirect" value="https://thespottedjames.com/confirmation.html" />
-      <input type="hidden" name="marketing_opt_in" id="nn-remind-optin-hidden" value="yes" />
+      <!-- Mirrors the opt-in checkbox below; checkboxes post nothing when
+           unchecked, so JS keeps this hidden field in sync and every
+           submission carries an explicit yes or no. Defaults to "no" —
+           consent must be an affirmative act, never a pre-set value. -->
+      <input type="hidden" name="marketing_opt_in" id="nn-remind-optin-hidden" value="no" />
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
       <div class="form-card__title">REMIND ME WHEN I'M UP</div>
@@ -227,7 +231,7 @@
           <input id="nn-remind-email" type="email" name="email" required autocomplete="email" placeholder="you@email.com" />
         </div>
         <div class="field field--full field--checkbox">
-          <input id="nn-remind-optin" type="checkbox" checked />
+          <input id="nn-remind-optin" type="checkbox" />
           <label for="nn-remind-optin" style="text-transform:none; letter-spacing:0; font-size:11px;">Yes, send me Name Night reminders, events &amp; specials. Unsubscribe anytime.</label>
         </div>
         <div class="field field--full">
@@ -622,6 +626,7 @@
   </div>
   <div class="footer__bottom">
     <span>© 2026 The Spotted James · Boulder, CO</span>
+    <span><a href="privacy.html">Privacy Policy</a></span>
     <span>21+ · Please Drink Responsibly</span>
   </div>
 </footer>

@@ -94,6 +94,33 @@
   }
   .gv-success__sub { opacity: 0.75; font-size: 15px; line-height: 1.6; }
 
+  /* Official rules — small print under the form. Collapsed by default so the
+     entry form stays the focus; the summary is always visible and keyboard
+     reachable, which is what "conspicuously posted" requires. */
+  .gv-rules {
+    margin-top: 26px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 18px;
+  }
+  .gv-rules summary {
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--neon);
+  }
+  .gv-rules summary:focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
+  .gv-rules__body {
+    margin-top: 14px;
+    font-size: 11.5px;
+    line-height: 1.65;
+    color: var(--smoke);
+    opacity: 0.85;
+  }
+  .gv-rules__body p { margin: 0 0 10px; }
+  .gv-rules__body strong { color: var(--bone); font-weight: 500; }
+
   /* Inline error (hidden until JS reveals it) */
   .gv-error {
     display: none;
@@ -147,7 +174,7 @@
 
       <form class="form-card gv-form" id="giveaway-form" novalidate>
         <div class="form-card__title">ENTER THE GIVEAWAY</div>
-        <div class="form-card__sub">One entry per person. Winners contacted by phone or email.</div>
+        <div class="form-card__sub">One entry per person. Winner contacted by email. Must be 21+ to enter.</div>
 
         <div class="form-grid">
           <div class="field field--full">
@@ -155,8 +182,8 @@
             <input id="gv-name" type="text" name="name" required autocomplete="name" placeholder="Your name" />
           </div>
           <div class="field field--full">
-            <label for="gv-phone">Phone</label>
-            <input id="gv-phone" type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" />
+            <label for="gv-phone">Phone <span style="opacity:.7;">(optional)</span></label>
+            <input id="gv-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" />
           </div>
           <div class="field field--full">
             <label for="gv-email">Email</label>
@@ -169,9 +196,25 @@
             <input id="gv-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
           </div>
 
+          <div class="field field--full field--checkbox">
+            <input id="gv-21" type="checkbox" required />
+            <label for="gv-21">I'm 21 or over. (The Spotted James is a 21+ venue.)</label>
+          </div>
+
+          <div class="field field--full field--checkbox">
+            <input id="gv-optin" type="checkbox" />
+            <label for="gv-optin">Optional: send me occasional events &amp; specials from The Spotted James. Unsubscribe anytime.</label>
+          </div>
+          <!-- Marketing consent is SEPARATE from entry and defaults to off.
+               Entering the giveaway must never be conditioned on accepting
+               marketing — especially not to a phone number. This form has no
+               native-submit fallback (it always POSTs from JS), so both
+               checkboxes are read directly in the submit handler and mirrored
+               into the request body there — no hidden mirror fields needed. -->
+
           <div class="field field--full">
             <button id="giveaway-submit" class="btn btn--block" type="submit">Enter The Giveaway</button>
-            <p class="gv-consent">By entering, you agree we may contact you about this giveaway and send occasional events &amp; specials from The Spotted James. You can unsubscribe anytime.</p>
+            <p class="gv-consent">We use your details to run this giveaway and contact the winner. Marketing is opt-in only. See our <a href="privacy.html">Privacy Policy</a>.</p>
             <p id="giveaway-error" class="gv-error" role="alert" aria-live="assertive">Something went wrong. Please check your info and try again.</p>
           </div>
         </div>
@@ -179,9 +222,24 @@
         <!-- Success ("GOOD LUCK!") — revealed after a successful entry -->
         <div id="giveaway-success" class="gv-success" role="status" aria-live="polite" tabindex="-1">
           <div class="gv-success__big">GOOD LUCK!</div>
-          <p class="gv-success__sub">You're in. Keep an eye on your phone — we'll reach out if you're our winner.</p>
+          <p class="gv-success__sub">You're in. Keep an eye on your email — we'll reach out if you're our winner.</p>
         </div>
       </form>
+
+      <details class="gv-rules">
+        <summary>Official Rules</summary>
+        <div class="gv-rules__body">
+          <p><strong>No purchase necessary to enter or win. A purchase does not improve your chances of winning. Void where prohibited.</strong></p>
+          <p><strong>Sponsor.</strong> The Spotted James, 1911 11th St, Suite 100, Boulder, CO 80302.</p>
+          <p><strong>Eligibility.</strong> Open to legal residents of Colorado who are 21 years of age or older at the time of entry. Employees of The Spotted James and their immediate families are not eligible. Proof of age with valid government-issued photo ID is required to claim a prize.</p>
+          <p><strong>How to enter.</strong> Complete the entry form on this page. Limit one entry per person. Duplicate entries are removed before the drawing. Name and email are required; phone is optional and is not used to select the winner.</p>
+          <p><strong>Prize.</strong> One bar tab credit valid at The Spotted James, with an approximate retail value of $25 to $100 depending on the promotion. The prize has no cash value, is not transferable, and no substitution is offered. The prize must be redeemed in person at the venue and is subject to Colorado liquor law and to our right to refuse service to any person who appears intoxicated or cannot produce valid ID.</p>
+          <p><strong>Drawing and odds.</strong> The winner is selected at random from all eligible entries received. Odds of winning depend on the number of eligible entries received.</p>
+          <p><strong>Winner notification.</strong> The winner is notified by email at the address provided. If the winner does not respond within 14 days, the prize may be forfeited and an alternate winner selected.</p>
+          <p><strong>Privacy.</strong> Entry information is used to run this giveaway and to contact the winner. Marketing messages are sent only to entrants who separately opt in. See our <a href="privacy.html">Privacy Policy</a>.</p>
+          <p><strong>Drink responsibly.</strong> The Spotted James is a 21+ venue.</p>
+        </div>
+      </details>
     </section>
   </div>
 </main>
@@ -246,15 +304,19 @@
       var phone    = (d.get('phone')   || '').toString().trim();
       var email    = (d.get('email')   || '').toString().trim();
       var honeypot = (d.get('_gotcha') || '').toString().trim();
+      var age      = document.getElementById('gv-21');
+      var optin    = document.getElementById('gv-optin');
 
       // Honeypot: real humans never fill a hidden field. Silently "succeed"
       // and send nothing — the bot thinks it worked; no junk row is written.
       if (honeypot) { succeed(); return; }
 
       hide(errorEl);
-      if (!name || !phone || !email) return fail('Please fill in your name, phone, and email.');
-      if (!validEmail(email))        return fail('That email doesn’t look right — please check it.');
-      if (!validPhone(phone))        return fail('Please enter a valid phone number.');
+      if (!name || !email)     return fail('Please fill in your name and email.');
+      if (!validEmail(email))  return fail('That email doesn’t look right — please check it.');
+      // Phone is optional; only validate it when one was actually given.
+      if (phone && !validPhone(phone)) return fail('That phone number doesn’t look right — leave it blank if you’d rather not share it.');
+      if (age && !age.checked) return fail('This giveaway is 21+ — please confirm your age.');
       if (!SCRIPT_URL || SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
         console.error('[giveaway] SCRIPT_URL is not set. Paste your Apps Script /exec URL.');
         return fail('Signups aren’t live yet — please try again soon.');
@@ -273,6 +335,8 @@
       body.append('name', name);
       body.append('phone', phone);
       body.append('email', email);
+      body.append('confirmed_21_plus', age && age.checked ? 'yes' : 'no');
+      body.append('marketing_opt_in', optin && optin.checked ? 'yes' : 'no');
       body.append('source', 'qr-giveaway');
       body.append('page', location.href);
       body.append('ts', new Date().toISOString());
