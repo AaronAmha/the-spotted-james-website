@@ -389,7 +389,7 @@
     <h1>CU NEXT<br />TUESDAY</h1>
     <span class="sub">BASS. TECHNO. DUB.</span>
 
-    <div class="count" id="count" role="timer" aria-label="Countdown to the next night">
+    <div class="count" id="count" hidden role="timer" aria-label="Countdown to the next night">
       <div class="count__unit"><span class="count__num" data-u="d">--</span><span class="count__lbl">DAYS</span></div>
       <div class="count__unit"><span class="count__num" data-u="h">--</span><span class="count__lbl">HRS</span></div>
       <div class="count__unit"><span class="count__num" data-u="m">--</span><span class="count__lbl">MIN</span></div>
@@ -465,7 +465,8 @@
    ===================================================================== */
 
 // SET LAUNCH DATE HERE  (Boulder local time, 24h: "YYYY-MM-DDTHH:MM")
-var LAUNCH = "2026-12-01T22:30";
+// While this is null the countdown stays hidden. Example: var LAUNCH = "2026-12-01T22:30";
+var LAUNCH = null;
 
 // LINEUP — to reveal a DJ, replace null with their name in quotes,
 // e.g.  { name: "DJ SOMEBODY", genre: "Dubstep" },
@@ -538,6 +539,7 @@ var LINEUP = [
     return guess - tzOffset(t);
   }
 
+  if (!LAUNCH) return; // no date yet: countdown stays hidden
   var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(LAUNCH);
   var countEl = document.getElementById("count");
   var liveEl = document.getElementById("live");
