@@ -13,7 +13,7 @@ Usage:
 
 Codes in use:
     giveaway  https://thespottedjames.com/giveaway.html
-    cunt      https://thespottedjames.com/cunt/
+    cunt-signup  https://thespottedjames.com/cunt/signup.html  (CU.NT DJ application)
 
 Outputs (next to this script, in assets/qr/):
     <name>-qr.png   -> for printing (high-res)
