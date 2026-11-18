@@ -317,6 +317,9 @@
     margin-bottom: 10px;
   }
   .mx-label__hint {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
     letter-spacing: 0.06em;
     text-transform: none;
     font-size: 12px;
@@ -433,7 +436,7 @@
     background: var(--ink-2);
   }
   .mx-card .mx-views { padding: clamp(10px, 2.5vw, 20px); aspect-ratio: 3 / 4; }
-  .mx-card .mx-viewtab { font-size: 10px; letter-spacing: 0.16em; min-height: 40px; }
+  .mx-card .mx-viewtab { font-size: 11px; letter-spacing: 0.16em; min-height: 40px; }
   .mx-card__blurb {
     font-family: var(--sans);
     font-weight: 300;
@@ -1110,13 +1113,13 @@
       <ul>
         <li>Mon–Thu · 6PM–2AM</li>
         <li>Fri–Sun · 4PM–2AM</li>
-        <li>Happy Hour Fri &amp; Sat · 4–7PM</li>
+        <li>Happy Hour Fri &amp; Sat · <span style="white-space:nowrap">4–7PM</span></li>
       </ul>
     </div>
     <div class="footer__col">
       <h5>Contact</h5>
       <ul>
-        <li><a href="mailto:thespottedjames@gmail.com">thespottedjames@gmail.com</a></li>
+        <li><a href="mailto:thespottedjames@gmail.com">thespottedjames@<wbr>gmail.com</a></li>
         <li><a href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.facebook.com/thespottedjames" target="_blank" rel="noopener">Facebook</a></li>
         <li><a href="https://www.tiktok.com/@thespottedjames" target="_blank" rel="noopener">TikTok</a></li>

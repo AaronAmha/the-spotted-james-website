@@ -2513,3 +2513,72 @@ a.home-tonight__card--today:hover {
 .lb__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .lb__close { position: absolute; top: 10px; right: 10px; z-index: 1; border-color: transparent; }
 body.lb-open { overflow: hidden; }
+
+/* =====================================================================
+   Readability + tap targets
+   Rule of thumb: spaced-out uppercase labels at least 11px, sentence text
+   at least 12–13px; on phones, anything tappable about 40–44px tall and
+   form fields at 16px so iOS doesn't zoom in when they're tapped.
+   These override the original sizes earlier in this file.
+   ===================================================================== */
+.event-card__today-tag,
+.event-card__day,
+.event-card__time,
+.drink-tabs button,
+.party-tile__label,
+.field input[type="file"]::file-selector-button,
+.gallery-filter,
+.home-tonight__card-day,
+.home-tonight__card-time,
+.pp-price-way__tag,
+.nn-tw-card__label,
+.nn-cal-row__week,
+.field label,
+.contact-row__label,
+.home-spotted__feature-label,
+.confirmation__resume-title,
+.nn-search__label,
+.nn-cal-tools__label { font-size: 11px; }
+
+.btn,
+.field__hint,
+.home-spotted__feature-cap,
+.contact-row__sub,
+.mb-theme,
+.nn-cal-row__date { font-size: 12px; }
+
+.home-feature__copy,
+.bottle-strip__sub,
+.field--checkbox { font-size: 13px; }
+
+@media (max-width: 880px) {
+  .field input,
+  .field select,
+  .field textarea,
+  .nn-cal-filter { font-size: 16px; }
+  .field input,
+  .field select,
+  .nn-cal-filter { min-height: 44px; }
+
+  .nav__cta { min-height: 40px; display: inline-flex; align-items: center; }
+  .tabs button { min-height: 44px; }
+  .gallery-filter { min-height: 40px; }
+  .follow-strip__icons a { width: 44px; height: 44px; }
+  .event-card__note a,
+  .nn-specials-toggle { display: inline-flex; align-items: center; min-height: 40px; }
+
+  /* footer: two columns, roomier links */
+  .footer__col ul { gap: 0; }
+  .footer__col li { padding: 2px 0; }
+  .footer__col a,
+  .footer__bottom a { display: inline-flex; align-items: center; min-height: 40px; }
+}
+@media (max-width: 400px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 24px 18px; }
+  .footer__col a { overflow-wrap: anywhere; }
+}
+/* Very narrow phones (≈360px): the header's Get Directions button pushed the
+   menu button onto a second line. The phone action bar already has Directions. */
+@media (max-width: 374px) {
+  body.has-action-bar a.nav__cta { display: none; }
+}
