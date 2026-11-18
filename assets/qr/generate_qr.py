@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 """
-Generate the giveaway QR code for The Spotted James.
+Generate QR codes for The Spotted James.
 
-Encodes the giveaway sign-up URL and outputs a print-ready PNG plus a
+Encodes a URL (the giveaway sign-up page by default) and outputs a print-ready PNG plus a
 scalable SVG. High error correction (H) so the code survives smudges,
 folds, and being printed small on a table tent.
 
 Usage:
     python3 generate_qr.py                      # uses default URL
     python3 generate_qr.py https://your.url/    # override the URL
+    python3 generate_qr.py https://your.url/ name   # writes name-qr.png / name-qr.svg
+
+Codes in use:
+    giveaway  https://thespottedjames.com/giveaway.html
+    cunt      https://thespottedjames.com/cunt/
 
 Outputs (next to this script, in assets/qr/):
-    giveaway-qr.png   -> for printing (high-res)
-    giveaway-qr.svg   -> for scaling / design tools
+    <name>-qr.png   -> for printing (high-res)
+    <name>-qr.svg   -> for scaling / design tools
+    (name defaults to "giveaway")
 """
 import sys
 import os
@@ -31,6 +37,7 @@ BACK = "#ffffff"   # white quiet zone for contrast
 
 def main():
     url = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_URL
+    name = sys.argv[2] if len(sys.argv) > 2 else "giveaway"
     here = os.path.dirname(os.path.abspath(__file__))
 
     # --- PNG (print) ---
@@ -43,7 +50,7 @@ def main():
     qr.add_data(url)
     qr.make(fit=True)
     img = qr.make_image(fill_color=FILL, back_color=BACK)
-    png_path = os.path.join(here, "giveaway-qr.png")
+    png_path = os.path.join(here, f"{name}-qr.png")
     img.save(png_path)
 
     # --- SVG (scalable) ---
@@ -55,14 +62,14 @@ def main():
         box_size=20,
         border=4,
     )
-    svg_path = os.path.join(here, "giveaway-qr.svg")
+    svg_path = os.path.join(here, f"{name}-qr.svg")
     svg_img.save(svg_path)
 
     print(f"URL encoded : {url}")
     print(f"PNG written : {png_path}")
     print(f"SVG written : {svg_path}")
     print("Print the PNG. To change the URL, re-run: "
-          "python3 generate_qr.py <new-url>")
+          "python3 generate_qr.py <new-url> <name>")
 
 
 if __name__ == "__main__":
