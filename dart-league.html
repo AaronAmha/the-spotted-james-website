@@ -441,5 +441,19 @@
     });
   })();
 </script>
+<nav class="action-bar" aria-label="Quick actions">
+  <a href="https://maps.google.com/?q=1911+11th+St+Boulder+CO" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Directions</span></a>
+  <a href="events.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.3-4.1 5.9-.9z"/></svg><span>Tonight</span></a>
+  <a href="parties.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l-.6 7a3.4 3.4 0 0 1-6.8 0z"/><path d="M12 13.5V20M8.5 20.5h7"/></svg><span>Book a Party</span></a>
+</nav>
+<script>
+  // Phone action bar: reserve space for it, and hide it while someone is typing in a form.
+  (function(){
+    document.body.classList.add('has-action-bar');
+    function typing(t){ return t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) && !/^(checkbox|radio|button|submit)$/.test(t.type); }
+    document.addEventListener('focusin', function(e){ if (typing(e.target)) document.body.classList.add('is-typing'); });
+    document.addEventListener('focusout', function(e){ if (typing(e.target)) document.body.classList.remove('is-typing'); });
+  })();
+</script>
 </body>
 </html>
