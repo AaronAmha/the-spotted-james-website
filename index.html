@@ -108,7 +108,7 @@
       <div class="home-spotted__eyebrow">YOU'VE BEEN</div>
       <div class="home-spotted__title">SPOTTED</div>
       <p class="home-spotted__copy">Don't just go out. Show up.</p>
-      <a href="gallery.html" class="btn btn--ghost" style="max-width: 160px;">View Gallery</a>
+      <a href="gallery.html" class="btn btn--ghost">View Gallery</a>
     </div>
 
     <div class="home-spotted__collage">
@@ -140,9 +140,10 @@
     <div class="home-tonight__intro">
       <div class="home-tonight__label">TONIGHT AT</div>
       <div class="home-tonight__name">JAMES</div>
-      <a href="events.html" class="btn btn--ghost" style="max-width: 180px;">View Full Lineup</a>
+      <a href="events.html" class="btn btn--ghost">View Full Lineup</a>
     </div>
 
+    <div class="home-tonight__cards">
     <article class="home-tonight__card">
       <div class="home-tonight__card-day">Thursday</div>
       <div class="home-tonight__card-title">THIRSTY<br/>THURSDAY</div>
@@ -160,6 +161,7 @@
       <div class="home-tonight__card-title">SPOTTED<br/>SATURDAYS <span style="color:var(--neon);font-size:18px;">★★</span></div>
       <div class="home-tonight__card-time">10PM — CLOSE</div>
     </article>
+    </div>
   </section>
 
   <!-- ====== FEATURES STRIP ====== -->
@@ -306,6 +308,7 @@
     }
 
     var start = barNightIndex();
+    var holder = band.querySelector('.home-tonight__cards') || band;
     band.querySelectorAll('.home-tonight__card').forEach(function(el){ el.remove(); });
     for (var k = 0; k < 3; k++) {
       var n = NIGHTS[(start + k) % 7];
@@ -317,7 +320,7 @@
         '<div class="home-tonight__card-day">' + n.day + '</div>' +
         '<div class="home-tonight__card-title">' + n.title + '</div>' +
         '<div class="home-tonight__card-time">' + n.line + '</div>';
-      band.appendChild(a);
+      holder.appendChild(a);
     }
   })();
 </script>
