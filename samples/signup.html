@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#000000" />
+<title>CU.NT — Calling All DJs</title>
+<meta name="description" content="Bass. Techno. Dub. Send us your sound." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira+Stencil+One&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #000;
+    --fg: #fff;
+    --red: #E10600;
+    --dim: rgba(255,255,255,.55);
+    --line: rgba(255,255,255,.18);
+    --stencil: "Saira Stencil One", "Arial Black", Impact, sans-serif;
+    --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::selection { background: var(--red); color: #000; }
+
+  .wrap {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HEADER + BEAM ---------- */
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 22vh 0 14vh;
+    min-height: 78vh;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  /* faint haze: layered soft blobs that breathe slowly */
+  .haze {
+    position: absolute;
+    inset: -20%;
+    z-index: -2;
+    background:
+      radial-gradient(40% 30% at 30% 40%, rgba(255,255,255,.045), transparent 70%),
+      radial-gradient(35% 25% at 70% 60%, rgba(255,255,255,.035), transparent 70%),
+      radial-gradient(50% 40% at 50% 85%, rgba(225,6,0,.06), transparent 70%);
+    filter: blur(30px);
+    animation: haze 26s ease-in-out infinite alternate;
+  }
+
+  /* the beam: a narrow cone of red light sweeping slowly */
+  .beam {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    width: 38vmax;
+    height: 170%;
+    z-index: -1;
+    transform-origin: 50% 0%;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(225,6,0,.0) 20%,
+      rgba(225,6,0,.22) 42%,
+      rgba(255,60,40,.38) 50%,
+      rgba(225,6,0,.22) 58%,
+      rgba(225,6,0,.0) 80%,
+      transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.7) 45%, transparent 95%);
+            mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.7) 45%, transparent 95%);
+    clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
+    filter: blur(14px);
+    mix-blend-mode: screen;
+    animation: sweep 22s ease-in-out infinite alternate;
+  }
+
+  .beam--two {
+    width: 24vmax;
+    opacity: .45;
+    animation-duration: 31s;
+    animation-delay: -12s;
+    animation-direction: alternate-reverse;
+  }
+
+  /* fade the bottom of the hero into black so the form sits on pure black */
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 35%;
+    z-index: -1;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+  }
+
+  @keyframes sweep {
+    0%   { transform: translateX(-50%) rotate(28deg); }
+    100% { transform: translateX(-50%) rotate(-28deg); }
+  }
+
+  @keyframes haze {
+    0%   { transform: translate3d(-3%, 0, 0) scale(1);    opacity: .8; }
+    100% { transform: translate3d(3%, -2%, 0) scale(1.08); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .beam, .haze { animation: none; }
+    .beam { transform: translateX(-50%) rotate(12deg); }
+    .beam--two { transform: translateX(-50%) rotate(-16deg); }
+  }
+
+  .brand {
+    position: absolute;
+    top: 28px;
+    left: 0; right: 0;
+    font-family: var(--stencil);
+    font-size: 15px;
+    letter-spacing: .32em;
+    color: var(--fg);
+    opacity: .9;
+  }
+
+  h1, h2, .stencil {
+    font-family: var(--stencil);
+    font-weight: 400;
+    letter-spacing: .02em;
+    line-height: .95;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(46px, 15vw, 88px);
+  }
+
+  .sub {
+    display: block;
+    margin-top: 14px;
+    color: var(--red);
+    font-family: var(--stencil);
+    font-size: clamp(24px, 7.6vw, 40px);
+    letter-spacing: .06em;
+    line-height: 1;
+  }
+
+  .lede {
+    margin: 28px 0 0;
+    max-width: 30ch;
+    color: var(--dim);
+    font-size: 16px;
+  }
+
+  /* ---------- FORM ---------- */
+
+  main { flex: 1; }
+
+  form { padding: 4vh 0 12vh; }
+
+  .field { margin: 0 0 44px; }
+
+  label, legend {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin: 0 0 12px;
+    padding: 0;
+  }
+
+  legend { line-height: 1.6; }
+
+  .opt {
+    color: var(--dim);
+    font-weight: 400;
+    letter-spacing: .12em;
+    margin-left: 6px;
+  }
+
+  fieldset { border: 0; margin: 0 0 44px; padding: 0; min-width: 0; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    color: var(--fg);
+    font: inherit;
+    font-size: 18px;            /* >=16px keeps iOS from zooming on focus */
+    padding: 8px 0 10px;
+    outline: none;
+    transition: border-color .2s;
+    -webkit-appearance: none;
+            appearance: none;
+  }
+
+  textarea { resize: vertical; min-height: 84px; line-height: 1.45; }
+
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,.28); }
+
+  input:focus, textarea:focus { border-bottom-color: var(--fg); }
+
+  .field.has-error input,
+  .field.has-error textarea { border-bottom-color: var(--red); }
+
+  .hint {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: var(--dim);
+  }
+
+  .err {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: var(--red);
+    min-height: 0;
+  }
+  .err:empty { display: none; }
+
+  /* chips + segmented choices share a look; the real inputs stay accessible */
+  .chips, .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    position: relative;
+  }
+
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .chip span {
+    display: inline-block;
+    padding: 11px 16px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--fg);
+    user-select: none;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+
+  .chip input:hover + span { border-color: rgba(255,255,255,.5); }
+  .chip input:focus-visible + span { outline: 2px solid var(--fg); outline-offset: 2px; }
+  .chip input:checked + span {
+    background: var(--red);
+    border-color: var(--red);
+    color: #000;
+  }
+
+  .choices .chip { flex: 1 1 0; }
+  .choices .chip span { display: block; text-align: center; }
+
+  fieldset.has-error .chip span { border-color: rgba(225,6,0,.6); }
+
+  /* 21+ checkbox */
+  .age {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .age input {
+    -webkit-appearance: none;
+            appearance: none;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    border: 1px solid rgba(255,255,255,.5);
+    background: transparent;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+  }
+  .age input::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: var(--red);
+    transform: scale(0);
+    transition: transform .12s;
+  }
+  .age input:checked { border-color: var(--red); }
+  .age input:checked::before { transform: scale(1); }
+  .age input:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  .field.has-error .age input { border-color: var(--red); }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 20px 24px;
+    border: 0;
+    border-radius: 0;
+    background: var(--red);
+    color: #000;
+    font-family: var(--stencil);
+    font-size: 30px;
+    letter-spacing: .08em;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    -webkit-appearance: none;
+            appearance: none;
+  }
+  button[type="submit"]:hover { background: var(--fg); }
+  button[type="submit"]:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+  button[type="submit"][disabled] { opacity: .5; cursor: progress; }
+
+  .form-err {
+    margin: 16px 0 0;
+    font-size: 14px;
+    color: var(--red);
+    text-align: center;
+  }
+  .form-err:empty { display: none; }
+
+  /* ---------- DONE STATE ---------- */
+
+  .done {
+    padding: 10vh 0 22vh;
+    font-family: var(--stencil);
+    font-size: clamp(36px, 11vw, 64px);
+    line-height: 1;
+    margin: 0;
+  }
+  .done:focus { outline: none; }
+
+  [hidden] { display: none !important; }
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    padding: 0 0 40px;
+  }
+
+  footer a {
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  footer a:hover, footer a:focus-visible { color: var(--fg); border-bottom-color: var(--red); outline: none; }
+
+  @media (min-width: 720px) {
+    .hero { padding-top: 26vh; }
+    .brand { top: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="haze" aria-hidden="true"></div>
+  <div class="beam" aria-hidden="true"></div>
+  <div class="beam beam--two" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="brand" aria-hidden="true"><div class="wrap">CU.NT</div></div>
+    <h1>CALLING<br />ALL DJs.</h1>
+    <span class="sub">BASS. TECHNO. DUB.</span>
+    <p class="lede">We're building something on a weeknight. Send us your sound.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- REPLACE WITH FORMSPREE OR FORM ENDPOINT -->
+    <!-- Set action to your endpoint, e.g. https://formspree.io/f/xxxxxxxx. While it is "#REPLACE-WITH-FORM-ENDPOINT", submissions are not sent anywhere. -->
+    <form id="apply" action="#REPLACE-WITH-FORM-ENDPOINT" method="POST" novalidate>
+
+      <input type="hidden" name="_subject" value="CU.NT DJ application" />
+      <div class="hp" aria-hidden="true">
+        <label for="f-gotcha">Leave this empty</label>
+        <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="f-djname">DJ name</label>
+        <input type="text" id="f-djname" name="dj_name" required autocomplete="nickname" aria-describedby="e-djname" />
+        <p class="err" id="e-djname" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-realname">Real name</label>
+        <input type="text" id="f-realname" name="real_name" required autocomplete="name" aria-describedby="e-realname" />
+        <p class="err" id="e-realname" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-ig">Instagram handle</label>
+        <input type="text" id="f-ig" name="instagram" required placeholder="@yourhandle"
+               autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="e-ig" />
+        <p class="err" id="e-ig" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" required autocomplete="email"
+               autocapitalize="none" spellcheck="false" aria-describedby="e-email" />
+        <p class="err" id="e-email" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-phone">Phone <span class="opt">Optional</span></label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" />
+      </div>
+
+      <div class="field">
+        <label for="f-school">School and year <span class="opt">Optional</span></label>
+        <input type="text" id="f-school" name="school_year" placeholder="e.g. CU Boulder, junior" />
+      </div>
+
+      <fieldset id="g-genres" aria-describedby="e-genres">
+        <legend>Genres <span class="opt">Pick all that apply</span></legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="genres" value="Dubstep" /><span>Dubstep</span></label>
+          <label class="chip"><input type="checkbox" name="genres" value="Techno" /><span>Techno</span></label>
+          <label class="chip"><input type="checkbox" name="genres" value="Tech House" /><span>Tech House</span></label>
+          <label class="chip"><input type="checkbox" name="genres" value="Dub" /><span>Dub</span></label>
+          <label class="chip"><input type="checkbox" name="genres" value="Drum &amp; Bass" /><span>Drum &amp; Bass</span></label>
+          <label class="chip"><input type="checkbox" name="genres" value="Other" /><span>Other</span></label>
+        </div>
+        <p class="err" id="e-genres" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="field">
+        <label for="f-mix">Link to a 20+ minute mix</label>
+        <input type="url" id="f-mix" name="mix_link" required placeholder="https://"
+               autocapitalize="none" spellcheck="false" inputmode="url" aria-describedby="h-mix e-mix" />
+        <p class="hint" id="h-mix">SoundCloud, Mixcloud or Drive.</p>
+        <p class="err" id="e-mix" aria-live="polite"></p>
+      </div>
+
+      <fieldset id="g-gear" aria-describedby="e-gear">
+        <legend>Played a Pioneer XDJ-RX3 or similar all-in-one?</legend>
+        <div class="choices">
+          <label class="chip"><input type="radio" name="xdj_experience" value="Yes" /><span>Yes</span></label>
+          <label class="chip"><input type="radio" name="xdj_experience" value="No" /><span>No</span></label>
+          <label class="chip"><input type="radio" name="xdj_experience" value="Learning" /><span>Learning</span></label>
+        </div>
+        <p class="err" id="e-gear" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="field">
+        <label for="f-crew">Crew or collective <span class="opt">Optional</span></label>
+        <input type="text" id="f-crew" name="crew" />
+      </div>
+
+      <div class="field">
+        <label for="f-refer">Who else in Boulder should play this? <span class="opt">Optional</span></label>
+        <textarea id="f-refer" name="referrals" rows="3"></textarea>
+      </div>
+
+      <div class="field" id="g-age">
+        <label class="age" for="f-age">
+          <input type="checkbox" id="f-age" name="is_21_plus" value="Yes" required aria-describedby="e-age" />
+          I'm 21 or older
+        </label>
+        <p class="err" id="e-age" aria-live="polite"></p>
+      </div>
+
+      <button type="submit">SEND IT.</button>
+      <p class="form-err" id="form-err" role="alert"></p>
+    </form>
+
+    <p class="done" id="done" tabindex="-1" hidden>We'll be in touch.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="event.html">What is this?</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('apply');
+  var done = document.getElementById('done');
+  var formErr = document.getElementById('form-err');
+  var btn = form.querySelector('button[type="submit"]');
+
+  function setError(container, msgEl, msg) {
+    container.classList.toggle('has-error', !!msg);
+    msgEl.textContent = msg || '';
+  }
+
+  function isHttpUrl(value) {
+    try {
+      var u = new URL(value);
+      return (u.protocol === 'http:' || u.protocol === 'https:') && u.hostname.indexOf('.') > 0;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  var rules = [
+    { id: 'f-djname', err: 'e-djname', check: function (v) { return v ? '' : 'Need your DJ name.'; } },
+    { id: 'f-realname', err: 'e-realname', check: function (v) { return v ? '' : 'Need your real name.'; } },
+    { id: 'f-ig', err: 'e-ig', check: function (v) {
+        if (!v) return 'Need your Instagram.';
+        return /^@?[A-Za-z0-9._]{1,30}$/.test(v) ? '' : 'Just the handle, like @yourname.';
+      } },
+    { id: 'f-email', err: 'e-email', check: function (v, el) {
+        if (!v) return 'Need an email.';
+        return el.validity.valid ? '' : "That email doesn't look right.";
+      } },
+    { id: 'f-mix', err: 'e-mix', check: function (v) {
+        if (!v) return 'Need a link to your mix.';
+        return isHttpUrl(v) ? '' : 'Paste the full link, starting with https://';
+      } }
+  ];
+
+  function validateField(rule) {
+    var el = document.getElementById(rule.id);
+    var msg = rule.check(el.value.trim(), el);
+    setError(el.closest('.field'), document.getElementById(rule.err), msg);
+    return msg ? el : null;
+  }
+
+  function validateGroup(groupId, errId, selector, msg) {
+    var group = document.getElementById(groupId);
+    var ok = !!form.querySelector(selector + ':checked');
+    setError(group, document.getElementById(errId), ok ? '' : msg);
+    return ok ? null : group.querySelector('input');
+  }
+
+  function validateAll() {
+    var firstBad = null;
+    rules.forEach(function (r) {
+      var bad = validateField(r);
+      if (bad && !firstBad) firstBad = bad;
+    });
+    var g = validateGroup('g-genres', 'e-genres', 'input[name="genres"]', 'Pick at least one.');
+    if (g && !firstBad) firstBad = g;
+    var x = validateGroup('g-gear', 'e-gear', 'input[name="xdj_experience"]', 'Pick one.');
+    if (x && !firstBad) firstBad = x;
+    var age = document.getElementById('f-age');
+    setError(document.getElementById('g-age'), document.getElementById('e-age'),
+      age.checked ? '' : 'You must be 21 or older to apply.');
+    if (!age.checked && !firstBad) firstBad = age;
+    return firstBad;
+  }
+
+  // re-check a field as soon as the user fixes it
+  rules.forEach(function (r) {
+    var el = document.getElementById(r.id);
+    el.addEventListener('blur', function () { if (el.value.trim()) validateField(r); });
+    el.addEventListener('input', function () {
+      if (el.closest('.field').classList.contains('has-error')) validateField(r);
+    });
+  });
+  form.addEventListener('change', function (e) {
+    var n = e.target.name;
+    if (n === 'genres') validateGroup('g-genres', 'e-genres', 'input[name="genres"]', 'Pick at least one.');
+    if (n === 'xdj_experience') validateGroup('g-gear', 'e-gear', 'input[name="xdj_experience"]', 'Pick one.');
+    if (n === 'is_21_plus') setError(document.getElementById('g-age'), document.getElementById('e-age'),
+      e.target.checked ? '' : 'You must be 21 or older to apply.');
+  });
+
+  function showDone() {
+    form.hidden = true;
+    done.hidden = false;
+    done.focus();
+    window.scrollTo({ top: done.getBoundingClientRect().top + window.pageYOffset - 120, behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formErr.textContent = '';
+
+    var firstBad = validateAll();
+    if (firstBad) {
+      firstBad.focus({ preventScroll: true });
+      firstBad.closest('.field, fieldset').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // honeypot filled: pretend it worked, send nothing
+    if (document.getElementById('f-gotcha').value) { showDone(); return; }
+
+    // normalise the handle so every entry looks the same
+    var ig = document.getElementById('f-ig');
+    ig.value = '@' + ig.value.trim().replace(/^@/, '');
+
+    var endpoint = form.getAttribute('action') || '';
+    if (endpoint.charAt(0) === '#') {
+      // Placeholder endpoint: nothing is sent. Swap the action attribute to go live.
+      showDone();
+      return;
+    }
+
+    btn.disabled = true;
+    fetch(endpoint, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      showDone();
+    }).catch(function () {
+      btn.disabled = false;
+      formErr.textContent = "Didn't go through. Try again in a minute.";
+    });
+  });
+})();
+</script>
+</body>
+</html>
