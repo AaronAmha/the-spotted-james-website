@@ -2814,3 +2814,112 @@ a.home-tonight__card:hover { border-color: rgba(46,168,255,0.45); }
 .home-tonight__intro .btn { white-space: nowrap; }
 .home-spotted__intro .btn,
 .home-tonight__intro .btn { align-self: flex-start; }
+
+/* =====================================================================
+   REFRESH 2: page transitions, shorter hero, desktop layout
+   ===================================================================== */
+
+/* ---- page transitions (same-site links; header and phone bar stay put) ---- */
+@view-transition { navigation: auto; }
+.nav { view-transition-name: site-nav; }
+@media (max-width: 880px) { .action-bar { view-transition-name: action-bar; } }
+::view-transition-group(site-nav),
+::view-transition-group(action-bar) { animation: none; }
+::view-transition-old(root) { animation: vt-out 0.2s ease both; }
+::view-transition-new(root) { animation: vt-in 0.34s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes vt-out { to   { opacity: 0; transform: translateY(-8px); filter: blur(4px); } }
+@keyframes vt-in  { from { opacity: 0; transform: translateY(14px); filter: blur(6px); } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+/* ---- homepage hero: sized to its content, not the screen ---- */
+.home-hero { min-height: 0; }
+@media (min-width: 881px) {
+  .home-hero__text { max-width: 600px; margin: 36px 40px; padding: 32px 36px 30px; }
+  /* two-line headline: A BAR WITH GOOD TASTE. / A PLACE WORTH BEING SEEN. */
+  .home-hero__headline { display: block; font-size: clamp(40px, 4.2vw, 58px); }
+  .home-hero__headline span,
+  .home-hero__headline strong { display: inline; margin: 0; }
+  .home-hero__headline strong::after { content: "\A"; white-space: pre; }
+  .home-hero__buttons { flex-direction: row; max-width: none; }
+  .home-hero__buttons .btn { width: auto; }
+}
+@media (max-width: 880px) {
+  /* photo banner on top, glass panel overlapping its bottom edge */
+  .home-hero {
+    display: block;
+    overflow: visible;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .home-hero__photo {
+    height: 220px;
+    border-radius: 18px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+  }
+  .home-hero__text { position: relative; margin: -70px 10px 0; }
+}
+
+/* ---- homepage collage: restore the intended 2+1 / 1+2 mosaic ---- */
+.home-spotted__collage > * {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  min-height: 0;
+}
+.home-spotted__collage > *:nth-child(1) { grid-column: 1 / 3; grid-row: 1; }
+.home-spotted__collage > *:nth-child(2) { grid-column: 3;     grid-row: 1; }
+.home-spotted__collage > *:nth-child(3) { grid-column: 1;     grid-row: 2; }
+.home-spotted__collage > *:nth-child(4) { grid-column: 2 / 4; grid-row: 2; }
+.home-spotted__collage > * picture,
+.home-spotted__collage > * img { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 981px) { .home-spotted__collage { min-height: 320px; gap: 10px; } }
+@media (max-width: 600px) {
+  .home-spotted__collage > *:nth-child(n) { grid-column: auto; grid-row: auto; min-height: 120px; }
+}
+
+/* ---- drinks: happy hour box in glass, neon edge kept ---- */
+.happy-hour {
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(46,168,255,0.12), rgba(46,168,255,0.03)), rgba(10,14,26,0.55);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: 0 0 24px rgba(46,168,255,0.2), var(--glass-shadow);
+}
+
+/* ---- desktop: roomier two-column pages, right column stays in view ---- */
+@media (min-width: 981px) {
+  .page {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 64px;
+    padding: 56px 56px 84px;
+  }
+  .page > aside:not(:has(.gallery-grid)) {
+    position: sticky;
+    top: 124px;
+  }
+  .page > aside .hero-img,
+  .page > aside .about-hero,
+  .page > aside .map-tile {
+    max-height: calc(100vh - 160px);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .page__lead { font-size: 16px; max-width: 46ch; }
+  .event-card__deals { font-size: 14px; }
+  .event-card__body { padding: 22px 26px; }
+  .event-card__title { font-size: 30px; }
+  .event-card--today .event-card__title { font-size: 38px; }
+}
+@media (min-width: 881px) {
+  .home-hero { position: relative; }
+  .home-hero__photo { position: absolute; inset: 0; }
+}
+@media (max-width: 880px) {
+  .home-hero { display: flex; flex-direction: column; }
+  .home-hero__photo { order: -1; flex: 0 0 auto; }
+}
