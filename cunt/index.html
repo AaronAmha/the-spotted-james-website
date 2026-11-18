@@ -7,6 +7,9 @@
 <meta name="theme-color" content="#000000" />
 <title>CU NEXT TUESDAY — CU.NT</title>
 <meta name="description" content="Bass. Techno. Dub. Weekly at The Spotted James, Boulder. 21+." />
+<meta property="og:title" content="CU NEXT TUESDAY — CU.NT" />
+<meta property="og:description" content="Bass. Techno. Dub. Weekly at The Spotted James, Boulder. 21+." />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira+Stencil+One&display=swap" rel="stylesheet" />
@@ -413,14 +416,13 @@
       <h2 id="list-h">GET ON<br />THE LIST</h2>
       <div style="height:40px"></div>
 
-      <!-- REPLACE WITH FORM ENDPOINT -->
-      <!-- Set action to your endpoint (e.g. https://formspree.io/f/xxxxxxxx). While it starts with "#", nothing is sent anywhere. -->
-      <form class="list-form" id="list-form" action="#REPLACE-WITH-FORM-ENDPOINT" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="CU.NT list signup" />
-        <div class="hp" aria-hidden="true">
-          <label for="f-gotcha">Leave this empty</label>
-          <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
-        </div>
+      <!-- Form endpoint: Web3Forms, same key as the main site's contact form. Entries arrive by email. -->
+      <form class="list-form" id="list-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="63626f14-3b8c-4067-8fdb-90b2c3025fb1" />
+        <input type="hidden" name="subject" value="CU.NT list signup" />
+        <input type="hidden" name="from_name" value="thespottedjames.com/cunt list" />
+        <!-- Honeypot spam trap (must stay unchecked) -->
+        <input type="checkbox" id="f-botcheck" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <label for="f-contact">Email or phone</label>
         <input type="text" id="f-contact" name="contact" required autocomplete="email"
@@ -620,18 +622,18 @@ var LINEUP = [
     e.preventDefault();
     formErr.textContent = "";
     if (!check()) { input.focus(); return; }
-    if (document.getElementById("f-gotcha").value) { showDone(); return; }
-
-    var endpoint = form.getAttribute("action") || "";
-    if (endpoint.charAt(0) === "#") { showDone(); return; } // placeholder: nothing sent
+    if (document.getElementById('f-botcheck').checked) { showDone(); return; }
 
     btn.disabled = true;
-    fetch(endpoint, {
+    fetch(form.getAttribute("action"), {
       method: "POST",
       body: new FormData(form),
       headers: { "Accept": "application/json" }
     }).then(function (res) {
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json().catch(function () { return {}; }).then(function (json) {
+        if (!res.ok || json.success === false) throw new Error("HTTP " + res.status);
+      });
+    }).then(function () {
       showDone();
     }).catch(function () {
       btn.disabled = false;

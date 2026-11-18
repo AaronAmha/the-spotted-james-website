@@ -7,6 +7,9 @@
 <meta name="theme-color" content="#000000" />
 <title>CU.NT — Calling All DJs</title>
 <meta name="description" content="Bass. Techno. Dub. Send us your sound." />
+<meta property="og:title" content="CU.NT — Calling All DJs" />
+<meta property="og:description" content="Bass. Techno. Dub. Send us your sound." />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira+Stencil+One&display=swap" rel="stylesheet" />
@@ -412,15 +415,14 @@
 <main>
   <div class="wrap">
 
-    <!-- REPLACE WITH FORMSPREE OR FORM ENDPOINT -->
-    <!-- Set action to your endpoint, e.g. https://formspree.io/f/xxxxxxxx. While it is "#REPLACE-WITH-FORM-ENDPOINT", submissions are not sent anywhere. -->
-    <form id="apply" action="#REPLACE-WITH-FORM-ENDPOINT" method="POST" novalidate>
+    <!-- Form endpoint: Web3Forms, same key as the main site's contact form. Entries arrive by email. -->
+    <form id="apply" action="https://api.web3forms.com/submit" method="POST" novalidate>
 
-      <input type="hidden" name="_subject" value="CU.NT DJ application" />
-      <div class="hp" aria-hidden="true">
-        <label for="f-gotcha">Leave this empty</label>
-        <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
-      </div>
+      <input type="hidden" name="access_key" value="63626f14-3b8c-4067-8fdb-90b2c3025fb1" />
+        <input type="hidden" name="subject" value="CU.NT DJ application" />
+        <input type="hidden" name="from_name" value="thespottedjames.com/cunt DJ form" />
+      <!-- Honeypot spam trap (must stay unchecked) -->
+        <input type="checkbox" id="f-botcheck" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
       <div class="field">
         <label for="f-djname">DJ name</label>
@@ -518,7 +520,7 @@
 
 <footer>
   <div class="wrap">
-    <a href="event.html">What is this?</a>
+    <a href="./">What is this?</a>
   </div>
 </footer>
 
@@ -626,26 +628,28 @@
     }
 
     // honeypot filled: pretend it worked, send nothing
-    if (document.getElementById('f-gotcha').value) { showDone(); return; }
+    if (document.getElementById('f-botcheck').checked) { showDone(); return; }
 
     // normalise the handle so every entry looks the same
     var ig = document.getElementById('f-ig');
     ig.value = '@' + ig.value.trim().replace(/^@/, '');
 
-    var endpoint = form.getAttribute('action') || '';
-    if (endpoint.charAt(0) === '#') {
-      // Placeholder endpoint: nothing is sent. Swap the action attribute to go live.
-      showDone();
-      return;
-    }
+    // send genres as one readable line ("Techno, Dub") instead of repeated fields
+    var data = new FormData(form);
+    var genres = data.getAll('genres');
+    data.delete('genres');
+    data.append('genres', genres.join(', '));
 
     btn.disabled = true;
-    fetch(endpoint, {
+    fetch(form.getAttribute('action'), {
       method: 'POST',
-      body: new FormData(form),
+      body: data,
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json().catch(function () { return {}; }).then(function (json) {
+        if (!res.ok || json.success === false) throw new Error('HTTP ' + res.status);
+      });
+    }).then(function () {
       showDone();
     }).catch(function () {
       btn.disabled = false;
