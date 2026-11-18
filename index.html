@@ -273,5 +273,52 @@
     <span>21+ · Please Drink Responsibly</span>
   </div>
 </footer>
+<script>
+  // Tonight band: show tonight first (highlighted), then the next two nights.
+  // The static Thu/Fri/Sat cards above are the no-JavaScript fallback.
+  (function(){
+    var band = document.querySelector('.home-tonight');
+    if (!band) return;
+    // index 0 = Sunday. Keep in step with events.html.
+    var NIGHTS = [
+      { day: 'Sunday',    title: 'SUNDAY FUNDAY',          line: 'Industry Night · $4 U-Call-Its',   href: 'events.html' },
+      { day: 'Monday',    title: 'NAME NIGHT',             line: 'On the list? Drink free',           href: 'name-night.html' },
+      { day: 'Tuesday',   title: 'TEQUILA<br/>TUESDAY',    line: '$3 off all tequila',                href: 'events.html' },
+      { day: 'Wednesday', title: 'MUSICAL<br/>BINGO',      line: '10PM–1AM · Free to play',          href: 'musical-bingo.html' },
+      { day: 'Thursday',  title: 'THIRSTY<br/>THURSDAY',   line: 'College Night · 10PM — Close',      href: 'events.html' },
+      { day: 'Friday',    title: 'DJ SET<br/>HIGH ENERGY', line: 'Happy Hour 4–7PM · DJ 10PM',        href: 'events.html' },
+      { day: 'Saturday',  title: 'SPOTTED<br/>SATURDAYS <span style="color:var(--neon);font-size:18px;">★★</span>', line: 'Happy Hour 4–7PM · 10PM — Close', href: 'events.html' }
+    ];
+    // The bar is open until 2AM, so before 4AM Boulder time it is still "last night".
+    function barNightIndex(){
+      try {
+        var wd, h;
+        new Intl.DateTimeFormat('en-US', { timeZone: 'America/Denver', weekday: 'short', hour: 'numeric', hourCycle: 'h23' })
+          .formatToParts(new Date()).forEach(function(x){ if (x.type === 'weekday') wd = x.value; if (x.type === 'hour') h = +x.value; });
+        var i = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(wd);
+        if (i < 0) throw 0;
+        return h < 4 ? (i + 6) % 7 : i;
+      } catch (e) {
+        var d = new Date();
+        return d.getHours() < 4 ? (d.getDay() + 6) % 7 : d.getDay();
+      }
+    }
+
+    var start = barNightIndex();
+    band.querySelectorAll('.home-tonight__card').forEach(function(el){ el.remove(); });
+    for (var k = 0; k < 3; k++) {
+      var n = NIGHTS[(start + k) % 7];
+      var a = document.createElement('a');
+      a.className = 'home-tonight__card' + (k === 0 ? ' home-tonight__card--today' : '');
+      a.href = n.href;
+      a.innerHTML =
+        (k === 0 ? '<span class="event-card__today-tag">Tonight</span>' : '') +
+        '<div class="home-tonight__card-day">' + n.day + '</div>' +
+        '<div class="home-tonight__card-title">' + n.title + '</div>' +
+        '<div class="home-tonight__card-time">' + n.line + '</div>';
+      band.appendChild(a);
+    }
+  })();
+</script>
 </body>
 </html>

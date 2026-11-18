@@ -618,9 +618,16 @@ button { font-family: inherit; cursor: pointer; }
   background-position: center;
   border-left: 1px solid var(--line-soft);
 }
+.event-card__photo picture,
+.event-card__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 @media (max-width: 600px) {
   .event-card { grid-template-columns: 1fr; }
-  .event-card__photo { height: 80px; border-left: none; border-top: 1px solid var(--line-soft); }
+  .event-card__photo { height: 140px; border-left: none; border-top: 1px solid var(--line-soft); }
 }
 
 .bottle-strip {
@@ -1433,6 +1440,24 @@ button { font-family: inherit; cursor: pointer; }
   text-transform: uppercase;
   color: var(--smoke);
 }
+a.home-tonight__card {
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .25s, box-shadow .25s;
+}
+a.home-tonight__card:hover,
+a.home-tonight__card:focus-visible {
+  border-color: var(--line);
+  box-shadow: 0 0 12px rgba(46,168,255,0.2);
+  outline: none;
+}
+.home-tonight__card--today,
+a.home-tonight__card--today:hover {
+  border-color: var(--neon);
+  background: rgba(46,168,255,0.06);
+  box-shadow: 0 0 22px rgba(46,168,255,0.28);
+}
+.home-tonight__card .event-card__today-tag { margin-bottom: 6px; }
 
 /* ---- Bottom feature strip ---- */
 .home-features {
