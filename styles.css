@@ -2954,3 +2954,63 @@ a.home-tonight__card:hover { border-color: rgba(46,168,255,0.45); }
   height: 100%;
   object-fit: cover;
 }
+
+/* ---- jobs page ---- */
+.jobs-roles { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; }
+.jobs-roles span {
+  padding: 8px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+.jobs-steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0 0 20px;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.jobs-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 44px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--smoke);
+}
+.jobs-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: -2px;
+  width: 30px; height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--neon);
+  border-radius: 50%;
+  font-family: var(--display);
+  font-size: 17px;
+  color: var(--neon);
+  box-shadow: 0 0 10px rgba(46,168,255,0.3);
+}
+.jobs-steps strong { color: var(--bone); font-weight: 600; }
+.jobs-steps a { color: var(--neon); text-decoration: underline; text-underline-offset: 3px; }
+.jobs-note { font-family: var(--sans); font-size: 13px; color: var(--smoke-soft); }
+
+/* ---- contact page on phones/tablets: heading, then the form, then email/Instagram/hours ---- */
+@media (max-width: 980px) {
+  .page--contact > section { display: contents; }
+  .page--contact .contact-head { order: 1; }
+  .page--contact > aside        { order: 2; }
+  .page--contact .contact-rows  { order: 3; }
+  .page--contact .follow-strip  { order: 4; }
+  .page--contact .contact-head .page__lead { margin-bottom: 0; }
+}
+.field[hidden] { display: none; }
