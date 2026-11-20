@@ -2957,7 +2957,9 @@ a.home-tonight__card:hover { border-color: rgba(46,168,255,0.45); }
 
 /* ---- jobs page ---- */
 .jobs-roles { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; }
-.jobs-roles span {
+.jobs-roles a {
+  text-decoration: none;
+  transition: border-color .2s, color .2s, background .2s;
   padding: 8px 14px;
   border: 1px solid var(--glass-border);
   border-radius: 999px;
@@ -3014,3 +3016,12 @@ a.home-tonight__card:hover { border-color: rgba(46,168,255,0.45); }
   .page--contact .contact-head .page__lead { margin-bottom: 0; }
 }
 .field[hidden] { display: none; }
+
+.jobs-roles a:hover { border-color: rgba(46,168,255,0.5); }
+.jobs-roles a[aria-current="page"] {
+  border-color: var(--neon);
+  color: var(--neon);
+  background: linear-gradient(180deg, rgba(46,168,255,0.16), rgba(46,168,255,0.04)), rgba(10,14,26,0.6);
+  box-shadow: 0 0 14px rgba(46,168,255,0.3);
+}
+@media (max-width: 880px) { .jobs-roles a { min-height: 40px; display: inline-flex; align-items: center; } }
