@@ -3025,3 +3025,20 @@ a.home-tonight__card:hover { border-color: rgba(46,168,255,0.45); }
   box-shadow: 0 0 14px rgba(46,168,255,0.3);
 }
 @media (max-width: 880px) { .jobs-roles a { min-height: 40px; display: inline-flex; align-items: center; } }
+
+/* ---- phones: hero lines up with the cards below (same edges, same corners) ---- */
+@media (max-width: 880px) {
+  .home-hero__photo {
+    border-radius: var(--radius);
+    height: 210px;
+  }
+  .home-hero__text {
+    align-self: stretch;
+    justify-self: stretch;
+    max-width: none;
+    margin: -56px 0 0;
+    border-radius: var(--radius);
+    padding: 26px 24px 24px;
+  }
+  .footer { padding-left: 22px; padding-right: 22px; }
+}
