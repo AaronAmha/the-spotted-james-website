@@ -14,6 +14,7 @@ Usage:
 Codes in use:
     giveaway  https://thespottedjames.com/giveaway.html
     cunt-signup  https://thespottedjames.com/cunt/signup.html  (CU.NT DJ application)
+    wifi      https://thespottedjames.com/wifi.html  (guest WiFi password)
 
 Outputs (next to this script, in assets/qr/):
     <name>-qr.png   -> for printing (high-res)

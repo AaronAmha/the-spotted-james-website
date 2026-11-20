@@ -15,11 +15,14 @@
  *          Columns: Timestamp | Kind | Name | Email | Opt-In | Message | Source | Page
  *     3) "Giveaway"         — giveaway entries.
  *          Columns: Timestamp | Name | Phone | Email | Source | Page
+ *     4) "WiFi"             — guest WiFi sign-ups (wifi.html).
+ *          Columns: Timestamp | Email | Opt-In | 21+ | Source | Page
  *
  *   FORM TYPES the website sends (via a "formType" field):
  *     formType = "giveaway"    fields: name, phone, email
  *     formType = "reminder"    fields: name (first name), email, marketing_opt_in
  *     formType = "suggestion"  fields: suggested_name, email (opt), message (opt)
+ *     formType = "wifi"        fields: email, marketing_opt_in, confirmed_21_plus
  *   If formType is ABSENT we DEFAULT to "giveaway" for back-compat with the
  *   original giveaway page, which sends no formType. A formType that is present
  *   but unknown (e.g. a typo) is REJECTED with an error rather than silently
@@ -78,6 +81,9 @@ var NAME_NIGHT_HEADERS = ['Timestamp', 'Kind', 'Name', 'Email', 'Opt-In', 'Messa
 
 /* Header row for the Giveaway tab (matches the pre-existing renamed Sheet1). */
 var GIVEAWAY_HEADERS = ['Timestamp', 'Name', 'Phone', 'Email', 'Source', 'Page'];
+
+/* Header row for the WiFi tab. */
+var WIFI_HEADERS = ['Timestamp', 'Email', 'Opt-In', '21+', 'Source', 'Page'];
 
 
 /**
@@ -193,6 +199,38 @@ var FORM_CONFIG = {
         safeTrim_(d.page)
       ];
     }
+  },
+
+  // 4) GUEST WIFI. email required. Opt-in is recorded in both tabs so the
+  //    Marketing list can be filtered to people who actually said yes.
+  wifi: {
+    ownSheet: 'WiFi',
+    ownHeaders: WIFI_HEADERS,
+    ownRowFn: function (d, now) {
+      // [now, email, marketing_opt_in, confirmed_21_plus, source, page]
+      return [
+        now,
+        safeTrim_(d.email),
+        safeTrim_(d.marketing_opt_in),
+        safeTrim_(d.confirmed_21_plus),
+        safeTrim_(d.source),
+        safeTrim_(d.page)
+      ];
+    },
+    marketingType: 'WiFi',
+    marketingRowFn: function (d, now) {
+      // [now, "WiFi", "", "", email, "Opt-in: "+opt_in, source, page]
+      return [
+        now,
+        'WiFi',
+        '',
+        '',
+        safeTrim_(d.email),
+        'Opt-in: ' + safeTrim_(d.marketing_opt_in),
+        safeTrim_(d.source),
+        safeTrim_(d.page)
+      ];
+    }
   }
 };
 
@@ -298,11 +336,19 @@ function doGet(e) {
  *   giveaway   -> name, phone, email
  *   reminder   -> name (first name), email
  *   suggestion -> suggested_name
+ *   wifi       -> email
  */
 function validate_(formType, d) {
   if (formType === 'reminder') {
     if (!safeTrim_(d.name) || !safeTrim_(d.email)) {
       return 'Please enter your first name and email.';
+    }
+    return '';
+  }
+
+  if (formType === 'wifi') {
+    if (!safeTrim_(d.email)) {
+      return 'Please enter your email.';
     }
     return '';
   }

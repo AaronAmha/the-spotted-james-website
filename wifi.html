@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Free WiFi — The Spotted James | Boulder</title>
+<meta name="description" content="Get on the free guest WiFi at The Spotted James in Boulder. Drop your email and get the password." />
+<meta name="author" content="The Spotted James" />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://thespottedjames.com/wifi.html" />
+
+<!-- GEO META -->
+<meta name="geo.region" content="US-CO" />
+<meta name="geo.placename" content="Boulder, Colorado" />
+<meta name="geo.position" content="40.0167;-105.2786" />
+<meta name="ICBM" content="40.0167, -105.2786" />
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Free WiFi — The Spotted James" />
+<meta property="og:description" content="Drop your email, get the WiFi password." />
+<meta property="og:url" content="https://thespottedjames.com/wifi.html" />
+<meta property="og:site_name" content="The Spotted James" />
+<meta property="og:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Free WiFi — The Spotted James" />
+<meta name="twitter:description" content="Drop your email, get the WiFi password." />
+<meta name="twitter:image" content="https://thespottedjames.com/assets/real/dancefloor-hands.jpg" />
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/svg+xml" href="assets/horseshoe.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<!-- Self-hosted fonts: preload the two render-critical faces, then load styles.css -->
+<link rel="preload" href="assets/fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/caveat.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* WiFi-only tweaks; everything else reuses the shared styles.css.
+     Same single-column, phone-first layout as the giveaway page: guests reach
+     this from a QR code on the table, usually on cellular data. */
+  main.wf-page {
+    display: block;                 /* cancel the shared .page grid */
+    max-width: 620px;
+    margin-inline: auto;
+    padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 40px) clamp(48px, 8vw, 80px);
+    text-align: center;
+  }
+  main.wf-page .page__lead { max-width: 46ch; margin-inline: auto; margin-bottom: 28px; }
+  main.wf-page .page__title { font-size: clamp(44px, 12vw, 88px); }
+  .wf-logo {
+    display: block;
+    width: 108px; height: 108px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .wf-form .field input { font-size: 16px; }          /* prevent iOS zoom */
+  .wf-form .btn--block { min-height: 52px; }
+
+  .wf-consent {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--smoke);
+    opacity: 0.75;
+    text-align: center;
+  }
+  .wf-error {
+    display: none;
+    margin-top: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #ff6e8a;
+  }
+
+  /* The reveal: network name + password, big and easy to copy */
+  .wf-success { display: none; text-align: center; padding: 8px 0; }
+  .wf-success__big {
+    font-family: 'Bebas Neue', system-ui, sans-serif;
+    font-size: clamp(44px, 13vw, 76px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+  }
+  .wf-creds {
+    display: grid;
+    gap: 14px;
+    margin: 0 auto 18px;
+    max-width: 380px;
+    text-align: left;
+  }
+  .wf-cred__label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--neon);
+    margin-bottom: 4px;
+  }
+  .wf-cred__value {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 20px;
+    color: var(--bone);
+    word-break: break-all;
+    user-select: all;               /* one tap selects the whole value */
+    -webkit-user-select: all;
+  }
+  .wf-copy { margin-top: 8px; min-height: 48px; }
+  .wf-steps {
+    max-width: 380px;
+    margin: 0 auto;
+    padding-left: 1.2em;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--smoke);
+  }
+  .wf-next { margin-top: 22px; font-size: 14px; color: var(--smoke); }
+
+  /* WiFi terms — small print, collapsed by default */
+  .wf-terms {
+    margin-top: 26px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 18px;
+  }
+  .wf-terms summary {
+    cursor: pointer;
+    padding: 12px 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--neon);
+  }
+  .wf-terms summary:focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
+  .wf-terms__body {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--smoke);
+    opacity: 0.85;
+    text-align: left;
+  }
+  .wf-terms__body p { margin: 0 0 10px; }
+  @media (max-width: 480px) { .wf-logo { width: 92px; height: 92px; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <a href="index.html" class="nav__brand">
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="" width="72" height="72" decoding="async" /></picture>
+    <span class="nav__brand-text">
+      <span class="nav__brand-the">THE</span>
+      <span class="nav__brand-name">Spotted James</span>
+    </span>
+  </a>
+  <nav>
+    <ul class="nav__menu" id="navmenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="parties.html">Private Parties</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="directions.html" class="nav__cta">Get Directions</a>
+</header>
+
+<main id="main" class="page page--narrow wf-page">
+  <div>
+    <section style="text-align:center;">
+      <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="wf-logo" alt="The Spotted James" width="108" height="108" decoding="async" /></picture>
+      <h1 class="page__title">FREE<br/>WIFI</h1>
+      <p class="page__lead">Drop your email and we'll show you the WiFi password. Takes ten seconds.</p>
+    </section>
+
+    <section aria-labelledby="wf-form-h" style="margin-top:8px;">
+      <h2 id="wf-form-h" class="sr-only">Get the WiFi password</h2>
+
+      <form class="form-card wf-form" id="wifi-form" novalidate>
+        <div class="form-card__title">GET THE PASSWORD</div>
+        <div class="form-card__sub">Free for guests. Must be 21+.</div>
+
+        <div class="form-grid" id="wifi-fields">
+          <div class="field field--full">
+            <label for="wf-email">Email</label>
+            <input id="wf-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@email.com" />
+          </div>
+
+          <!-- Honeypot: bots fill this; humans never see it -->
+          <div class="field field--full" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+            <label for="wf-gotcha">Leave this field empty</label>
+            <input id="wf-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="field field--full field--checkbox">
+            <input id="wf-21" type="checkbox" required />
+            <label for="wf-21">I'm 21 or over and I agree to the WiFi terms below.</label>
+          </div>
+
+          <div class="field field--full field--checkbox">
+            <input id="wf-optin" type="checkbox" />
+            <label for="wf-optin">Optional: send me occasional events &amp; specials from The Spotted James. Unsubscribe anytime.</label>
+          </div>
+          <!-- Marketing consent is SEPARATE and defaults to off. Getting the
+               WiFi password is never conditioned on accepting marketing; our
+               privacy policy promises marketing goes only to people who opt in. -->
+
+          <div class="field field--full">
+            <button id="wifi-submit" class="btn btn--block" type="submit">Show Me The Password</button>
+            <p class="wf-consent">We use your email to keep a record of WiFi sign-ups. We only send marketing if you tick the box above. See our <a href="privacy.html">Privacy Policy</a>.</p>
+            <p id="wifi-error" class="wf-error" role="alert" aria-live="assertive">Something went wrong. Please try again.</p>
+          </div>
+        </div>
+
+        <!-- Revealed after sign-up (or straight away for a returning guest) -->
+        <div id="wifi-success" class="wf-success" role="status" aria-live="polite" tabindex="-1">
+          <div class="wf-success__big">YOU'RE IN</div>
+          <div class="wf-creds">
+            <div>
+              <div class="wf-cred__label">Network</div>
+              <code class="wf-cred__value" id="wf-ssid"></code>
+            </div>
+            <div>
+              <div class="wf-cred__label">Password</div>
+              <code class="wf-cred__value" id="wf-pass"></code>
+              <button type="button" class="btn btn--ghost btn--block wf-copy" id="wf-copy">Copy Password</button>
+            </div>
+          </div>
+          <ol class="wf-steps">
+            <li>Tap <strong>Copy Password</strong>.</li>
+            <li>Open <strong>Settings &rarr; Wi-Fi</strong> and pick <strong id="wf-ssid-step"></strong>.</li>
+            <li>Paste the password and join.</li>
+          </ol>
+          <p class="wf-next">While you're here: <a href="events.html">see what's on this week</a>.</p>
+        </div>
+
+        <!-- Shown instead if the network details haven't been filled in yet -->
+        <div id="wifi-ask" class="wf-success" role="status" aria-live="polite" tabindex="-1">
+          <div class="wf-success__big">THANKS!</div>
+          <p class="wf-steps" style="padding-left:0; text-align:center;">Ask your bartender for the WiFi password.</p>
+        </div>
+      </form>
+
+      <details class="wf-terms">
+        <summary>WiFi Terms</summary>
+        <div class="wf-terms__body">
+          <p>Guest WiFi is a free courtesy for customers of The Spotted James, 1911 11th St, Suite 100, Boulder, CO 80302. It is provided as is, may be slow or unavailable, and can be switched off at any time.</p>
+          <p>Don't use it for anything illegal, to download or share pirated content, to send spam, or to attack or snoop on other devices. We may block any device that does.</p>
+          <p>This is a shared public network. Use secure (https) sites and apps for anything private. We're not responsible for data lost or exposed while you're connected.</p>
+          <p>Your email and the time you signed up are kept as described in our <a href="privacy.html">Privacy Policy</a>. Marketing emails are sent only if you opted in.</p>
+        </div>
+      </details>
+    </section>
+  </div>
+</main>
+
+<!-- ============================================================
+     WIFI FORM WIRING — vanilla JS, no deps.
+     POSTs the email to the same Google Apps Script Web App the giveaway
+     uses (formType=wifi), then reveals the network name and password.
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  // ------------------------------------------------------------
+  // GUEST NETWORK DETAILS. Change the password here whenever you
+  // rotate it on the router; the page always shows the current one.
+  // Note: anyone who views this page's source can read it. That's
+  // fine for guest WiFi, but keep this on a separate guest network,
+  // never the one your POS or office computers use.
+  // ------------------------------------------------------------
+  var WIFI_NETWORK  = 'PASTE_NETWORK_NAME';
+  var WIFI_PASSWORD = 'PASTE_PASSWORD';
+
+  // Same Apps Script deployment as giveaway.html.
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzYvBtiOikiBWXKettdis79KxJhCMA1edOZNbgSym8zm72qjg1moD-GQgVF3GNuA0kP/exec';
+  var TIMEOUT_MS = 12000;
+
+  // A returning guest on the same phone skips the form. Stored only on this
+  // device, on this site; holds no personal information.
+  var SEEN_KEY = 'tsj-wifi-signed-up';
+
+  function init() {
+    var form    = document.getElementById('wifi-form');
+    var btn     = document.getElementById('wifi-submit');
+    var fields  = document.getElementById('wifi-fields');
+    var success = document.getElementById('wifi-success');
+    var ask     = document.getElementById('wifi-ask');
+    var errorEl = document.getElementById('wifi-error');
+    var copyBtn = document.getElementById('wf-copy');
+    if (!form || !btn || !fields || !success || !ask || !errorEl) return;
+
+    var configured = WIFI_NETWORK.indexOf('PASTE_') !== 0 && WIFI_PASSWORD.indexOf('PASTE_') !== 0;
+    var btnDefaultText = btn.textContent;
+    var show = function (el) { el.style.display = 'block'; };
+    var hide = function (el) { el.style.display = 'none'; };
+    var validEmail = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+
+    document.getElementById('wf-ssid').textContent = WIFI_NETWORK;
+    document.getElementById('wf-ssid-step').textContent = WIFI_NETWORK;
+    document.getElementById('wf-pass').textContent = WIFI_PASSWORD;
+
+    function setSubmitting(on) {
+      btn.disabled = on;
+      btn.setAttribute('aria-busy', on ? 'true' : 'false');
+      btn.textContent = on ? 'One sec…' : btnDefaultText;
+    }
+    function fail(msg) { setSubmitting(false); errorEl.textContent = msg; show(errorEl); }
+    function reveal(focus) {
+      hide(errorEl);
+      hide(fields);
+      var target = configured ? success : ask;
+      show(target);
+      if (focus) { try { target.focus(); } catch (_) {} }
+    }
+    function remember() { try { localStorage.setItem(SEEN_KEY, '1'); } catch (_) {} }
+
+    // Returning guest: go straight to the password.
+    try { if (localStorage.getItem(SEEN_KEY) === '1') reveal(false); } catch (_) {}
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        var done = function () {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy Password'; }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(WIFI_PASSWORD).then(done, selectPass);
+        } else {
+          selectPass();
+        }
+      });
+    }
+    // Fallback when the clipboard API isn't allowed: select the text so the
+    // guest can long-press and copy it themselves.
+    function selectPass() {
+      var el = document.getElementById('wf-pass');
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      copyBtn.textContent = 'Long-press to copy';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (btn.disabled) return;
+
+      var d        = new FormData(form);
+      var email    = (d.get('email')   || '').toString().trim();
+      var honeypot = (d.get('_gotcha') || '').toString().trim();
+      var age      = document.getElementById('wf-21');
+      var optin    = document.getElementById('wf-optin');
+
+      if (honeypot) { reveal(true); return; }
+
+      hide(errorEl);
+      if (!email)              return fail('Please enter your email.');
+      if (!validEmail(email))  return fail('That email doesn’t look right — please check it.');
+      if (age && !age.checked) return fail('Please confirm you’re 21+ and agree to the WiFi terms.');
+
+      setSubmitting(true);
+
+      // Same transport as giveaway.html: urlencoded + no-cors so Apps Script
+      // runs doPost without a CORS preflight. The response is opaque, so a
+      // resolved fetch counts as success.
+      var body = new URLSearchParams();
+      body.append('formType', 'wifi');
+      body.append('email', email);
+      body.append('confirmed_21_plus', 'yes');
+      body.append('marketing_opt_in', optin && optin.checked ? 'yes' : 'no');
+      body.append('source', 'qr-wifi');
+      body.append('page', location.href);
+      body.append('ts', new Date().toISOString());
+
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, TIMEOUT_MS);
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: body,
+        cache: 'no-store',
+        signal: ctrl.signal
+      })
+        .then(function () { clearTimeout(timer); remember(); reveal(true); })
+        .catch(function (err) {
+          clearTimeout(timer);
+          console.error('[wifi] submit failed:', err);
+          // Don't strand a guest without WiFi because of a hiccup on our end.
+          // Show the password anyway; they can still connect.
+          reveal(true);
+        });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<!-- Mobile nav toggle (same behavior as the rest of the site) -->
+<script>
+  (function(){
+    var t = document.querySelector('.nav__toggle');
+    var m = document.getElementById('navmenu');
+    if (!t || !m) return;
+    t.addEventListener('click', function(){
+      var open = m.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    m.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        m.classList.remove('is-open');
+        t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
