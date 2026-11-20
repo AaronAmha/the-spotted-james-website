@@ -51,7 +51,7 @@
 
 <header class="nav">
   <a href="index.html" class="nav__brand">
-    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="The Spotted James" width="72" height="72" decoding="async" /></picture>
+    <picture><source srcset="assets/horse-logo.webp" type="image/webp" /><img src="assets/horse-logo.jpg" class="nav__brand-mark" alt="" width="72" height="72" decoding="async" /></picture>
     <span class="nav__brand-text">
       <span class="nav__brand-the">THE</span>
       <span class="nav__brand-name">Spotted James</span>
@@ -61,7 +61,6 @@
     <ul class="nav__menu" id="navmenu">
       <li><a href="index.html">Home</a></li>
       <li><a href="events.html">Events</a></li>
-      <li><a href="name-night.html">Name Night</a></li>
       <li><a href="drinks.html">Drinks</a></li>
       <li><a href="parties.html">Private Parties</a></li>
       <li><a href="gallery.html">Gallery</a></li>
@@ -91,43 +90,18 @@
       <a class="btn btn--block" href="https://maps.google.com/?q=1911+11th+St+Boulder+CO" target="_blank" rel="noopener">Get Directions</a>
     </div>
 
-    <figure class="signage-tile"><picture><source srcset="assets/real/exterior-line.webp" type="image/webp" /><img src="assets/real/exterior-line.jpg" alt="The Spotted James storefront at night with a line outside" loading="lazy" decoding="async" width="511" height="341" /></picture></figure>
+    <figure class="signage-tile"><picture><source srcset="assets/real/exterior-line.webp" type="image/webp" /><img src="assets/real/exterior-line.jpg" alt="The Spotted James storefront at night with a line outside" loading="lazy" decoding="async" width="1600" height="1063" /></picture></figure>
   </section>
 
   <aside>
     <div class="map-tile">
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="Map showing 1911 11th St, Boulder">
-        <defs>
-          <radialGradient id="g" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#2EA8FF" stop-opacity="0.5" />
-            <stop offset="100%" stop-color="#0E5CFF" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-        <rect width="400" height="400" fill="#0E1220" />
-        <g stroke="rgba(236,239,247,0.08)" stroke-width="1">
-          <line x1="0" y1="50" x2="400" y2="50" />
-          <line x1="0" y1="100" x2="400" y2="100" />
-          <line x1="0" y1="150" x2="400" y2="150" />
-          <line x1="0" y1="200" x2="400" y2="200" />
-          <line x1="0" y1="250" x2="400" y2="250" />
-          <line x1="0" y1="300" x2="400" y2="300" />
-          <line x1="0" y1="350" x2="400" y2="350" />
-          <line x1="50" y1="0" x2="50" y2="400" />
-          <line x1="100" y1="0" x2="100" y2="400" />
-          <line x1="150" y1="0" x2="150" y2="400" />
-          <line x1="200" y1="0" x2="200" y2="400" />
-          <line x1="250" y1="0" x2="250" y2="400" />
-          <line x1="300" y1="0" x2="300" y2="400" />
-          <line x1="350" y1="0" x2="350" y2="400" />
-        </g>
-        <g stroke="rgba(236,239,247,0.18)" stroke-width="2.5" fill="none">
-          <path d="M 0 200 L 400 200" />
-          <path d="M 200 0 L 200 400" />
-        </g>
-        <circle cx="200" cy="200" r="55" fill="url(#g)" />
-        <polygon points="200,170 188,200 200,194 212,200" fill="#2EA8FF" stroke="#2EA8FF" stroke-width="2" style="filter: drop-shadow(0 0 6px #2EA8FF);"/>
-        <circle cx="200" cy="200" r="3" fill="#0E1220" />
-      </svg>
+      <!-- Google Maps embed (no API key). Mentioned in privacy.html. -->
+      <iframe
+        src="https://www.google.com/maps?q=1911+11th+St,+Boulder,+CO+80302&amp;z=16&amp;output=embed"
+        title="Map showing The Spotted James at 1911 11th St, Boulder"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
     </div>
   </aside>
 </main>
@@ -156,7 +130,7 @@
       <p class="footer__tag">Good music. A full bar. Downtown Boulder — walking distance from CU, just off Pearl Street.</p>
     </div>
     <div class="footer__col">
-      <h5>Visit</h5>
+      <h2 class="footer__heading">Visit</h2>
       <ul>
         <li>1911 11th St, Suite 100</li>
         <li>Boulder, CO 80302</li>
@@ -164,7 +138,7 @@
       </ul>
     </div>
     <div class="footer__col">
-      <h5>Hours</h5>
+      <h2 class="footer__heading">Hours</h2>
       <ul>
         <li>Mon–Thu · 6PM–2AM</li>
         <li>Fri–Sun · 4PM–2AM</li>
@@ -172,7 +146,7 @@
       </ul>
     </div>
     <div class="footer__col">
-      <h5>Contact</h5>
+      <h2 class="footer__heading">Contact</h2>
       <ul>
         <li><a href="mailto:thespottedjames@gmail.com">thespottedjames@<wbr>gmail.com</a></li>
         <li><a href="https://www.instagram.com/thespottedjames" target="_blank" rel="noopener">Instagram</a></li>
@@ -181,11 +155,9 @@
       </ul>
     </div>
     <div class="footer__col">
-      <h5>Explore</h5>
+      <h2 class="footer__heading">Explore</h2>
       <ul>
         <li><a href="events.html">Events</a></li>
-        <li><a href="name-night.html">Name Night</a></li>
-        <li><a href="musical-bingo.html">Musical Bingo</a></li>
         <li><a href="drinks.html">Drinks</a></li>
         <li><a href="parties.html">Private Parties</a></li>
         <li><a href="gallery.html">Gallery</a></li>

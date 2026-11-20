@@ -2251,7 +2251,8 @@ a.home-tonight__card--today:hover {
   max-width: 300px;
   margin-top: 10px;
 }
-.footer__col h5 {
+.footer__col h5,
+.footer__col .footer__heading {
   font-family: var(--display);
   font-size: 15px;
   font-weight: 400;
@@ -2922,4 +2923,34 @@ a.home-tonight__card:hover { border-color: rgba(46,168,255,0.45); }
 @media (max-width: 880px) {
   .home-hero { display: flex; flex-direction: column; }
   .home-hero__photo { order: -1; flex: 0 0 auto; }
+}
+
+/* ---- 404 page ---- */
+.notfound__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.notfound__actions .btn { white-space: nowrap; }
+
+/* ---- directions: embedded Google map, darkened to match the site ---- */
+.map-tile iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.7) brightness(0.95) contrast(0.95);
+}
+
+/* ---- links inside running text are underlined, not colour-only ---- */
+.legal p a,
+.legal li a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* ---- directions storefront photo: crop, don't stretch ---- */
+.signage-tile picture,
+.signage-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
